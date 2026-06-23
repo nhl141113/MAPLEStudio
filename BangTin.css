@@ -1,0 +1,146 @@
+/* ============================================
+   M.A.P.L.E — MediaWiki:BangTin.css
+   ============================================ */
+#bt-root {
+    font-family: var(--maple-mono, 'JetBrains Mono', monospace);
+    color: var(--maple-text-2, #a1a1aa);
+    max-width: 820px; margin: 0 auto; padding: 40px 20px 80px;
+}
+.bt-loading { text-align: center; padding: 80px 0; color: #71717a; font-size: 11px; letter-spacing: .2em; }
+.bt-spin { width: 28px; height: 28px; border: 2px solid #1a1a1a; border-top-color: #ef4444;
+    border-radius: 50%; margin: 0 auto 18px; animation: bt-spin .8s linear infinite; }
+@keyframes bt-spin { to { transform: rotate(360deg); } }
+
+.bt-hero { text-align: center; padding: 24px 0 36px; border-bottom: 1px solid #141414; margin-bottom: 28px; }
+.bt-hero-logo svg { filter: drop-shadow(0 0 14px rgba(239,68,68,.4)); animation: maple-eye-pulse 3s ease-in-out infinite; }
+.bt-eyebrow { font-size: 9.5px; letter-spacing: .28em; color: #52525b; text-transform: uppercase; margin: 14px 0 8px; }
+.bt-title { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 800; color: #f4f4f5; margin: 0; }
+.bt-title span { color: #ef4444; }
+.bt-sub { font-size: 11px; color: #52525b; margin: 10px 0 0; }
+
+.bt-list { display: flex; flex-direction: column; gap: 14px; }
+.bt-card { background: #070707; border: 1px solid #161616; border-left: 3px solid #27272a;
+    padding: 18px 20px; animation: bt-rise .4s ease both; }
+@keyframes bt-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.bt-card-hd { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+.bt-tag { font-size: 8px; font-weight: 700; letter-spacing: .18em; padding: 3px 9px; color: #fff; }
+.bt-cat { font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; color: #71717a; }
+.bt-date { margin-left: auto; font-size: 9px; color: #52525b; letter-spacing: .1em; }
+.bt-card-title { font-size: 15px; font-weight: 700; color: #e4e4e7; margin: 0 0 8px; letter-spacing: .02em; }
+.bt-card-body { font-size: 11.5px; line-height: 1.85; color: #71717a; margin: 0; }
+.bt-author { margin-top: 10px; font-size: 9px; letter-spacing: .12em; color: #52525b; }
+
+/* Type accents */
+.bt-notice  { border-left-color: #52525b; } .bt-notice  .bt-tag { background: #52525b; }
+.bt-update  { border-left-color: #22c55e; } .bt-update  .bt-tag { background: #16a34a; }
+.bt-warning { border-left-color: #ef4444; } .bt-warning .bt-tag { background: #dc2626; }
+.bt-event   { border-left-color: #eab308; } .bt-event   .bt-tag { background: #ca8a04; color: #0a0a0a; }
+
+.bt-empty { text-align: center; padding: 60px 0; color: #52525b; letter-spacing: .2em; }
+.bt-footer { display: flex; justify-content: space-between; margin-top: 36px; padding-top: 18px;
+    border-top: 1px solid #141414; flex-wrap: wrap; gap: 10px; }
+.bt-footer a { font-size: 10px; letter-spacing: .12em; color: #71717a !important; text-decoration: none; text-transform: uppercase; }
+.bt-footer a:hover { color: #ef4444 !important; }
+
+@media (max-width: 768px) {
+    #bt-root { padding: 28px 14px 60px; }
+    .bt-date { margin-left: 0; }
+    .bt-footer { flex-direction: column; }
+}
+
+/* ── Toolbar / Filter / Search ── */
+.bt-toolbar {
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    margin-bottom: 24px; flex-wrap: wrap;
+}
+.bt-filter-bar {
+    display: flex; flex-wrap: wrap; gap: 6px;
+}
+.bt-filter-btn {
+    background: transparent; border: 1px solid #1a1a1a;
+    color: #52525b; font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    font-weight: 700; letter-spacing: 0.1em; padding: 6px 12px; border-radius: 3px;
+    cursor: pointer; transition: all 0.2s; text-transform: uppercase;
+}
+.bt-filter-btn:hover {
+    color: #ef4444; border-color: #ef4444; background: rgba(239, 68, 68, 0.05);
+}
+.bt-filter-btn.active {
+    color: #fff; border-color: #ef4444; background: #ef4444;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.25);
+}
+.bt-search-wrap {
+    flex: 1; max-width: 260px; min-width: 180px;
+}
+.bt-search-input {
+    width: 100%; background: #070707; border: 1px solid #1a1a1a;
+    color: #e4e4e7; font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    padding: 6px 12px; border-radius: 3px; transition: all 0.2s;
+}
+.bt-search-input:focus {
+    border-color: #ef4444; outline: none; background: #0a0a0a;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.15);
+}
+
+/* ── Expandable Card body ── */
+.bt-card-body-wrap {
+    position: relative; overflow: hidden;
+}
+.bt-card-body {
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+    overflow: hidden; text-overflow: ellipsis; transition: max-height 0.35s ease;
+}
+.bt-card.expanded .bt-card-body {
+    display: block; -webkit-line-clamp: unset;
+}
+
+/* ── Card Footer ── */
+.bt-card-ft {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 14px; padding-top: 12px; border-top: 1px solid #111;
+}
+
+/* ── Author link and avatar ── */
+.bt-author-link {
+    display: flex; align-items: center; gap: 8px; text-decoration: none !important;
+}
+.bt-author-avatar {
+    width: 20px; height: 20px; border-radius: 50%; background: #141416;
+    border: 1px solid #27272a; color: #fff; font-size: 9.5px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace; text-transform: uppercase;
+}
+.bt-author-name {
+    font-size: 9.5px; color: #71717a; font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em; transition: color 0.15s;
+}
+.bt-author-link:hover .bt-author-name {
+    color: #ef4444;
+}
+.bt-author-link:hover .bt-author-avatar {
+    border-color: #ef4444; box-shadow: 0 0 6px rgba(239, 68, 68, 0.3);
+}
+
+/* ── Expand toggle hint ── */
+.bt-expand-toggle {
+    font-size: 9px; color: #52525b; font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em; transition: color 0.15s;
+}
+.bt-card:hover .bt-expand-toggle {
+    color: #ef4444;
+}
+
+/* ── Load More Button ── */
+.bt-load-more-wrap {
+    display: flex; justify-content: center; margin-top: 24px;
+}
+.bt-load-more-btn {
+    background: #070707; border: 1px solid #1a1a1a;
+    color: #71717a; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    font-weight: 700; letter-spacing: 0.1em; padding: 10px 24px; border-radius: 3px;
+    cursor: pointer; transition: all 0.2s;
+}
+.bt-load-more-btn:hover {
+    color: #ef4444; border-color: #ef4444; background: rgba(239, 68, 68, 0.05);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.15);
+}

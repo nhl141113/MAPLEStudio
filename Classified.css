@@ -1,0 +1,220 @@
+/* ============================================
+   M.A.P.L.E — MediaWiki:Classified.css
+   Hệ thống mã hoá / giải mã nội dung nhạy cảm
+   @import vào Common.css:
+   @import url('/wiki/MediaWiki:Classified.css?action=raw&ctype=text/css');
+   ============================================ */
+
+/* ══════════════════════════════════════════
+   CONFIDENTIAL BLOCK — Khối hồ sơ mật
+   Dùng: <div class="maple-classified" data-ref="SEC-001" data-level="5">nội dung</div>
+   ══════════════════════════════════════════ */
+
+@keyframes maple-decrypt-glow {
+    0%   { box-shadow: 0 0 0 rgba(239,68,68,0); }
+    50%  { box-shadow: 0 0 20px rgba(239,68,68,0.3); }
+    100% { box-shadow: 0 0 0 rgba(239,68,68,0); }
+}
+
+@keyframes maple-scan-line {
+    0%   { top: 0; opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+@keyframes maple-badge-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.5; }
+}
+
+.maple-classified {
+    border: 1px solid #450a0a;
+    background: #080000;
+    border-radius: 3px;
+    margin: 1.5rem 0;
+    overflow: hidden;
+    position: relative;
+    font-family: 'JetBrains Mono', monospace;
+    transition: border-color 0.4s ease;
+}
+
+.maple-classified.decrypted {
+    border-color: #064e3b;
+    animation: maple-decrypt-glow 0.6s ease;
+}
+
+/* Header thanh trên */
+.maple-classified-header {
+    background: #2d0000;
+    color: #fca5a5;
+    padding: 7px 14px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #450a0a;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.maple-classified.decrypted .maple-classified-header {
+    background: #022c22;
+    color: #6ee7b7;
+    border-bottom-color: #065f46;
+}
+
+.maple-classified-status-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #ef4444;
+    margin-right: 8px;
+    vertical-align: middle;
+    transition: background 0.4s ease;
+}
+
+.maple-classified.decrypted .maple-classified-status-dot {
+    background: #10b981;
+}
+
+.maple-classified-ref {
+    color: #555;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+}
+
+/* Vùng nội dung */
+.maple-classified-body {
+    position: relative;
+    padding: 20px 22px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.maple-classified.decrypted .maple-classified-body {
+    cursor: default;
+    user-select: text;
+}
+
+/* Scan line khi decrypt */
+.maple-classified-scanline {
+    display: none;
+    position: absolute;
+    left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ef4444, transparent);
+    box-shadow: 0 0 10px rgba(239,68,68,0.8);
+    pointer-events: none;
+    z-index: 20;
+    animation: maple-scan-line 0.6s ease forwards;
+}
+
+.maple-classified.scanning .maple-classified-scanline { display: block; }
+
+/* Nội dung bị blur */
+.maple-classified-content {
+    filter: blur(14px);
+    color: #7f1d1d;
+    font-size: 0.85rem;
+    line-height: 1.8;
+    transition: filter 0.6s cubic-bezier(0.4,0,0.2,1), color 0.4s ease;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.maple-classified.decrypted .maple-classified-content {
+    filter: blur(0);
+    color: #d1d5db;
+}
+
+/* Badge cảnh báo giữa */
+.maple-classified-badge {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.maple-classified.decrypted .maple-classified-badge {
+    opacity: 0;
+}
+
+.maple-classified-badge-inner {
+    background: #7f1d1d;
+    color: #fff;
+    padding: 6px 18px;
+    border: 1px solid #f87171;
+    box-shadow: 0 0 20px rgba(239,68,68,0.4);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    animation: maple-badge-pulse 2s infinite;
+}
+
+/* Level badge */
+.maple-classified-level {
+    font-size: 0.58rem;
+    color: #ef4444;
+    letter-spacing: 0.2em;
+    margin-top: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    animation: maple-badge-pulse 2s 0.5s infinite;
+}
+
+/* ══════════════════════════════════════════
+   INLINE BLUR — Giải mã từng cụm từ
+   Dùng: <span class="maple-redacted">nội dung bí mật</span>
+   ══════════════════════════════════════════ */
+
+.maple-redacted {
+    display: inline;
+    filter: blur(5px);
+    background: rgba(239,68,68,0.08);
+    color: #7f1d1d;
+    cursor: pointer;
+    transition: filter 0.35s ease, color 0.3s ease, background 0.3s ease;
+    padding: 1px 5px;
+    border-radius: 2px;
+    border-bottom: 1px dashed #450a0a;
+    font-family: 'JetBrains Mono', monospace;
+    user-select: none;
+}
+
+.maple-redacted:hover {
+    border-bottom-color: #ef4444;
+    background: rgba(239,68,68,0.12);
+}
+
+.maple-redacted.revealed {
+    filter: blur(0);
+    color: #f87171;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    cursor: default;
+    user-select: text;
+}
+
+/* Hint text nhỏ */
+.maple-redacted-hint {
+    display: block;
+    font-size: 0.6rem;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-top: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-style: italic;
+}
+
+/* Tôn trọng giảm chuyển động — tắt loop badge/pulse */
+@media (prefers-reduced-motion: reduce) {
+    .maple-classified-badge-inner,
+    .maple-classified-level { animation: none !important; }
+}

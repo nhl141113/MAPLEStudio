@@ -1,0 +1,44 @@
+{
+	"items": [
+		{
+			"date": "16/06/2026",
+			"type": "update",
+			"tag": "Hệ thống",
+			"title": "Ra mắt hệ thống Thành Tựu, Huy Hiệu & Điểm Uy Tín (RP)",
+			"body": "Toàn bộ catalog đã lên sóng: 178 thành tựu (17 nhóm) + 109 huy hiệu (13 loại), tên kiểu GenZ, 12 bậc độ hiếm (Thường → Thần Thánh). Trang Thành Tựu nay có 3 tab (Vinh Danh / Thành Tựu / Huy Hiệu) với bộ lọc theo độ hiếm & loại; Điểm Uy Tín (RP) và Tier hiển thị ở bảng Vinh Danh và trang cá nhân. Lưu ý: RP chỉ mang tính hiển thị/ghi nhận, không mua quyền.",
+			"author": "Ban Quản Trị"
+		},
+		{
+			"date": "16/06/2026",
+			"type": "update",
+			"tag": "Tính năng",
+			"title": "Tab Donate cá nhân + Sự kiện có đếm ngược & bảng xếp hạng",
+			"body": "Trang cá nhân có thêm tab DONATE (chuyển khoản / QR / MoMo) — mặc định tắt, chỉ bật được khi là Admin hoặc Writer/KDV có tối thiểu 10 bài chất lượng. Trang Sự Kiện nay có đồng hồ ĐẾM NGƯỢC trực tiếp (bắt đầu/kết thúc), nút THAM GIA và BẢNG XẾP HẠNG theo điểm (top 3 gắn huy chương).",
+			"author": "Ban Quản Trị"
+		},
+		{
+			"date": "16/06/2026",
+			"type": "update",
+			"tag": "Giao diện",
+			"title": "Trang chủ v6.5 + Bản tin nhúng tương tác + Blog đọc tại chỗ",
+			"body": "Trang chủ lên v6.5: đồng hồ hệ thống, hiệu ứng glitch. Trang \"Có gì mới\" nay NHÚNG TRỰC TIẾP trang thật để bạn tương tác ngay (nút 🖱 bật/tắt tương tác, ⛶ xem toàn trang). Mục Blog & Bài mới ở Trang Chủ mở overlay đọc ngay không rời trang.",
+			"author": "Ban Quản Trị"
+		},
+		{
+			"date": "15/06/2026",
+			"type": "update",
+			"tag": "Hệ thống",
+			"title": "Ra mắt loạt trang mới + tối ưu điện thoại",
+			"body": "M.A.P.L.E bổ sung các trang Thủ Tục, Quy Tắc, Giới Thiệu, Thành Tựu, Bảng Tin, Sự Kiện và Đóng Góp. Toàn site được tối ưu hiển thị trên điện thoại, thêm logo nhận diện và nhiều hiệu ứng mới.",
+			"author": "Ban Quản Trị"
+		},
+		{
+			"date": "15/06/2026",
+			"type": "notice",
+			"tag": "Cộng đồng",
+			"title": "Chào mừng đến với Bảng Tin",
+			"body": "Đây là kênh thông báo chính thức của ban quản trị. Mọi cập nhật quan trọng về wiki, quy tắc và sự kiện sẽ được đăng tại đây. Quản trị viên chỉnh sửa nội dung tại MediaWiki:BangTin-data.json.",
+			"author": "Ban Quản Trị"
+		}
+	]
+}

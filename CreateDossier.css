@@ -1,0 +1,86 @@
+/* ============================================
+   M.A.P.L.E — MediaWiki:CreateDossier.css
+   Trang "Tạo Bài Mới" — form + preview Dossier + wikitext
+   ============================================ */
+#cd-root {
+    font-family: var(--maple-mono, 'JetBrains Mono', monospace);
+    color: var(--maple-text-2, #a1a1aa);
+    max-width: 1080px; margin: 0 auto; padding: 36px 18px 80px;
+}
+
+/* Hero */
+.cd-hero { text-align: center; padding: 8px 0 28px; border-bottom: 1px solid #141414; margin-bottom: 28px; }
+.cd-hero-logo svg { filter: drop-shadow(0 0 14px rgba(239,68,68,.4)); }
+.cd-eyebrow { font-size: 9.5px; letter-spacing: .28em; color: #52525b; text-transform: uppercase; margin: 12px 0 8px; }
+.cd-title { font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 800; letter-spacing: .04em; color: #f4f4f5; margin: 0; }
+.cd-title span { color: #ef4444; }
+.cd-sub { font-size: 11px; color: #71717a; margin: 10px 0 0; line-height: 1.6; }
+.cd-sub a { color: #ef4444 !important; text-decoration: none; }
+
+/* Grid 2 cột */
+.cd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: start; }
+.cd-block-eyebrow { font-size: 9px; letter-spacing: .2em; color: #ef4444; text-transform: uppercase;
+    margin: 4px 0 12px; font-weight: 700; }
+.cd-side .cd-block-eyebrow:not(:first-child) { margin-top: 22px; }
+
+/* Form */
+.cd-field { display: block; margin-bottom: 14px; }
+.cd-label { display: block; font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase;
+    color: #71717a; margin-bottom: 6px; }
+.cd-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.cd-in { width: 100%; box-sizing: border-box; background: #080808; border: 1px solid #1c1c1c;
+    color: #e4e4e7; font-family: inherit; font-size: 12px; padding: 9px 11px; border-radius: 3px;
+    transition: border-color .15s; min-height: 40px; }
+.cd-in:focus { outline: none; border-color: #ef4444; }
+.cd-ta { resize: vertical; line-height: 1.5; }
+select.cd-in { cursor: pointer; }
+
+.cd-lic-note { font-size: 10px; color: #71717a; line-height: 1.6; margin-top: 4px; }
+.cd-lic-note code { background: #0a0a0a; border: 1px solid #1c1c1c; padding: 1px 5px; border-radius: 2px; color: #facc15; font-size: 9.5px; }
+.cd-lic-note a { color: #ef4444 !important; text-decoration: none; }
+
+/* Preview "doc" */
+.cd-preview { margin-bottom: 4px; }
+.cd-doc { background: #070707; border: 1px solid #1c1c1c; border-radius: 4px; overflow: hidden; }
+.cd-doc-bar { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px;
+    background: #0c0c0c; border-bottom: 1px solid #1a1a1a; font-size: 8.5px; letter-spacing: .08em; color: #a1a1aa; }
+.cd-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #22c55e; margin-right: 6px; }
+.cd-doc-body { padding: 16px; }
+.cd-doc-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.cd-doc-type { font-size: 8.5px; letter-spacing: .18em; color: #52525b; }
+.cd-doc-rating { font-size: 9px; font-weight: 800; color: #fff; padding: 2px 7px; border-radius: 2px; }
+.cd-doc-title { font-size: 1.15rem; font-weight: 800; color: #f4f4f5; line-height: 1.3; }
+.cd-doc-clr { font-size: 8.5px; letter-spacing: .14em; color: #ef4444; margin: 4px 0 12px; }
+.cd-doc-img { height: 130px; border: 1px solid #1a1a1a; border-radius: 3px; background-size: cover;
+    background-position: center; margin-bottom: 12px; }
+.cd-doc-img--ph { display: flex; align-items: center; justify-content: center; color: #52525b;
+    font-size: 9px; letter-spacing: .2em; background: repeating-linear-gradient(45deg,#0a0a0a 0 10px,#0c0c0c 10px 20px); }
+.cd-doc-cells { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.cd-doc-cells > div { background: #0a0a0a; border: 1px solid #161616; padding: 8px 10px; border-radius: 3px; }
+.cd-doc-cells b { display: block; font-size: 8px; letter-spacing: .12em; text-transform: uppercase; color: #52525b; margin-bottom: 3px; }
+.cd-doc-cells span { font-size: 11px; color: #d4d4d8; }
+.cd-doc-sec { font-size: 11px; color: #a1a1aa; line-height: 1.6; margin-bottom: 10px; word-break: break-word; }
+.cd-doc-sec-l { display: block; font-size: 8.5px; letter-spacing: .1em; color: #ef4444; margin-bottom: 3px; }
+
+/* Wikitext + actions */
+.cd-wikitext { width: 100%; box-sizing: border-box; background: #050505; border: 1px solid #1c1c1c;
+    color: #9ca3af; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; line-height: 1.5;
+    padding: 12px; border-radius: 3px; resize: vertical; }
+.cd-actions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.cd-btn { flex: 1; min-width: 120px; background: #0a0a0a; border: 1px solid #27272a; color: #d4d4d8;
+    font-family: inherit; font-size: 11px; font-weight: 700; letter-spacing: .04em; padding: 11px 12px;
+    border-radius: 3px; cursor: pointer; transition: all .15s; min-height: 44px; }
+.cd-btn:hover { border-color: #52525b; color: #fff; }
+.cd-btn-primary { background: #ef4444; border-color: #ef4444; color: #fff; }
+.cd-btn-primary:hover { background: #dc2626; box-shadow: 0 0 16px rgba(239,68,68,.4); }
+.cd-status-msg { font-size: 11px; margin-top: 10px; min-height: 16px; letter-spacing: .02em; }
+
+/* Responsive */
+@media (max-width: 860px) {
+    .cd-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+    #cd-root { padding: 24px 12px 60px; }
+    .cd-row, .cd-doc-cells { grid-template-columns: 1fr; }
+    .cd-btn { min-width: 100%; }
+}

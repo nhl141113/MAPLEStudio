@@ -1,0 +1,234 @@
+/* ============================================================
+   M.A.P.L.E — MediaWiki:AllUsers.css
+   Trang Dự án:All User — Danh sách thành viên
+   ============================================================ */
+
+/* ── Reset MediaWiki Vector chrome ── */
+.vector-column-start, #mw-panel, .vector-column-end,
+#footer, .mw-footer-container,
+.vector-page-titlebar, .vector-page-toolbar, .mw-body-header,
+#siteSub, #contentSub, .printfooter, #catlinks,
+.mw-indicators { display: none !important; }
+
+.mw-page-container, #mw-content-text, .mw-body, #content,
+.vector-column-content, .mw-page-container-inner {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+#firstHeading { display: none !important; }
+
+/* ── Root ── */
+.au-root {
+    font-family: 'JetBrains Mono', monospace;
+    color: #d4d4d8;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 6rem;
+}
+
+/* ── Header ── */
+.au-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #18181b;
+    padding-bottom: 1.5rem;
+}
+
+.au-title {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #d4d4d8;
+    margin: 0 0 0.4rem;
+    text-transform: uppercase;
+}
+
+/* Sọc chéo cho tiêu đề — kế thừa maple-text-striped từ Common.css */
+.au-title-slash { color: #ef4444; margin-right: 6px; }
+
+.au-sub {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: #52525b;
+}
+
+/* ── Controls ── */
+.au-controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    align-items: center;
+}
+
+.au-search {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid #27272a;
+    color: #d4d4d8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    padding: 0.55rem 0.85rem;
+    outline: none;
+    flex: 1;
+    min-width: 180px;
+    transition: border-color 0.2s;
+}
+.au-search:focus { border-color: #52525b; }
+.au-search::placeholder { color: #52525b; letter-spacing: 0.08em; }
+
+/* ── Filter buttons ── */
+.au-filter {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.au-filter-btn {
+    background: transparent;
+    border: 1px solid #27272a;
+    color: #52525b;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-transform: uppercase;
+}
+.au-filter-btn:hover {
+    border-color: #52525b;
+    color: #a1a1aa;
+}
+.au-filter-btn.active {
+    border-color: var(--au-color, #ef4444);
+    color: var(--au-color, #ef4444);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* ── Count ── */
+.au-count {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: #52525b;
+    margin-left: auto;
+}
+
+/* ── Grid ── */
+.au-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1px;
+    background: #18181b;
+}
+
+/* ── Card ── */
+.au-card {
+    background: #050505;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    transition: background 0.15s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+.au-card:hover {
+    background: #0a0a0a;
+    text-decoration: none;
+    color: inherit;
+}
+.au-card:focus-visible {
+    outline: 1px solid #ef4444;
+    outline-offset: -1px;
+}
+
+.au-card-top {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+/* ── Avatar ── */
+.au-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    background: #080808;
+    letter-spacing: 0;
+    transition: box-shadow 0.2s;
+}
+.au-card:hover .au-avatar {
+    box-shadow: 0 0 16px currentColor !important;
+}
+
+/* ── Name & Badge ── */
+.au-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #d4d4d8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.au-rank-badge {
+    display: inline-block;
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    padding: 0.15rem 0.5rem;
+    text-transform: uppercase;
+    color: #fff;
+    margin-top: 2px;
+}
+
+/* ── Meta ── */
+.au-meta {
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: #52525b;
+    display: flex;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+}
+.au-meta span { color: #52525b; }
+
+/* ── Empty / Loading ── */
+.au-empty {
+    text-align: center;
+    padding: 4rem 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: #52525b;
+    grid-column: 1 / -1;
+}
+.au-loading {
+    text-align: center;
+    padding: 3rem 0;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: #52525b;
+    grid-column: 1 / -1;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+    .au-grid    { grid-template-columns: 1fr; }
+    .au-controls { flex-direction: column; }
+    .au-search  { width: 100%; }
+    .au-filter  { gap: 0.3rem; }
+    .au-filter-btn { font-size: 0.6rem; padding: 0.25rem 0.55rem; }
+}

@@ -1,0 +1,670 @@
+/* ============================================
+   M.A.P.L.E — MediaWiki:Common.css
+   ============================================ */
+
+/* 1. Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap');
+
+/* ── Pages & Components ── */
+@import url('/index.php?title=MediaWiki:HomePage.css&action=raw&ctype=text/css');
+@import url('/index.php?title=MediaWiki:ErrorPage.css&action=raw&ctype=text/css');
+@import url('/index.php?title=MediaWiki:Rating.css&action=raw&ctype=text/css');
+@import url('/index.php?title=MediaWiki:RecordCard.css&action=raw&ctype=text/css');
+@import url('/index.php?title=MediaWiki:Classified.css&action=raw&ctype=text/css');
+@import url('/index.php?title=MediaWiki:SecureImage.css&action=raw&ctype=text/css');
+@import url('/index.php?title=MediaWiki:SearchPage.css&action=raw&ctype=text/css');
+@import url('/index.php?title=MediaWiki:Kho_Lưu_Trữ.css&action=raw&ctype=text/css');
+@import url('/index.php?title=MediaWiki:Hướng_Dẫn_Viết.css&action=raw&ctype=text/css');
+/* Dossier.css đã chuyển sang nạp qua loadCSS('Dossier') trong Common.js — tránh nạp trùng */
+@import url('/index.php?title=MediaWiki:GuestGate.css&action=raw&ctype=text/css');
+@import url('/index.php?title=MediaWiki:MAPLE-Chat.css&action=raw&ctype=text/css');
+@import url('/index.php?title=MediaWiki:AllUsers.css&action=raw&ctype=text/css');
+/* MAPLE CSS đã chuyển sang load qua JS trong Common.js */
+
+/* ── Global CSS Variables ── */
+:root {
+    /* Accent */
+    --maple-red:      #ef4444;
+    --maple-red-hi:   #f87171;
+    --maple-red-lo:   #991b1b;
+    --maple-red-dk:   #450a0a;
+    --maple-red-edge: #7f1d1d;
+    /* Surfaces */
+    --maple-bg:       #050505;
+    --maple-bg-2:     #080808;
+    --maple-bg-3:     #0a0a0a;
+    --maple-bg-4:     #0f0f0f;
+    /* Borders */
+    --maple-border:   #1a1a1a;
+    --maple-border-2: #27272a;
+    /* Text (zinc ramp) — contrast-checked trên nền #050505
+       text:   #e4e4e7  ≈ 11.5:1   (body chính)
+       text-2: #a1a1aa  ≈  5.5:1   (phụ, đạt AA)
+       text-3: #8a8a95  ≈  4.6:1   (nhãn, đạt AA)
+       text-4: #6b6b78  ≈  3.2:1   (meta/placeholder, large text)
+       text-5: #52525b  ≈  2.2:1   (chỉ dùng divider / decorative) */
+    --maple-text:     #e4e4e7;
+    --maple-text-2:   #a1a1aa;
+    --maple-text-3:   #8a8a95;
+    --maple-text-4:   #6b6b78;
+    --maple-text-5:   #52525b;
+    --maple-head:     #f4f4f5;
+    /* Status */
+    --maple-green:    #22c55e;
+    --maple-green-hi: #86efac;
+    --maple-yellow:   #eab308;
+    /* Type + layout */
+    --maple-mono:     'JetBrains Mono', monospace;
+    --nav-height:     70px;
+}
+.mcl-loading {
+        color: #71717a;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 60px 0;
+    }
+/* Nền đen toàn cục */
+html, body {
+    background: #050505 !important;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE FOUNDATION — Nền tảng dùng chung
+   Breakpoint chuẩn TOÀN DỰ ÁN:
+     • 1024px — tablet / màn nhỏ
+     • 768px  — điện thoại (mobile)
+     • 480px  — điện thoại nhỏ
+   ══════════════════════════════════════════ */
+
+/* Chặn tràn ngang (overflow-x:clip — KHÔNG phá position:sticky như overflow:hidden) */
+html, body { max-width: 100%; }
+body { overflow-x: clip; }
+
+/* Media co theo khung — không bao giờ vỡ layout */
+#mw-content-text img,
+#mw-content-text video,
+#mw-content-text iframe { max-width: 100%; height: auto; }
+
+/* Bảng wikitext dài → cuộn ngang trên mobile thay vì phá layout */
+@media (max-width: 768px) {
+    #mw-content-text .wikitable { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+/* Ô chạm tối thiểu cho phần tử điều hướng chính trên mobile */
+@media (max-width: 768px) {
+    .maple-card,
+    .maple-nav-item,
+    .maple-sidebar-item { min-height: 44px; }
+}
+
+/* Logo M.A.P.L.E — mắt đỏ nhấp nháy (dùng chung cho window.MAPLE.logoSVG() ở MỌI trang) */
+@keyframes maple-eye-pulse {
+    0%, 100% { opacity: 1;    filter: drop-shadow(0 0 2px #ef4444); }
+    50%      { opacity: 0.35; filter: drop-shadow(0 0 8px #ef4444); }
+}
+.maple-eye-pulse { animation: maple-eye-pulse 2.4s ease-in-out infinite; transform-origin: center; }
+
+/* Giảm hiệu ứng nền nặng trên mobile (tiết kiệm pin/CPU) */
+@media (max-width: 768px) {
+    #maple-global-scanline { opacity: 0.5; }
+    #maple-global-vignette { opacity: 0.7; }
+}
+
+/* Tôn trọng prefers-reduced-motion — tắt animation/nhiễu nặng toàn site */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+    #maple-global-noise,
+    #maple-global-scanline { display: none !important; }
+}
+
+/* Nút "Lên đầu trang" toàn cục (inject qua Common.js) */
+#maple-top-btn {
+    position: fixed; right: 22px; bottom: 88px; z-index: 9000;
+    width: 42px; height: 42px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(10,10,10,0.85); color: var(--maple-red, #ef4444);
+    border: 1px solid var(--maple-border-2, #27272a);
+    font-family: var(--maple-mono, monospace); font-size: 18px; line-height: 1;
+    cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(10px);
+    transition: opacity .25s, transform .25s, background .2s, border-color .2s, color .2s;
+    -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+}
+#maple-top-btn.show { opacity: 1; visibility: visible; transform: none; }
+#maple-top-btn:hover { background: var(--maple-red, #ef4444); color: #fff;
+    border-color: var(--maple-red, #ef4444); box-shadow: 0 0 16px rgba(239,68,68,.4); }
+@media (max-width: 768px) { #maple-top-btn { right: 14px; bottom: 80px; width: 40px; height: 40px; } }
+
+/* ══════════════════════════════════════════
+   GLOBAL ATMOSPHERE — Noise + Scanline + Vignette + Chromatic
+   Inject qua Common.js dưới dạng div riêng, không dùng body::before/after
+   để tránh conflict với các trang dùng pseudo-element riêng
+   ══════════════════════════════════════════ */
+
+/* Noise canvas */
+#maple-global-noise {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 99998;
+    opacity: 0.45;
+}
+
+/* Scanline + chromatic aberration */
+#maple-global-scanline {
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.15) 50%),
+        linear-gradient(90deg,
+            rgba(255,0,0,0.025),
+            rgba(0,255,0,0.008),
+            rgba(0,0,255,0.025));
+    background-size: 100% 3px, 3px 100%;
+    pointer-events: none;
+    z-index: 99997;
+}
+
+/* Radial vignette */
+#maple-global-vignette {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 55%,
+        rgba(0,0,0,0.55) 100%
+    );
+    pointer-events: none;
+    z-index: 99996;
+}
+
+/* ══════════════════════════════════════════
+   SPECIAL PAGES — Đồng bộ theme cho Đặc biệt:...
+   Không thể sửa HTML → override qua Common.css.
+   Vector thêm class .ns-special vào <body> ở namespace Special.
+   Bao phủ: HTML form thô + widget OOUI (.oo-ui-*) + Codex (.cdx-*)
+   mà MediaWiki hiện đại dùng cho Tùy chọn / Cấm / Lọc / Theo dõi.
+   ══════════════════════════════════════════ */
+
+/* ── Base: nền + font cho MỌI trang Đặc biệt ── */
+body.ns-special {
+    background: var(--maple-bg) !important;
+    color: var(--maple-text-2) !important;
+    font-family: var(--maple-mono) !important;
+}
+
+/* Content wrapper */
+.ns-special .mw-body,
+.ns-special #content,
+.ns-special #bodyContent,
+.ns-special #mw-content-text,
+.ns-special .mw-page-container {
+    background: var(--maple-bg) !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: var(--maple-text-2) !important;
+}
+
+/* Sub-title (#contentSub / siteSub) */
+.ns-special #contentSub,
+.ns-special #siteSub {
+    color: var(--maple-text-4) !important;
+    font-family: var(--maple-mono) !important;
+    font-size: 10px !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+}
+
+/* ── Heading h1 (tên trang Đặc biệt) ── */
+.ns-special #firstHeading,
+.ns-special .firstHeading,
+.ns-special .mw-first-heading,
+.ns-special h1 {
+    font-family: var(--maple-mono) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    color: var(--maple-head) !important;
+    border-bottom: 1px solid var(--maple-border) !important;
+    padding-bottom: 0.6rem !important;
+    margin-bottom: 1.5rem !important;
+    font-size: 1.4rem !important;
+}
+
+/* ── h2, h3 sub-sections ── */
+.ns-special h2,
+.ns-special legend {
+    font-family: var(--maple-mono) !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    color: var(--maple-red) !important;
+    border-bottom: 1px solid var(--maple-border) !important;
+    padding-bottom: 0.4rem !important;
+    margin: 2rem 0 1rem !important;
+}
+.ns-special h3 {
+    font-family: var(--maple-mono) !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    color: var(--maple-text-3) !important;
+    margin: 1.5rem 0 0.75rem !important;
+}
+
+/* ── Links ── */
+.ns-special a,
+.ns-special a.external {
+    color: var(--maple-red) !important;
+    text-decoration: none !important;
+    transition: color 0.2s !important;
+}
+.ns-special a:hover { color: var(--maple-red-hi) !important; text-decoration: underline !important; }
+.ns-special a:visited { color: var(--maple-red-lo) !important; }
+.ns-special a.new,
+.ns-special a.new:visited { color: var(--maple-text-4) !important; }
+
+/* ── Tables (Special:Log, RecentChanges, ListUsers, v.v.) ── */
+.ns-special table,
+.ns-special .wikitable,
+.ns-special .mw-datatable,
+.ns-special .TablePager {
+    background: var(--maple-bg-2) !important;
+    border: 1px solid var(--maple-border) !important;
+    border-collapse: collapse !important;
+    width: 100% !important;
+    font-family: var(--maple-mono) !important;
+    font-size: 11px !important;
+}
+.ns-special table th,
+.ns-special .wikitable th,
+.ns-special .mw-datatable th,
+.ns-special .TablePager th {
+    background: var(--maple-bg-4) !important;
+    color: var(--maple-text-4) !important;
+    font-size: 9px !important;
+    letter-spacing: 0.2em !important;
+    text-transform: uppercase !important;
+    border: 1px solid var(--maple-border) !important;
+    padding: 8px 12px !important;
+    font-weight: 700 !important;
+}
+.ns-special table td,
+.ns-special .wikitable td,
+.ns-special .mw-datatable td,
+.ns-special .TablePager td {
+    border: 1px solid #111 !important;
+    padding: 7px 12px !important;
+    color: var(--maple-text-3) !important;
+    vertical-align: middle !important;
+}
+.ns-special table tr:hover td,
+.ns-special .mw-datatable tr:hover td {
+    background: rgba(239,68,68,0.03) !important;
+    color: var(--maple-text-2) !important;
+}
+/* Sortable header arrows */
+.ns-special .headerSort:hover { background: rgba(239,68,68,0.05) !important; cursor: pointer !important; }
+.ns-special .headerSortUp,
+.ns-special .headerSortDown { color: var(--maple-red) !important; }
+
+/* ── Forms & Inputs (HTML thô) ── */
+.ns-special input[type="text"],
+.ns-special input[type="search"],
+.ns-special input[type="password"],
+.ns-special input[type="email"],
+.ns-special input[type="number"],
+.ns-special input[type="url"],
+.ns-special input[type="date"],
+.ns-special textarea,
+.ns-special select {
+    background: var(--maple-bg-3) !important;
+    border: 1px solid var(--maple-border) !important;
+    color: var(--maple-text) !important;
+    font-family: var(--maple-mono) !important;
+    font-size: 11px !important;
+    padding: 7px 10px !important;
+    outline: none !important;
+    transition: border-color 0.2s, box-shadow 0.2s !important;
+    border-radius: 0 !important;
+}
+.ns-special input[type="text"]:focus,
+.ns-special input[type="search"]:focus,
+.ns-special input[type="password"]:focus,
+.ns-special input[type="email"]:focus,
+.ns-special input[type="number"]:focus,
+.ns-special textarea:focus,
+.ns-special select:focus {
+    border-color: var(--maple-red) !important;
+    box-shadow: 0 0 0 1px rgba(239,68,68,0.15) !important;
+}
+.ns-special ::placeholder { color: var(--maple-text-5) !important; }
+.ns-special input[type="checkbox"],
+.ns-special input[type="radio"] { accent-color: var(--maple-red) !important; }
+
+.ns-special input[type="submit"],
+.ns-special input[type="button"],
+.ns-special button,
+.ns-special .mw-htmlform-submit {
+    background: transparent !important;
+    border: 1px solid var(--maple-red) !important;
+    color: var(--maple-red) !important;
+    font-family: var(--maple-mono) !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    padding: 8px 20px !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+    border-radius: 0 !important;
+}
+.ns-special input[type="submit"]:hover,
+.ns-special input[type="button"]:hover,
+.ns-special button:hover { background: var(--maple-red) !important; color: #fff !important; }
+
+/* ── Fieldset (HTMLForm bao quanh) ── */
+.ns-special fieldset {
+    background: var(--maple-bg-2) !important;
+    border: 1px solid var(--maple-border) !important;
+    border-radius: 0 !important;
+    padding: 18px 20px !important;
+    margin: 1.25rem 0 !important;
+}
+
+/* ══════════════════════════════════════════
+   OOUI WIDGETS — Tùy chọn / Cấm / Lọc / Theo dõi
+   (.oo-ui-* render thay cho input HTML thô)
+   ══════════════════════════════════════════ */
+.ns-special .oo-ui-inputWidget-input,
+.ns-special .oo-ui-textInputWidget input,
+.ns-special .oo-ui-textInputWidget textarea,
+.ns-special .oo-ui-dropdownWidget-handle,
+.ns-special .oo-ui-comboBoxInputWidget-php input {
+    background: var(--maple-bg-3) !important;
+    border: 1px solid var(--maple-border) !important;
+    color: var(--maple-text) !important;
+    font-family: var(--maple-mono) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+.ns-special .oo-ui-inputWidget-input:focus,
+.ns-special .oo-ui-textInputWidget.oo-ui-widget-enabled input:focus {
+    border-color: var(--maple-red) !important;
+    box-shadow: 0 0 0 1px rgba(239,68,68,0.15) !important;
+}
+/* Dropdown menu thả xuống */
+.ns-special .oo-ui-menuSelectWidget,
+.ns-special .oo-ui-popupWidget-popup {
+    background: var(--maple-bg-3) !important;
+    border: 1px solid var(--maple-border) !important;
+    border-radius: 0 !important;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.9) !important;
+}
+.ns-special .oo-ui-menuOptionWidget {
+    color: var(--maple-text-3) !important;
+    font-family: var(--maple-mono) !important;
+}
+.ns-special .oo-ui-optionWidget-selected,
+.ns-special .oo-ui-optionWidget-highlighted {
+    background: rgba(239,68,68,0.08) !important;
+    color: var(--maple-text) !important;
+}
+/* Nút OOUI */
+.ns-special .oo-ui-buttonElement-button {
+    font-family: var(--maple-mono) !important;
+    border-radius: 0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+}
+.ns-special .oo-ui-buttonElement-framed > .oo-ui-buttonElement-button {
+    background: transparent !important;
+    border: 1px solid var(--maple-border-2) !important;
+    color: var(--maple-text-2) !important;
+}
+.ns-special .oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button,
+.ns-special .oo-ui-flaggedElement-primary > .oo-ui-buttonElement-button {
+    background: rgba(239,68,68,0.1) !important;
+    border: 1px solid var(--maple-red) !important;
+    color: var(--maple-red) !important;
+}
+.ns-special .oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:hover,
+.ns-special .oo-ui-flaggedElement-primary > .oo-ui-buttonElement-button:hover {
+    background: var(--maple-red) !important;
+    color: #fff !important;
+}
+.ns-special .oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button {
+    border-color: var(--maple-red-edge) !important;
+    color: var(--maple-red) !important;
+    background: transparent !important;
+}
+/* Checkbox / radio OOUI */
+.ns-special .oo-ui-checkboxInputWidget [type="checkbox"]:checked + span,
+.ns-special .oo-ui-radioInputWidget [type="radio"]:checked + span {
+    background-color: var(--maple-red) !important;
+    border-color: var(--maple-red) !important;
+}
+/* Label OOUI */
+.ns-special .oo-ui-labelElement-label,
+.ns-special .oo-ui-fieldLayout-header label {
+    color: var(--maple-text-3) !important;
+    font-family: var(--maple-mono) !important;
+}
+
+/* ══════════════════════════════════════════
+   CODEX WIDGETS (.cdx-*) — skin/extension mới
+   ══════════════════════════════════════════ */
+.ns-special .cdx-text-input__input,
+.ns-special .cdx-select,
+.ns-special .cdx-text-area__textarea {
+    background: var(--maple-bg-3) !important;
+    border: 1px solid var(--maple-border) !important;
+    color: var(--maple-text) !important;
+    font-family: var(--maple-mono) !important;
+    border-radius: 0 !important;
+}
+.ns-special .cdx-text-input__input:focus {
+    border-color: var(--maple-red) !important;
+    box-shadow: 0 0 0 1px rgba(239,68,68,0.15) !important;
+}
+.ns-special .cdx-button {
+    font-family: var(--maple-mono) !important;
+    border-radius: 0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    border: 1px solid var(--maple-border-2) !important;
+    background: transparent !important;
+    color: var(--maple-text-2) !important;
+}
+.ns-special .cdx-button--weight-primary,
+.ns-special .cdx-button--action-progressive {
+    background: rgba(239,68,68,0.1) !important;
+    border-color: var(--maple-red) !important;
+    color: var(--maple-red) !important;
+}
+.ns-special .cdx-button--weight-primary:hover { background: var(--maple-red) !important; color: #fff !important; }
+
+/* ── Lists (Special:AllPages, SpecialPages, v.v.) ── */
+.ns-special #mw-content-text ul,
+.ns-special #mw-content-text ol {
+    color: var(--maple-text-3) !important;
+    font-family: var(--maple-mono) !important;
+    font-size: 12px !important;
+    line-height: 1.9 !important;
+}
+.ns-special li::marker { color: var(--maple-red) !important; }
+
+/* Special:SpecialPages — nhóm trang */
+.ns-special .mw-specialpages-list { columns: 2 !important; }
+.ns-special .mw-special-pages-list-restricted a { color: var(--maple-yellow) !important; }
+
+/* ── Paragraphs & labels ── */
+.ns-special #mw-content-text p,
+.ns-special label {
+    color: var(--maple-text-3) !important;
+    font-family: var(--maple-mono) !important;
+    font-size: 12px !important;
+    line-height: 1.8 !important;
+}
+
+/* ══════════════════════════════════════════
+   MESSAGE BOXES — cũ (.errorbox) + mới (.cdx-message / .mw-message-box)
+   ══════════════════════════════════════════ */
+.ns-special .errorbox,
+.ns-special .warningbox,
+.ns-special .mw-message-box-error,
+.ns-special .mw-warning-box,
+.ns-special .cdx-message--error,
+.ns-special .cdx-message--warning {
+    background: rgba(239,68,68,0.06) !important;
+    border: 1px solid rgba(239,68,68,0.25) !important;
+    border-left: 3px solid var(--maple-red) !important;
+    color: var(--maple-red-hi) !important;
+    font-family: var(--maple-mono) !important;
+    font-size: 11px !important;
+    padding: 12px 16px !important;
+    border-radius: 0 !important;
+}
+.ns-special .successbox,
+.ns-special .mw-message-box-success,
+.ns-special .cdx-message--success {
+    background: rgba(34,197,94,0.05) !important;
+    border: 1px solid rgba(34,197,94,0.2) !important;
+    border-left: 3px solid var(--maple-green) !important;
+    color: var(--maple-green-hi) !important;
+    font-family: var(--maple-mono) !important;
+    font-size: 11px !important;
+    padding: 12px 16px !important;
+    border-radius: 0 !important;
+}
+.ns-special .mw-message-box-notice,
+.ns-special .cdx-message--notice {
+    background: var(--maple-bg-2) !important;
+    border: 1px solid var(--maple-border) !important;
+    border-left: 3px solid var(--maple-text-4) !important;
+    color: var(--maple-text-2) !important;
+    font-family: var(--maple-mono) !important;
+    font-size: 11px !important;
+    padding: 12px 16px !important;
+    border-radius: 0 !important;
+}
+
+/* ── Pagination (prev/next) ── */
+.ns-special .mw-pager-navigation-bar,
+.ns-special .mw-pager-navigation-bar a {
+    font-family: var(--maple-mono) !important;
+    font-size: 10px !important;
+    letter-spacing: 0.12em !important;
+    color: var(--maple-text-4) !important;
+    margin: 1.5rem 0 !important;
+}
+
+/* ══════════════════════════════════════════
+   Special:Preferences — tabs OOUI
+   ══════════════════════════════════════════ */
+.ns-special .oo-ui-tabSelectWidget {
+    border-bottom: 1px solid var(--maple-border) !important;
+}
+.ns-special .oo-ui-tabOptionWidget {
+    font-family: var(--maple-mono) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    font-size: 10px !important;
+    border-radius: 0 !important;
+}
+.ns-special .oo-ui-tabOptionWidget .oo-ui-labelElement-label { color: var(--maple-text-4) !important; }
+.ns-special .oo-ui-tabOptionWidget.oo-ui-optionWidget-selected {
+    box-shadow: inset 0 -2px 0 0 var(--maple-red) !important;
+    background: rgba(239,68,68,0.04) !important;
+}
+.ns-special .oo-ui-tabOptionWidget.oo-ui-optionWidget-selected .oo-ui-labelElement-label { color: var(--maple-red) !important; }
+
+/* ── Special:RecentChanges / Watchlist — diff color ── */
+.ns-special .mw-changeslist-line {
+    border-bottom: 1px solid var(--maple-bg-4) !important;
+    padding: 4px 0 !important;
+}
+.ns-special .mw-plusminus-pos { color: var(--maple-green) !important; font-weight: 700 !important; }
+.ns-special .mw-plusminus-neg { color: var(--maple-red) !important; font-weight: 700 !important; }
+.ns-special .mw-plusminus-null { color: var(--maple-text-4) !important; }
+.ns-special .newpage,
+.ns-special .minoredit { color: var(--maple-red) !important; font-weight: 700 !important; }
+
+/* ── Special:Search ── */
+.ns-special .searchresult { color: var(--maple-text-2) !important; font-family: var(--maple-mono) !important; }
+.ns-special .searchresult .mw-search-result-heading a { color: var(--maple-red) !important; }
+.ns-special .mw-search-result-data { color: var(--maple-text-5) !important; font-size: 10px !important; }
+.ns-special .searchmatch { color: var(--maple-red) !important; font-weight: 700 !important; background: transparent !important; }
+
+/* ── Special:UserLogin / CreateAccount ── */
+.ns-special .mw-ui-vform,
+.ns-special .mw-htmlform-ooui-wrapper {
+    background: var(--maple-bg-2) !important;
+    border: 1px solid var(--maple-border) !important;
+    padding: 24px !important;
+    max-width: 480px !important;
+}
+.ns-special .mw-ui-button.mw-ui-progressive {
+    background: rgba(239,68,68,0.1) !important;
+    border: 1px solid var(--maple-red) !important;
+    color: var(--maple-red) !important;
+    border-radius: 0 !important;
+}
+.ns-special .mw-ui-button.mw-ui-progressive:hover {
+    background: var(--maple-red) !important;
+    color: #fff !important;
+}
+
+/* ── Scrollbar ── */
+.ns-special ::-webkit-scrollbar { width: 4px; height: 4px; }
+.ns-special ::-webkit-scrollbar-track { background: var(--maple-bg); }
+.ns-special ::-webkit-scrollbar-thumb { background: var(--maple-border); }
+.ns-special ::-webkit-scrollbar-thumb:hover { background: var(--maple-red); }
+
+/* ── Chân trang: giấy phép ("Toàn bộ trang này sử dụng giấy phép …") ── */
+.maple-license-footer {
+    margin: 40px 0 8px;
+    padding: 14px 16px;
+    border-top: 1px solid var(--maple-border, #1f1f1f);
+    font-family: var(--maple-mono, 'JetBrains Mono', monospace);
+    font-size: 11px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    color: var(--maple-text-3, #71717a);
+    text-align: center;
+}
+.maple-license-footer .maple-lic-link {
+    color: var(--maple-red, #ef4444) !important;
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 1px dotted rgba(239, 68, 68, 0.5);
+}
+.maple-license-footer .maple-lic-link:hover {
+    color: #f87171 !important;
+    border-bottom-color: #f87171;
+}
+
+/* ── Toast mở khoá thành tựu (tự ghi nhận) ── */
+.maple-ach-toast {
+    position: fixed; left: 50%; bottom: 26px; transform: translate(-50%, 20px);
+    background: #0a0a0a; border: 1px solid #eab308; color: #fde68a;
+    font-family: var(--maple-mono, 'JetBrains Mono', monospace);
+    font-size: 12px; font-weight: 700; letter-spacing: 0.02em;
+    padding: 12px 18px; border-radius: 6px; z-index: 100001; opacity: 0;
+    box-shadow: 0 0 28px rgba(234, 179, 8, 0.3); pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease; max-width: 90vw; text-align: center;
+}
+.maple-ach-toast.in { opacity: 1; transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) { .maple-ach-toast { transition: opacity 0.2s ease; } }
+
