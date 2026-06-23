@@ -1,0 +1,33 @@
+{
+	"events": [
+		{
+			"id": "mo-rong-co-so-du-lieu",
+			"status": "ongoing",
+			"title": "Mở rộng cơ sở dữ liệu M.A.P.L.E",
+			"date": "15/06/2026",
+			"start": "15/06/2026",
+			"end": "Không thời hạn",
+			"participants": 42,
+			"desc": "Bổ sung loạt trang mới và tối ưu trải nghiệm điện thoại. Mời cộng đồng đóng góp hồ sơ thực thể, vật phẩm và nhật ký mới.",
+			"content": "Chiến dịch mở rộng cơ sở dữ liệu kêu gọi toàn thể thành viên đóng góp hồ sơ mới cho The Maze.<br><br><strong>Cách tham gia:</strong><br>• Đọc <a href=\"/wiki/H%C6%B0%E1%BB%9Bng_D%E1%BA%ABn_Vi%E1%BA%BFt\">Hướng Dẫn Viết</a> và <a href=\"/wiki/Quy_T%E1%BA%AFc\">Quy Tắc</a>.<br>• Tạo hồ sơ thực thể / vật phẩm / nhật ký mới rồi gửi qua hàng chờ kiểm duyệt.<br>• Mỗi bài được duyệt sẽ ghi nhận đóng góp vào hệ thống Thành Tựu.<br><br>Không giới hạn số lượng bài. Chất lượng được ưu tiên hơn số lượng.",
+			"leaderboard": [
+				{ "user": "Beestudio2026", "score": 1280, "note": "12 hồ sơ được duyệt" },
+				{ "user": "Mapleofficialvn", "score": 940, "note": "9 hồ sơ + biên tập" },
+				{ "user": "Crystalite13", "score": 610, "note": "6 hồ sơ" },
+				{ "user": "Radioblade", "score": 415, "note": "4 hồ sơ" },
+				{ "user": "Pisces", "score": 220, "note": "2 hồ sơ" }
+			]
+		},
+		{
+			"id": "cuoc-thi-viet-ho-so",
+			"status": "upcoming",
+			"title": "Cuộc thi viết hồ sơ thực thể",
+			"date": "01/08/2026",
+			"start": "01/08/2026 20:00",
+			"end": "31/08/2026 23:59",
+			"participants": 0,
+			"desc": "Cuộc thi sáng tác đầu tiên của M.A.P.L.E. Thông tin chi tiết sẽ được công bố tại Bảng Tin.",
+			"content": "Cuộc thi viết hồ sơ thực thể đầu tiên của cộng đồng M.A.P.L.E.<br><br><strong>Dự kiến thể lệ:</strong><br>• Mỗi thí sinh nộp 1 hồ sơ thực thể nguyên bản.<br>• Chấm điểm theo độ sáng tạo, độ hoàn thiện và tuân thủ tiêu chuẩn biên soạn.<br>• Giải thưởng: huy hiệu đặc biệt + vinh danh tại Trang Chủ.<br><br>Theo dõi <a href=\"/wiki/B%E1%BA%A3ng_Tin\">Bảng Tin</a> để biết ngày mở đăng ký chính thức."
+		}
+	]
+}

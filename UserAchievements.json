@@ -1,0 +1,172 @@
+{
+  "Bapham123": [
+    {
+      "id": "welcome",
+      "icon": "◉",
+      "label": "THAM GIA",
+      "desc": "Đã tạo tài khoản M.A.P.L.E",
+      "category": "Cộng Đồng",
+      "date": "2026-05-17",
+      "rarity": "common"
+    }
+  ],
+  "Beestudio2026": [
+    {
+      "id": "bureaucrat",
+      "icon": "▣",
+      "label": "BUREAUCRAT",
+      "desc": "Phân quyền hệ thống",
+      "category": "Rank",
+      "date": "2026-04-27",
+      "rarity": "legendary"
+    },
+    {
+      "id": "sysop",
+      "icon": "⚙",
+      "label": "QUẢN TRỊ VIÊN",
+      "desc": "Quản trị hệ thống wiki",
+      "category": "Rank",
+      "date": "2026-04-27",
+      "rarity": "legendary"
+    },
+    {
+      "id": "interface_admin",
+      "icon": "⟡",
+      "label": "INTERFACE ADMIN",
+      "desc": "Quản lý giao diện hệ thống",
+      "category": "Rank",
+      "date": "2026-04-27",
+      "rarity": "epic"
+    }
+  ],
+  "Crystalite13": [
+    {
+      "id": "welcome",
+      "icon": "◉",
+      "label": "THAM GIA",
+      "desc": "Đã tạo tài khoản M.A.P.L.E",
+      "category": "Cộng Đồng",
+      "date": "2026-05-15",
+      "rarity": "common"
+    }
+  ],
+  "DarkMatterMan4500": [
+    {
+      "id": "welcome",
+      "icon": "◉",
+      "label": "THAM GIA",
+      "desc": "Đã tạo tài khoản M.A.P.L.E",
+      "category": "Cộng Đồng",
+      "date": "2026-05-14",
+      "rarity": "common"
+    }
+  ],
+  "MAPLEBot": [
+    {
+      "id": "bot",
+      "icon": "🤖",
+      "label": "MAPLE BOT",
+      "desc": "Tài khoản Bot tự động của hệ thống",
+      "category": "Đặc Biệt",
+      "date": "2026-05-04",
+      "rarity": "rare"
+    }
+  ],
+  "Maintenance script": [
+    {
+      "id": "sys_script",
+      "icon": "⌨",
+      "label": "MAINTENANCE",
+      "desc": "Tài khoản thực thi Script của máy chủ",
+      "category": "Đặc Biệt",
+      "date": "2026-04-27",
+      "rarity": "epic"
+    }
+  ],
+  "Mapleofficialvn": [
+    {
+      "id": "sysop",
+      "icon": "⚙",
+      "label": "QUẢN TRỊ VIÊN",
+      "desc": "Quản trị hệ thống wiki",
+      "category": "Rank",
+      "date": "2026-04-28",
+      "rarity": "legendary"
+    },
+    {
+      "id": "interface_admin",
+      "icon": "⟡",
+      "label": "INTERFACE ADMIN",
+      "desc": "Quản lý giao diện hệ thống",
+      "category": "Rank",
+      "date": "2026-04-28",
+      "rarity": "epic"
+    }
+  ],
+  "MediaWiki default": [
+    {
+      "id": "sys_default",
+      "icon": "⚙",
+      "label": "MEDIAWIKI DEFAULT",
+      "desc": "Tài khoản hệ thống mặc định của MediaWiki",
+      "category": "Đặc Biệt",
+      "date": "2026-04-27",
+      "rarity": "epic"
+    }
+  ],
+  "New user message": [
+    {
+      "id": "sys_messenger",
+      "icon": "✉",
+      "label": "MESSENGER",
+      "desc": "Tài khoản hệ thống gửi tin nhắn chào mừng",
+      "category": "Đặc Biệt",
+      "date": "2026-05-04",
+      "rarity": "epic"
+    }
+  ],
+  "Pisces": [
+    {
+      "id": "welcome",
+      "icon": "◉",
+      "label": "THAM GIA",
+      "desc": "Đã tạo tài khoản M.A.P.L.E",
+      "category": "Cộng Đồng",
+      "date": "2026-05-11",
+      "rarity": "common"
+    }
+  ],
+  "Radioblade": [
+    {
+      "id": "welcome",
+      "icon": "◉",
+      "label": "THAM GIA",
+      "desc": "Đã tạo tài khoản M.A.P.L.E",
+      "category": "Cộng Đồng",
+      "date": "2026-05-16",
+      "rarity": "common"
+    }
+  ],
+  "TheWWRNerdGuy": [
+    {
+      "id": "welcome",
+      "icon": "◉",
+      "label": "THAM GIA",
+      "desc": "Đã tạo tài khoản M.A.P.L.E",
+      "category": "Cộng Đồng",
+      "date": "2026-05-15",
+      "rarity": "common"
+    }
+  ],
+  "WikiTriston": [
+    {
+      "id": "welcome",
+      "icon": "◉",
+      "label": "THAM GIA",
+      "desc": "Đã tạo tài khoản M.A.P.L.E",
+      "category": "Cộng Đồng",
+      "date": "2026-05-26",
+      "rarity": "common"
+    }
+  ]
+}

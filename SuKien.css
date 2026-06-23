@@ -1,0 +1,309 @@
+/* ============================================
+   M.A.P.L.E — MediaWiki:SuKien.css  v3.1
+   ============================================ */
+
+/* ── Base ── */
+#sk-root {
+    font-family: var(--maple-mono, 'JetBrains Mono', monospace);
+    color: var(--maple-text-2, #a1a1aa);
+    max-width: 760px; margin: 0 auto; padding: 40px 20px 80px;
+}
+.sk-loading { text-align: center; padding: 80px 0; color: #71717a; font-size: 11px; letter-spacing: .2em; }
+.sk-spin { width: 28px; height: 28px; border: 2px solid #1a1a1a; border-top-color: #ef4444;
+    border-radius: 50%; margin: 0 auto 18px; animation: sk-spin .8s linear infinite; }
+@keyframes sk-spin { to { transform: rotate(360deg); } }
+
+/* ── Hero ── */
+.sk-hero { text-align: center; padding: 24px 0 36px; border-bottom: 1px solid #141414; margin-bottom: 8px; }
+.sk-hero-logo svg { filter: drop-shadow(0 0 14px rgba(239,68,68,.4)); animation: maple-eye-pulse 3s ease-in-out infinite; }
+.sk-eyebrow { font-size: 9.5px; letter-spacing: .28em; color: #52525b; text-transform: uppercase; margin: 14px 0 8px; }
+.sk-title { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 800; color: #f4f4f5; margin: 0; }
+.sk-title span { color: #ef4444; }
+.sk-sub { font-size: 11px; color: #52525b; margin: 10px 0 0; }
+
+/* ── Timeline index ── */
+.sk-timeline { position: relative; padding: 30px 0 0 28px; }
+.sk-timeline::before { content: ""; position: absolute; left: 6px; top: 30px; bottom: 0; width: 1px; background: #1a1a1a; }
+.sk-item { position: relative; padding: 0 0 26px 22px; animation: sk-rise .45s ease both; }
+@keyframes sk-rise { from { opacity: 0; transform: translateX(8px); } to { opacity: 1; transform: none; } }
+.sk-dot { position: absolute; left: -28px; top: 3px; width: 13px; height: 13px; border-radius: 50%;
+    background: #050505; border: 2px solid #52525b; }
+.sk-content { background: #070707; border: 1px solid #161616; border-left: 2px solid #27272a; padding: 14px 16px; }
+.sk-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+.sk-status { font-size: 8px; font-weight: 700; letter-spacing: .16em; padding: 3px 8px; }
+.sk-date { margin-left: auto; font-size: 9px; color: #52525b; letter-spacing: .1em; }
+.sk-name { font-size: 14px; font-weight: 700; color: #e4e4e7; margin: 0 0 6px; }
+.sk-desc { font-size: 11px; line-height: 1.8; color: #71717a; margin: 0; }
+.sk-link { display: inline-block; margin-top: 10px; font-size: 10px; letter-spacing: .1em;
+    color: #ef4444 !important; text-decoration: none; }
+.sk-link:hover { text-decoration: underline !important; }
+
+/* Status accents */
+.sk-ongoing  .sk-dot { border-color: #22c55e; box-shadow: 0 0 10px rgba(34,197,94,.5); }
+.sk-ongoing  .sk-content { border-left-color: #22c55e; }
+.sk-ongoing  .sk-status { background: #16a34a; color: #fff; }
+.sk-upcoming .sk-dot { border-color: #eab308; }
+.sk-upcoming .sk-content { border-left-color: #eab308; }
+.sk-upcoming .sk-status { background: #ca8a04; color: #0a0a0a; }
+.sk-past     .sk-dot { border-color: #52525b; }
+.sk-past     .sk-status { background: #27272a; color: #a1a1aa; }
+.sk-past     .sk-content { opacity: .82; }
+
+.sk-empty { text-align: center; padding: 60px 0; color: #52525b; letter-spacing: .2em; }
+.sk-name a { color: inherit !important; text-decoration: none; }
+.sk-name a:hover { color: #ef4444 !important; }
+
+/* ── Footer ── */
+.sk-footer { display: flex; justify-content: space-between; margin-top: 30px; padding-top: 18px;
+    border-top: 1px solid #141414; flex-wrap: wrap; gap: 10px; }
+.sk-footer a { font-size: 10px; letter-spacing: .12em; color: #71717a !important; text-decoration: none; text-transform: uppercase; }
+.sk-footer a:hover { color: #ef4444 !important; }
+
+/* ── Nút trong thông báo Chat/Thông_báo (EventNotifier) ── */
+.notif-join-btn { display: inline-block; margin-top: 8px; padding: 6px 16px;
+    background: #ef4444; color: #fff !important; font-weight: 700; font-size: 11px;
+    letter-spacing: .08em; text-decoration: none !important; border-radius: 3px; }
+
+/* ════════════════════════════════════════════
+   DETAIL PAGE
+════════════════════════════════════════════ */
+.sk-detail { max-width: 760px; margin: 0 auto; }
+.sk-d-bc { font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: #52525b; margin-bottom: 22px; }
+.sk-d-bc a { color: #71717a !important; text-decoration: none; }
+.sk-d-bc a:hover { color: #ef4444 !important; }
+.sk-d-sep { margin: 0 8px; color: #52525b; }
+.sk-d-head { text-align: center; padding: 10px 0 24px; border-bottom: 1px solid #141414; margin-bottom: 0; }
+.sk-d-logo svg { filter: drop-shadow(0 0 14px rgba(239,68,68,.45)); animation: maple-eye-pulse 3s ease-in-out infinite; }
+.sk-d-status { display: inline-block; margin: 16px 0 10px; }
+.sk-d-title { font-size: clamp(1.5rem, 4.5vw, 2.4rem); font-weight: 800; color: #f4f4f5; margin: 0 0 10px; letter-spacing: .01em; }
+.sk-d-eyebrow { font-size: 9px; letter-spacing: .26em; text-transform: uppercase; color: #52525b; margin-bottom: 12px; }
+
+/* Banner ảnh đầu trang sự kiện */
+.sk-d-banner { width: 100%; height: 160px; background-size: cover; background-position: center;
+    border-radius: 4px; margin-bottom: 18px; position: relative;
+    border: 1px solid #1c1c1c; }
+.sk-d-banner::after { content: ''; position: absolute; inset: 0; border-radius: 4px;
+    background: linear-gradient(to bottom, transparent 40%, #050505 100%); }
+
+/* Huy hiệu sự kiện */
+.sk-ev-badge { display: inline-block; background: linear-gradient(135deg,#ca8a04,#eab308);
+    color: #0a0a0a; font-size: 9px; font-weight: 800; letter-spacing: .18em; padding: 4px 12px;
+    border-radius: 2px; text-transform: uppercase; margin-bottom: 6px; }
+
+/* Badge pill nhỏ trên timeline */
+.sk-badge-pill { font-size: 8px; font-weight: 700; letter-spacing: .12em; padding: 2px 7px;
+    background: rgba(234,179,8,.12); border: 1px solid #ca8a04; color: #fde047;
+    border-radius: 2px; white-space: nowrap; }
+
+/* Chips phần thưởng */
+.sk-rewards-row { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin: 10px 0 4px; }
+.sk-reward-chip { font-size: 9px; font-weight: 700; letter-spacing: .12em; padding: 3px 10px;
+    background: rgba(239,68,68,.08); border: 1px solid #3f1515; color: #fca5a5;
+    border-radius: 2px; white-space: nowrap; }
+
+/* Quy tắc tham gia */
+.sk-d-rules { background: #070707; border: 1px solid #161616; border-left: 3px solid #a855f7;
+    padding: 14px 18px; margin-bottom: 24px; }
+
+/* Giới hạn người tham gia */
+.sk-join-cap { width: 100%; }
+.sk-cap-bar { height: 4px; background: #1c1c1c; border-radius: 2px; overflow: hidden; margin-bottom: 5px; }
+.sk-cap-fill { height: 100%; background: var(--sk-accent, #ef4444); border-radius: 2px;
+    transition: width .4s ease; }
+.sk-cap-txt { font-size: 9px; letter-spacing: .12em; color: #52525b; }
+
+/* ── Tab Bar ── */
+.sk-tab-bar { display: flex; gap: 0; border-bottom: 1px solid #1c1c1c; margin: 20px 0 0; overflow-x: auto; }
+.sk-tab-btn { font-family: inherit; font-size: 9.5px; font-weight: 700; letter-spacing: .18em;
+    text-transform: uppercase; padding: 10px 18px; background: transparent; border: none;
+    border-bottom: 2px solid transparent; color: #52525b; cursor: pointer; white-space: nowrap;
+    transition: color .15s, border-color .15s; }
+.sk-tab-btn:hover { color: #a1a1aa; }
+.sk-tab-btn.sk-tab-active { color: #ef4444; border-bottom-color: #ef4444; }
+
+/* ── Tab Panels ── */
+.sk-tab-panel { padding-top: 22px; }
+
+/* ── Đếm ngược + Tham gia (trong tab-join) ── */
+.sk-d-action { display: flex; flex-direction: column; align-items: center; gap: 14px;
+    background: #070707; border: 1px solid #161616; border-radius: 6px; padding: 22px 18px; margin: 0 0 24px; }
+.sk-cd-wrap { width: 100%; text-align: center; }
+.sk-cd-label { font-size: 10px; font-weight: 800; letter-spacing: .22em; color: #a1a1aa;
+    text-transform: uppercase; margin-bottom: 12px; }
+.sk-cd-done { color: #ef4444; }
+.sk-cd-grid { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.sk-cd-cell { display: flex; flex-direction: column; align-items: center; min-width: 60px;
+    background: #0c0c0c; border: 1px solid #1c1c1c; border-radius: 4px; padding: 10px 6px; }
+.sk-cd-cell b { font-size: 1.7rem; font-weight: 800; color: #f4f4f5; line-height: 1;
+    font-variant-numeric: tabular-nums; }
+.sk-cd-cell i { font-size: 7.5px; letter-spacing: .16em; color: #52525b; margin-top: 5px; font-style: normal; }
+.sk-ongoing  .sk-cd-cell b { color: #4ade80; }
+.sk-upcoming .sk-cd-cell b { color: #facc15; }
+
+/* Nút tham gia */
+.sk-join-btn { font-family: inherit; font-size: 13px; font-weight: 800; letter-spacing: .06em;
+    padding: 13px 30px; border-radius: 4px; cursor: pointer; min-height: 46px; text-decoration: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #ef4444; border: 1px solid #ef4444; color: #fff; transition: all .15s; }
+.sk-join-btn:hover:not(:disabled) { background: #dc2626; box-shadow: 0 0 18px rgba(239,68,68,.4); color: #fff !important; }
+.sk-join-on  { background: #052e16 !important; border-color: #22c55e !important; color: #4ade80 !important; }
+.sk-join-off { background: #18181b !important; border-color: #27272a !important; color: #52525b !important; cursor: not-allowed; }
+/* Nút đăng nhập */
+.sk-join-login { background: #1e3a5f !important; border-color: #3b82f6 !important; color: #93c5fd !important; }
+.sk-join-login:hover { background: #1d4ed8 !important; color: #fff !important; box-shadow: 0 0 16px rgba(59,130,246,.4); }
+/* Nút thông báo */
+.sk-join-notify { background: #1c1000 !important; border-color: #eab308 !important; color: #fde047 !important; }
+.sk-join-notify:hover:not(:disabled) { background: #713f12 !important; box-shadow: 0 0 14px rgba(234,179,8,.4); }
+.sk-notify-on { background: #0f2200 !important; border-color: #4ade80 !important; color: #4ade80 !important; }
+.sk-join-count { font-size: 10px; letter-spacing: .12em; color: #71717a; text-transform: uppercase; }
+
+/* ── Thời gian ── */
+.sk-d-time { background: #070707; border: 1px solid #161616; border-left: 3px solid #ef4444; padding: 18px 20px; margin-bottom: 26px; }
+.sk-d-time-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.sk-d-time-cell { display: flex; flex-direction: column; gap: 4px; }
+.sk-d-time-lbl { font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: #52525b; }
+.sk-d-time-val { font-size: 15px; font-weight: 700; color: #e4e4e7; }
+.sk-d-arrow { color: #ef4444; font-size: 18px; }
+.sk-detail.sk-ongoing  .sk-d-time { border-left-color: #22c55e; }
+.sk-detail.sk-upcoming .sk-d-time { border-left-color: #eab308; }
+.sk-detail.sk-past     .sk-d-time { border-left-color: #52525b; }
+
+/* ── Nội dung ── */
+.sk-d-body { margin-bottom: 30px; }
+.sk-d-content { font-size: 13px; line-height: 1.95; color: #a1a1aa; }
+.sk-d-content a { color: #ef4444 !important; text-decoration: none; }
+.sk-d-content a:hover { text-decoration: underline !important; }
+.sk-d-content strong { color: #e4e4e7; }
+
+/* ── Bảng xếp hạng (tab riêng) ── */
+.sk-d-board { margin: 0 0 24px; }
+.sk-lb { width: 100%; border-collapse: collapse; font-size: 12px; }
+.sk-lb thead th { text-align: left; font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase;
+    color: #52525b; padding: 8px 10px; border-bottom: 1px solid #1c1c1c; }
+.sk-lb-row td { padding: 10px; border-bottom: 1px solid #131313; color: #d4d4d8; }
+.sk-lb-rank { width: 44px; font-weight: 800; font-size: 14px; text-align: center; }
+.sk-lb-name a { color: #e4e4e7 !important; text-decoration: none; font-weight: 600; }
+.sk-lb-name a:hover { color: #ef4444 !important; }
+.sk-lb-score { font-weight: 800; color: #ef4444; font-variant-numeric: tabular-nums; width: 80px; }
+.sk-lb-note { color: #71717a; font-size: 10px; }
+.sk-lb-top td { background: rgba(234,179,8,.04); }
+.sk-lb-top .sk-lb-score { color: #facc15; }
+
+/* ── Nộp bài ── */
+.sk-submit-wrap { padding: 4px 0; }
+.sk-submit-hint { font-size: 11px; color: #71717a; margin: 0 0 12px; }
+.sk-submit-row { display: flex; gap: 8px; }
+.sk-sub-input { flex: 1; font-family: inherit; font-size: 12px; background: #0c0c0c;
+    border: 1px solid #1c1c1c; color: #e4e4e7; padding: 10px 14px; border-radius: 4px; outline: none; }
+.sk-sub-input:focus { border-color: #ef4444; }
+.sk-sub-msg { font-size: 11px; margin-top: 8px; letter-spacing: .06em; min-height: 18px; }
+.sk-sub-err { color: #ef4444; }
+.sk-sub-ok  { color: #4ade80; }
+.sk-sub-item { display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 10px; background: #070707; border: 1px solid #161616; border-radius: 3px; margin-top: 6px; font-size: 12px; }
+.sk-sub-item a { color: #a1a1aa !important; text-decoration: none; }
+.sk-sub-item a:hover { color: #ef4444 !important; }
+.sk-sub-rm { font-family: inherit; font-size: 10px; background: none; border: none; color: #52525b;
+    cursor: pointer; padding: 2px 6px; }
+.sk-sub-rm:hover { color: #ef4444; }
+
+/* ════════════════════════════════════════════
+   MINI PANEL XÁC NHẬN THÔNG BÁO
+════════════════════════════════════════════ */
+.sk-notify-panel { position: fixed; bottom: 32px; right: 24px; z-index: 9999;
+    background: #0a0a0a; border: 1px solid #1f2d1f; border-left: 3px solid #4ade80;
+    border-radius: 6px; padding: 18px 20px; max-width: 320px; box-shadow: 0 8px 32px rgba(0,0,0,.7);
+    animation: sk-rise .3s ease; }
+.sk-np-title { font-size: 9px; font-weight: 800; letter-spacing: .22em; color: #4ade80;
+    text-transform: uppercase; margin-bottom: 8px; }
+.sk-np-name { font-size: 14px; font-weight: 700; color: #f4f4f5; margin-bottom: 10px; }
+.sk-np-cd { margin-bottom: 10px; }
+.sk-np-cd .sk-cd-grid { justify-content: flex-start; }
+.sk-np-cd .sk-cd-cell { min-width: 46px; padding: 6px 4px; }
+.sk-np-cd .sk-cd-cell b { font-size: 1.1rem; }
+.sk-np-note { font-size: 10px; color: #71717a; line-height: 1.7; margin-bottom: 12px; }
+.sk-np-close { font-family: inherit; font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase;
+    background: none; border: 1px solid #27272a; color: #52525b; padding: 6px 16px;
+    border-radius: 3px; cursor: pointer; }
+.sk-np-close:hover { color: #a1a1aa; border-color: #52525b; }
+
+/* ════════════════════════════════════════════
+   ADMIN BAR + FORM TẠO SỰ KIỆN
+════════════════════════════════════════════ */
+.sk-admin-bar { padding: 10px 0 14px; border-bottom: 1px solid #141414; margin-bottom: 20px; }
+.sk-admin-bar--detail { margin-top: 30px; padding-top: 20px; border-top: 1px solid #141414; border-bottom: none; }
+.sk-create-btn { font-family: inherit; font-size: 10px; font-weight: 700; letter-spacing: .16em;
+    text-transform: uppercase; padding: 8px 18px; background: transparent;
+    border: 1px solid #27272a; color: #71717a; border-radius: 3px; cursor: pointer; transition: all .15s; }
+.sk-create-btn:hover { border-color: #ef4444; color: #ef4444; }
+
+/* Modal */
+.sk-create-modal { background: #080808; border: 1px solid #1c1c1c; border-radius: 6px;
+    margin-top: 18px; overflow: hidden; animation: sk-rise .25s ease; }
+.sk-cm-header { display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 18px; background: #0c0c0c; border-bottom: 1px solid #161616; }
+.sk-cm-title { font-size: 10px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: #e4e4e7; }
+.sk-cm-close { font-family: inherit; font-size: 14px; background: none; border: none;
+    color: #52525b; cursor: pointer; padding: 0 4px; }
+.sk-cm-close:hover { color: #ef4444; }
+.sk-cm-body { padding: 18px; }
+.sk-cm-row { margin-bottom: 14px; }
+.sk-cm-row--2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.sk-cm-row--checks { display: flex; gap: 18px; flex-wrap: wrap; }
+.sk-cm-lbl { display: block; font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
+    color: #52525b; margin-bottom: 5px; }
+.sk-cm-req { color: #ef4444; }
+.sk-cm-input, .sk-cm-textarea {
+    width: 100%; box-sizing: border-box;
+    font-family: inherit; font-size: 12px; background: #0c0c0c;
+    border: 1px solid #1c1c1c; color: #e4e4e7; padding: 8px 12px; border-radius: 3px; outline: none; }
+.sk-cm-input:focus, .sk-cm-textarea:focus { border-color: #ef4444; }
+.sk-cm-textarea { resize: vertical; min-height: 80px; }
+.sk-cm-check { font-size: 11px; color: #a1a1aa; display: flex; align-items: center; gap: 6px; cursor: pointer; }
+.sk-cm-check input { accent-color: #ef4444; }
+.sk-cm-actions { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+.sk-cm-btn { font-family: inherit; font-size: 10px; font-weight: 700; letter-spacing: .14em;
+    text-transform: uppercase; padding: 9px 20px; border-radius: 3px; cursor: pointer; transition: all .15s; }
+.sk-cm-btn--pri { background: #ef4444; border: 1px solid #ef4444; color: #fff; }
+.sk-cm-btn--pri:hover { background: #dc2626; box-shadow: 0 0 14px rgba(239,68,68,.35); }
+.sk-cm-btn--sec { background: transparent; border: 1px solid #27272a; color: #71717a; }
+.sk-cm-btn--sec:hover { border-color: #52525b; color: #a1a1aa; }
+.sk-cm-json { background: #050505; border: 1px solid #161616; border-radius: 3px;
+    padding: 12px 14px; font-size: 10.5px; color: #52525b; white-space: pre-wrap;
+    word-break: break-all; margin-top: 12px; max-height: 260px; overflow: auto; }
+.sk-cm-msg { font-size: 11px; margin-top: 8px; letter-spacing: .06em; min-height: 18px; }
+.sk-cm-err { color: #ef4444; }
+.sk-cm-ok  { color: #4ade80; }
+
+/* Section headers trong form */
+.sk-cm-section { font-size: 8.5px; font-weight: 800; letter-spacing: .24em; text-transform: uppercase;
+    color: #52525b; padding: 14px 0 8px; border-top: 1px solid #111; margin: 8px 0 4px; }
+.sk-cm-section:first-child { border-top: none; padding-top: 0; }
+
+/* Color picker row */
+.sk-cm-color-row { display: flex; gap: 8px; align-items: center; }
+.sk-cm-input--color { width: 44px; height: 36px; padding: 2px 4px; flex-shrink: 0; cursor: pointer; }
+
+/* Code textarea */
+.sk-cm-textarea--code { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #a1a1aa; }
+
+/* Hint text dưới field */
+.sk-cm-hint { display: block; font-size: 9px; color: #52525b; margin-top: 4px; letter-spacing: .08em; }
+
+/* ════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    #sk-root { padding: 28px 14px 60px; }
+    .sk-date { margin-left: 0; }
+    .sk-footer { flex-direction: column; }
+    .sk-cd-cell { min-width: 48px; padding: 8px 4px; }
+    .sk-cd-cell b { font-size: 1.3rem; }
+    .sk-join-btn { width: 100%; }
+    .sk-lb-note, .sk-lb thead th:last-child { display: none; }
+    .sk-tab-bar { gap: 0; }
+    .sk-tab-btn { padding: 8px 12px; font-size: 8.5px; }
+    .sk-cm-row--2 { grid-template-columns: 1fr; }
+    .sk-notify-panel { left: 12px; right: 12px; max-width: none; }
+    .sk-submit-row { flex-direction: column; }
+}

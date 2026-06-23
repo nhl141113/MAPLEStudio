@@ -1,0 +1,728 @@
+/* ════════════════════════════════════════════════════════════════════════
+   M.A.P.L.E — MediaWiki:WhatsNews.css
+   Trang "Có gì mới" (Dự án:WhatsNew)
+   Layout kiểu Chrome "See what's new" (2 cột + carousel),
+   theme DARK M.A.P.L.E (JetBrains Mono, nền tối, accent đỏ).
+   ════════════════════════════════════════════════════════════════════════ */
+
+#wn-root {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 36px 24px 96px;
+    font-family: var(--maple-mono, 'JetBrains Mono', monospace);
+    color: var(--maple-text, #d4d4d8);
+    min-height: 70vh;
+    position: relative;
+}
+
+/* ── Header (logo + tiêu đề) ── */
+.wn-head {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    border-bottom: 1px solid var(--maple-border, #1a1a1a);
+    padding-bottom: 20px;
+    margin-bottom: 8px;
+}
+.wn-logo { flex-shrink: 0; line-height: 0; }
+.wn-logo svg { display: block; }
+.maple-eye-pulse { animation: wn-eye 2.4s ease-in-out infinite; transform-origin: 50px 40px; }
+@keyframes wn-eye { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
+.wn-head-text { min-width: 0; }
+.wn-title {
+    font-family: var(--maple-mono, 'JetBrains Mono', monospace) !important;
+    font-size: 1.5rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: var(--maple-head, #f4f4f5) !important;
+    margin: 0 0 4px !important;
+    border: none !important;
+}
+.wn-sub {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--maple-text-4, #52525b);
+    margin: 0;
+}
+
+/* ── States ── */
+.wn-loading, .wn-empty, .wn-error {
+    text-align: center;
+    padding: 80px 0;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--maple-text-3, #71717a);
+}
+.wn-error { color: var(--maple-red, #ef4444); }
+.wn-error span { display: block; margin-top: 8px; font-size: 10px; letter-spacing: 0.04em; color: var(--maple-text-4, #52525b); text-transform: none; }
+
+/* ════════════════════════════════════════════
+   FEATURE STAGE — 2 cột
+   ════════════════════════════════════════════ */
+.wn-stage {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: 52px;
+    align-items: center;
+    min-height: 440px;
+    padding: 28px 0 16px;
+}
+.wn-stage-in .wn-feature-text,
+.wn-stage-in .wn-feature-media {
+    animation: wn-fade .4s cubic-bezier(.22,1,.36,1);
+}
+@keyframes wn-fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+}
+
+/* ── Cột trái: text ── */
+.wn-feature-text { max-width: 440px; }
+.wn-feature-title {
+    font-family: var(--maple-mono, 'JetBrains Mono', monospace) !important;
+    font-size: 1.6rem !important;
+    line-height: 1.25 !important;
+    font-weight: 700 !important;
+    color: var(--maple-head, #f4f4f5) !important;
+    margin: 0 0 16px !important;
+    border: none !important;
+    letter-spacing: 0.01em !important;
+    text-transform: none !important;
+}
+.wn-feature-intro {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--maple-text-2, #a1a1aa);
+    margin: 0 0 18px;
+}
+.wn-feature-bullets {
+    list-style: none;
+    margin: 0 0 18px;
+    padding: 0;
+}
+.wn-feature-bullets li {
+    position: relative;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--maple-text-2, #a1a1aa);
+    margin: 0 0 10px;
+    padding-left: 18px;
+}
+.wn-feature-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.6em;
+    width: 6px; height: 6px;
+    background: var(--maple-red, #ef4444);
+    border-radius: 50%;
+}
+.wn-feature-steps-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--maple-text-4, #52525b);
+    margin: 0 0 10px;
+}
+.wn-feature-steps {
+    counter-reset: wn-st;
+    list-style: none;
+    margin: 0 0 22px;
+    padding: 0;
+}
+.wn-feature-steps li {
+    counter-increment: wn-st;
+    position: relative;
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--maple-text-2, #a1a1aa);
+    margin: 0 0 9px;
+    padding-left: 30px;
+}
+.wn-feature-steps li::before {
+    content: counter(wn-st);
+    position: absolute;
+    left: 0; top: 0;
+    width: 20px; height: 20px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--maple-red, #ef4444);
+    border: 1px solid rgba(239,68,68,0.4);
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* ── Cột phải: media ── */
+.wn-feature-media {
+    background: var(--maple-bg-2, #080808);
+    border: 1px solid var(--maple-border, #1a1a1a);
+    border-radius: 4px;
+    padding: 28px;
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+.wn-feature-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 50% 40%, rgba(239,68,68,0.05), transparent 70%);
+    pointer-events: none;
+}
+.wn-feature-img {
+    max-width: 100%;
+    max-height: 360px;
+    border-radius: 4px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    display: block;
+    position: relative;
+}
+
+/* Mockup placeholder (khi feature chưa có ảnh) */
+.wn-feature-mock {
+    width: 100%;
+    max-width: 560px;
+    background: var(--maple-bg-4, #0f0f0f);
+    border: 1px solid var(--maple-border, #1a1a1a);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+.wn-mock-bar {
+    display: flex;
+    gap: 7px;
+    padding: 12px 14px;
+    background: #161616;
+    border-bottom: 1px solid var(--maple-border, #1a1a1a);
+}
+.wn-mock-bar span { width: 10px; height: 10px; border-radius: 50%; background: #52525b; }
+.wn-mock-bar span:first-child { background: #ef4444; }
+.wn-mock-bar span:nth-child(2) { background: #eab308; }
+.wn-mock-bar span:nth-child(3) { background: #22c55e; }
+.wn-mock-body { padding: 26px 24px 34px; }
+.wn-mock-line {
+    height: 11px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #1a1a1a, #242424, #1a1a1a);
+    margin-bottom: 16px;
+}
+.wn-mock-line.w40 { width: 40%; }
+.wn-mock-line.w50 { width: 50%; }
+.wn-mock-line.w70 { width: 70%; }
+.wn-mock-line.w80 { width: 80%; }
+.wn-mock-line.w90 { width: 90%; }
+
+/* ════════════════════════════════════════════
+   LIVE MOCK — giả lập giao diện TƯƠNG TÁC
+   (cuộn, hover, bấm tab) trong khung "trình duyệt"
+   ════════════════════════════════════════════ */
+.wn-feature-media--live { padding: 0; align-items: stretch; }
+.wn-feature-media--live::after { display: none; }
+
+.wn-live {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--maple-bg, #050505);
+    border: 1px solid var(--maple-border-2, #27272a);
+    box-shadow: 0 10px 36px rgba(0,0,0,0.55);
+}
+.wn-live-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    background: #131313;
+    border-bottom: 1px solid var(--maple-border, #1a1a1a);
+    flex-shrink: 0;
+}
+.wn-live-dots { display: flex; gap: 6px; flex-shrink: 0; }
+.wn-live-dots i { width: 9px; height: 9px; border-radius: 50%; background: #52525b; }
+.wn-live-dots i:first-child { background: #ef4444; }
+.wn-live-dots i:nth-child(2) { background: #eab308; }
+.wn-live-dots i:nth-child(3) { background: #22c55e; }
+.wn-live-url {
+    flex: 1; min-width: 0;
+    font-size: 0.62rem; letter-spacing: 0.04em;
+    color: var(--maple-text-4, #52525b);
+    background: #0a0a0a;
+    border: 1px solid var(--maple-border, #1a1a1a);
+    border-radius: 3px;
+    padding: 4px 9px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.wn-live-tag {
+    flex-shrink: 0;
+    font-size: 0.52rem; font-weight: 700; letter-spacing: 0.14em;
+    color: var(--maple-red, #ef4444);
+    border: 1px solid rgba(239,68,68,0.35);
+    padding: 3px 7px; border-radius: 2px;
+}
+.wn-live-screen {
+    height: 392px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #52525b transparent;
+    background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(239,68,68,0.05), transparent 60%),
+        var(--maple-bg, #050505);
+    scroll-behavior: smooth;
+}
+.wn-live-screen::-webkit-scrollbar { width: 8px; }
+.wn-live-screen::-webkit-scrollbar-thumb { background: #52525b; border-radius: 4px; }
+.wn-live-screen::-webkit-scrollbar-thumb:hover { background: #52525b; }
+
+/* Fade/zoom khi đổi feature (áp cho cả mock & embed) */
+.wn-stage-in .wn-live { animation: wn-frame-in .5s cubic-bezier(.22,1,.36,1); }
+@keyframes wn-frame-in {
+    from { opacity: 0; transform: scale(0.96) translateY(8px); }
+    to   { opacity: 1; transform: none; }
+}
+
+/* ── Khung NHÚNG TRANG THẬT (iframe) ── */
+.wn-live--embed { position: relative; }
+.wn-live-tag--on { color: #22c55e; border-color: rgba(34,197,94,0.4); animation: wn-live-blink 1.6s ease-in-out infinite; }
+@keyframes wn-live-blink { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+.wn-live-screen--embed { padding: 0; overflow: hidden; }   /* iframe tự cuộn bên trong */
+.wn-embed-stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: perspective(900px) rotateX(0) rotateY(0);
+    transform-style: preserve-3d;
+    transition: transform .25s ease-out;
+    will-change: transform;
+}
+.wn-embed-frame {
+    display: block;
+    width: 125%;            /* hơi rộng + scale xuống → trang gọn như "ảnh" */
+    height: 125%;
+    border: 0;
+    background: var(--maple-bg, #050505);
+    transform: scale(0.8);
+    transform-origin: 0 0;
+}
+/* Lớp scanline + glow phủ lên iframe (không chặn tương tác) */
+.wn-embed-scan {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.10) 0 1px, transparent 1px 3px),
+        radial-gradient(ellipse 70% 60% at 50% 30%, rgba(239,68,68,0.05), transparent 70%);
+    mix-blend-mode: screen;
+    opacity: 0.55;
+}
+/* Viền phát sáng khi iframe đã load */
+.wn-live--embed::after {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 4px;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 1px rgba(239,68,68,0.12), 0 0 0 0 rgba(239,68,68,0);
+    transition: box-shadow .6s ease;
+}
+.wn-live--ready::after {
+    box-shadow: inset 0 0 0 1px rgba(239,68,68,0.25), 0 0 32px rgba(239,68,68,0.12);
+}
+
+/* ── Mock Trang chủ ── */
+.wnm-home { padding: 22px 20px 30px; font-family: var(--maple-mono, 'JetBrains Mono', monospace); }
+.wnm-hero { text-align: center; margin-bottom: 22px; }
+.wnm-logo svg { animation: wn-logo-float 4s ease-in-out infinite; }
+@keyframes wn-logo-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+.wnm-h1 {
+    font-size: 0.92rem; font-weight: 800; letter-spacing: 0.18em;
+    color: #fff; margin: 10px 0 8px;
+}
+.wnm-status {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.56rem; letter-spacing: 0.14em; color: #52525b;
+}
+.wnm-status i { width: 5px; height: 5px; border-radius: 50%; background: #22c55e; animation: wn-eye 1.8s ease-in-out infinite; }
+.wnm-status b { color: #ef4444; animation: wn-blink 0.8s step-end infinite; }
+@keyframes wn-blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+.wnm-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: #141414; border: 1px solid #18181b; margin-bottom: 22px; }
+.wnm-stat { background: #070707; padding: 13px 6px; display: flex; flex-direction: column; align-items: center; gap: 4px; transition: background .25s; }
+.wnm-stat:hover { background: rgba(239,68,68,0.05); }
+.wnm-stat-n { font-size: 1.05rem; font-weight: 700; color: #fff; text-shadow: 0 0 14px rgba(239,68,68,0.3); }
+.wnm-stat-l { font-size: 0.5rem; letter-spacing: 0.14em; text-transform: uppercase; color: #52525b; }
+
+.wnm-eyebrow { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.22em; color: #52525b; text-transform: uppercase; margin: 0 0 10px; }
+
+.wnm-qa { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 22px; }
+.wnm-qa-card {
+    display: flex; flex-direction: column; gap: 3px;
+    padding: 10px; border: 1px solid #18181b; background: rgba(9,9,11,0.5);
+    cursor: pointer; transition: border-color .25s, transform .25s, background .25s, box-shadow .25s;
+    position: relative;
+}
+.wnm-qa-card:hover { border-color: #7f1d1d; transform: translateY(-3px); background: rgba(239,68,68,0.04); box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
+.wnm-qa-id { font-size: 0.55rem; font-weight: 700; color: #ef4444; }
+.wnm-qa-n { font-size: 0.66rem; font-weight: 700; color: #d4d4d8; text-transform: uppercase; letter-spacing: 0.04em; }
+.wnm-qa-ar { position: absolute; right: 9px; top: 9px; color: #52525b; transition: color .25s, transform .25s; }
+.wnm-qa-card:hover .wnm-qa-ar { color: #ef4444; transform: translateX(3px); }
+
+.wnm-tabs { border: 1px solid #18181b; background: rgba(9,9,11,0.4); margin-bottom: 22px; }
+.wnm-tabbar { display: flex; border-bottom: 1px solid #18181b; }
+.wnm-tab {
+    flex: 1; background: transparent; border: none; cursor: pointer;
+    padding: 9px 4px; font-size: 0.52rem; font-weight: 700; letter-spacing: 0.08em;
+    color: #52525b; text-transform: uppercase; font-family: inherit;
+    border-bottom: 2px solid transparent; transition: color .2s, border-color .2s;
+}
+.wnm-tab:hover { color: #a1a1aa; }
+.wnm-tab.active { color: #ef4444; border-bottom-color: #ef4444; }
+.wnm-tabbody { padding: 14px; font-size: 0.7rem; line-height: 1.6; color: #a1a1aa; transition: opacity .15s; }
+
+.wnm-blog { display: flex; flex-direction: column; gap: 2px; }
+.wnm-blog-i {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 9px 10px; border-left: 2px solid transparent;
+    cursor: pointer; transition: background .2s, border-color .2s;
+}
+.wnm-blog-i:hover { background: rgba(239,68,68,0.04); border-left-color: #ef4444; }
+.wnm-blog-t { font-size: 0.68rem; color: #d4d4d8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wnm-blog-i:hover .wnm-blog-t { color: #fff; }
+.wnm-blog-m { font-size: 0.55rem; color: #52525b; flex-shrink: 0; }
+
+/* ── Mock Nav demo ── */
+.wnm-navdemo { padding: 26px 22px; font-family: var(--maple-mono, 'JetBrains Mono', monospace); }
+.wnm-nav-hint, .wnm-nav-note { font-size: 0.66rem; line-height: 1.6; color: #71717a; }
+.wnm-nav-hint { margin-bottom: 16px; }
+.wnm-nav-note { margin-top: 16px; color: #52525b; }
+.wnm-navbar {
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(5,5,5,0.96); border: 1px solid #1a1a1a;
+    padding: 10px 14px; border-radius: 3px;
+    transition: border-color .35s, box-shadow .35s;
+}
+.wnm-navbar:hover { border-color: #2a1212; box-shadow: 0 1px 0 rgba(239,68,68,0.12), 0 8px 24px rgba(0,0,0,0.5); }
+.wnm-nav-brand { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
+.wnm-nav-brand span { font-size: 0.7rem; font-weight: 900; font-style: italic; color: #dc2626; }
+.wnm-nav-brand svg { transition: filter .3s, transform .3s; }
+.wnm-nav-brand:hover svg { filter: drop-shadow(0 0 8px rgba(239,68,68,0.55)); transform: scale(1.08); }
+.wnm-nav-links { display: flex; gap: 2px; flex: 1; }
+.wnm-nav-link {
+    position: relative; padding: 5px 9px; font-size: 0.55rem; font-weight: 600;
+    letter-spacing: 0.1em; color: #555; cursor: pointer; white-space: nowrap;
+    transition: color .2s, text-shadow .2s;
+}
+.wnm-nav-link::after { content: ''; position: absolute; bottom: -1px; left: 50%; width: 0; height: 2px; background: #ef4444; box-shadow: 0 0 8px #ef4444; transform: translateX(-50%); transition: width .25s; }
+.wnm-nav-link:hover { color: #ef4444; text-shadow: 0 0 10px rgba(239,68,68,0.45); }
+.wnm-nav-link:hover::after { width: 64%; }
+.wnm-nav-link.active { color: #ef4444; }
+.wnm-nav-link.active::after { width: 72%; }
+.wnm-nav-live { display: flex; align-items: center; gap: 5px; font-size: 0.52rem; letter-spacing: 0.18em; color: #52525b; flex-shrink: 0; }
+.wnm-nav-live i { width: 5px; height: 5px; border-radius: 50%; background: #22c55e; animation: wn-eye 1.8s ease-in-out infinite; }
+
+/* Thumbnail "live" trên thẻ carousel */
+.wn-thumb-live {
+    background: linear-gradient(135deg, var(--wn-accent), #050505) !important;
+    opacity: 0.9 !important;
+    position: relative;
+}
+.wn-thumb-live::after {
+    content: '▶'; position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; color: #fff; opacity: 0.85;
+}
+
+/* ════════════════════════════════════════════
+   CAROUSEL NAV — thẻ chuyển feature ở dưới
+   ════════════════════════════════════════════ */
+.wn-nav {
+    position: sticky;
+    bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 28px;
+}
+.wn-nav-track {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 6px 2px;
+    scroll-snap-type: x mandatory;
+}
+.wn-nav-track::-webkit-scrollbar { display: none; }
+
+.wn-nav-card {
+    --wn-accent: #ef4444;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    width: 188px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 14px;
+    background: var(--maple-bg-2, #080808);
+    border: 1px solid var(--maple-border, #1a1a1a);
+    border-left: 3px solid var(--wn-accent);
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: var(--maple-mono, 'JetBrains Mono', monospace);
+    text-align: left;
+    transition: background .18s, border-color .18s, box-shadow .18s, transform .18s;
+}
+.wn-nav-card:hover {
+    background: var(--maple-bg-4, #0f0f0f);
+    transform: translateY(-2px);
+}
+.wn-nav-card.active {
+    background: var(--maple-bg-4, #0f0f0f);
+    border-color: var(--wn-accent);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--wn-accent) 30%, transparent);
+}
+.wn-nav-card-label {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.35;
+    color: var(--maple-text-2, #a1a1aa);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.wn-nav-card.active .wn-nav-card-label { color: var(--maple-head, #f4f4f5); }
+.wn-nav-card-thumb {
+    flex-shrink: 0;
+    width: 54px;
+    height: 40px;
+    border-radius: 2px;
+    background: var(--maple-bg, #050505);
+    border: 1px solid var(--maple-border, #1a1a1a);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wn-nav-card-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.wn-thumb-ph {
+    width: 70%; height: 58%;
+    border-radius: 2px;
+    background: linear-gradient(135deg, var(--wn-accent), transparent);
+    opacity: 0.5;
+}
+
+.wn-nav-arrow {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--maple-border-2, #27272a);
+    background: var(--maple-bg-2, #080808);
+    color: var(--maple-text-2, #a1a1aa);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .15s, color .15s, border-color .15s;
+}
+.wn-nav-arrow:hover {
+    background: var(--maple-bg-4, #0f0f0f);
+    color: var(--maple-red, #ef4444);
+    border-color: var(--maple-red, #ef4444);
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   FULL-PAGE SIM — giả lập "load cả trang" (overlay toàn màn hình)
+   ════════════════════════════════════════════════════════════════════════ */
+/* Nút ⛶ trên thanh khung live/mock */
+.wn-live-full {
+    margin-left: 6px; width: 24px; height: 20px; flex-shrink: 0;
+    background: transparent; border: 1px solid var(--maple-border-2, #27272a);
+    color: var(--maple-text-3, #71717a); cursor: pointer; font-size: 11px; line-height: 1;
+    border-radius: 2px; transition: background .15s, color .15s, border-color .15s;
+}
+.wn-live-full:hover { background: var(--maple-red, #ef4444); color: #fff; border-color: var(--maple-red, #ef4444); }
+
+/* Nút bật tương tác */
+.wn-live-int {
+    margin-left: 6px; width: 24px; height: 20px; flex-shrink: 0;
+    background: transparent; border: 1px solid var(--maple-border-2, #27272a);
+    color: var(--maple-text-3, #71717a); cursor: pointer; font-size: 11px; line-height: 1;
+    border-radius: 2px; transition: background .15s, color .15s, border-color .15s;
+}
+.wn-live-int:hover { background: #16331f; color: #4ade80; border-color: #22c55e; }
+.wn-live-int.on { background: #052e16; color: #4ade80; border-color: #22c55e; box-shadow: 0 0 8px rgba(34,197,94,.4); }
+
+/* Chế độ TƯƠNG TÁC: gỡ scale/tilt + ẩn scanline → dùng trang thật 1:1 */
+.wn-live--interact .wn-embed-stage { transform: none !important; transition: none; }
+.wn-live--interact .wn-embed-frame { width: 100%; height: 100%; transform: none; }
+.wn-live--interact .wn-embed-scan { opacity: 0; }
+.wn-live--interact.wn-live--embed::after { box-shadow: inset 0 0 0 1px rgba(34,197,94,.4); }
+
+/* Overlay */
+.wn-fp {
+    position: fixed; inset: 0; z-index: 100000; padding: 24px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(2,2,2,.86); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    opacity: 0; transition: opacity .28s;
+}
+.wn-fp.show { opacity: 1; }
+.wn-fp-win {
+    width: min(1100px, 96vw); height: min(88vh, 900px);
+    background: #050505; border: 1px solid #1c1c1c;
+    box-shadow: 0 30px 90px rgba(0,0,0,.8), 0 0 0 1px rgba(239,68,68,.08);
+    display: flex; flex-direction: column; overflow: hidden;
+    transform: scale(.96); transition: transform .28s;
+}
+.wn-fp.show .wn-fp-win { transform: none; }
+.wn-fp-bar { display: flex; align-items: center; gap: 10px; padding: 8px 12px;
+    background: #0a0a0a; border-bottom: 1px solid #161616; flex-shrink: 0; }
+.wn-fp-url { flex: 1; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #71717a;
+    background: #050505; border: 1px solid #161616; padding: 5px 10px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wn-fp-close { width: 26px; height: 26px; flex-shrink: 0; background: transparent;
+    border: 1px solid #27272a; color: #71717a; cursor: pointer; font-size: 12px; transition: all .15s; }
+.wn-fp-close:hover { background: #ef4444; color: #fff; border-color: #ef4444; }
+.wn-fp-body { position: relative; flex: 1; overflow: hidden; background: #050505; }
+.wn-fp-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #050505; }
+.wn-fp-mockwrap { position: absolute; inset: 0; overflow: auto; -webkit-overflow-scrolling: touch; padding: 0; }
+
+/* Lớp loading giả lập (trên cùng) */
+.wn-fp-load { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 16px; background: #040404; transition: opacity .42s; }
+.wn-fp-load.done { opacity: 0; pointer-events: none; }
+.wn-fp-logo svg { filter: drop-shadow(0 0 16px rgba(239,68,68,.5)); animation: wn-fp-float 3s ease-in-out infinite; }
+@keyframes wn-fp-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.wn-fp-load-text { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .24em; color: #ef4444; }
+.wn-fp-bar-wrap { width: min(320px, 70%); height: 2px; background: #1a1a1a; overflow: hidden; }
+.wn-fp-bar-fill { width: 0; height: 100%; background: #ef4444; box-shadow: 0 0 10px rgba(239,68,68,.6); transition: width .2s ease; }
+.wn-fp-load-url { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #52525b; letter-spacing: .1em;
+    max-width: 80%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Fallback placeholder khi bị chặn nhúng */
+.wn-fp-ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: 14px; text-align: center; padding: 24px; }
+.wn-fp-ph-logo svg { opacity: .5; }
+.wn-fp-ph-text { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #52525b; line-height: 1.9; }
+
+@media (max-width: 768px) {
+    .wn-fp { padding: 0; }
+    .wn-fp-win { width: 100vw; height: 100dvh; border: none; }
+}
+
+
+/* ════════════════════════════════════════════
+   Responsive
+   ════════════════════════════════════════════ */
+@media (max-width: 900px) {
+    .wn-stage { grid-template-columns: 1fr; gap: 28px; min-height: 0; }
+    .wn-feature-text { max-width: none; }
+    .wn-feature-media { min-height: 240px; order: -1; }
+    .wn-feature-media--live { min-height: 0; }
+    .wn-live-screen { height: 340px; }
+}
+@media (max-width: 560px) {
+    #wn-root { padding: 24px 14px 90px; }
+    .wn-title { font-size: 1.2rem !important; }
+    .wn-feature-title { font-size: 1.3rem !important; }
+    .wn-nav-card { width: 158px; }
+}
+
+/* Carousel Controls & Dots */
+.wn-controls {
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    margin: 14px 0 20px;
+}
+.wn-play-btn {
+    background: transparent; border: 1px solid var(--maple-border-2, #27272a);
+    color: var(--maple-text-3, #71717a); font-size: 11px; cursor: pointer;
+    width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+}
+.wn-play-btn:hover {
+    color: var(--maple-red, #ef4444); border-color: var(--maple-red, #ef4444);
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.2);
+}
+.wn-dots {
+    display: flex; gap: 6px; align-items: center;
+}
+.wn-dot {
+    width: 16px; height: 3px; background: var(--maple-border-2, #27272a);
+    border-radius: 1px; cursor: pointer; transition: all 0.2s;
+}
+.wn-dot:hover {
+    background: #52525b;
+}
+.wn-dot.active {
+    background: var(--maple-red, #ef4444); width: 28px;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
+}
+
+/* Feature Action Bar */
+.wn-feature-actions {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;
+    margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--maple-border-1, #1a1a1a);
+}
+.wn-btn-seen {
+    background: transparent; border: 1px solid var(--maple-border-2, #27272a);
+    color: var(--maple-text-2, #a1a1aa); font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    font-weight: 700; letter-spacing: 0.1em; padding: 8px 14px; border-radius: 3px;
+    cursor: pointer; transition: all 0.2s;
+}
+.wn-btn-seen:hover {
+    background: rgba(239, 68, 68, 0.05); border-color: var(--maple-red, #ef4444); color: #fff;
+}
+.wn-btn-seen.read {
+    background: rgba(34, 197, 94, 0.06); border-color: #22c55e; color: #4ade80;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.15);
+}
+
+/* Feedback box */
+.wn-feedback-box {
+    display: flex; align-items: center; gap: 10px;
+}
+.wn-feedback-label {
+    font-size: 10px; color: var(--maple-text-3, #71717a); font-family: 'JetBrains Mono', monospace;
+}
+.wn-feedback-btn {
+    background: #09090b; border: 1px solid var(--maple-border-2, #27272a);
+    color: var(--maple-text-2, #a1a1aa); font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    padding: 6px 12px; border-radius: 3px; cursor: pointer; transition: all 0.2s;
+    display: flex; align-items: center; gap: 6px;
+}
+.wn-feedback-btn:hover {
+    border-color: #52525b; color: #fff; background: #141416;
+}
+.wn-feedback-btn.voted {
+    background: rgba(239, 68, 68, 0.08); border-color: var(--maple-red, #ef4444); color: #fff;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+}
+.wn-feedback-btn.voted.wn-feedback-up {
+    background: rgba(34, 197, 94, 0.08); border-color: #22c55e; color: #4ade80;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+}
+.wn-feedback-count {
+    font-weight: 700; font-family: 'JetBrains Mono', monospace;
+}
+
+/* Nav card read state indicator */
+.wn-nav-card.read {
+    opacity: 0.65;
+}
+.wn-nav-card.read:hover {
+    opacity: 0.9;
+}
+.wn-nav-card.read .wn-nav-card-label::after {
+    content: ' ✓'; color: #22c55e; font-weight: 700;
+}

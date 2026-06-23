@@ -1,0 +1,179 @@
+/* ============================================
+   M.A.P.L.E — MediaWiki:ThanhTuu.css
+   Trang Thành Tựu & Vinh Danh
+   ============================================ */
+#tt-root {
+    font-family: var(--maple-mono, 'JetBrains Mono', monospace);
+    color: var(--maple-text-2, #a1a1aa);
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+/* Loading */
+.tt-loading { text-align: center; padding: 80px 0; color: #71717a; font-size: 11px; letter-spacing: .2em; }
+.tt-spin { width: 28px; height: 28px; border: 2px solid #1a1a1a; border-top-color: #ef4444;
+    border-radius: 50%; margin: 0 auto 18px; animation: tt-spin 0.8s linear infinite; }
+@keyframes tt-spin { to { transform: rotate(360deg); } }
+
+/* Hero */
+.tt-hero { text-align: center; padding: 24px 0 40px; border-bottom: 1px solid #141414; margin-bottom: 32px; }
+.tt-hero-logo svg { filter: drop-shadow(0 0 16px rgba(239,68,68,.45)); animation: maple-eye-pulse 3s ease-in-out infinite; }
+.tt-eyebrow { font-size: 9.5px; letter-spacing: .28em; color: #52525b; text-transform: uppercase; margin: 16px 0 10px; }
+.tt-title { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 800; letter-spacing: .04em; color: #f4f4f5; margin: 0; }
+.tt-title span { color: #ef4444; }
+.tt-sub { font-size: 11px; color: #52525b; margin: 12px 0 0; }
+
+/* Stats */
+.tt-stats { display: flex; justify-content: center; gap: 14px; margin-top: 28px; flex-wrap: wrap; }
+.tt-stat { background: #080808; border: 1px solid #161616; padding: 14px 22px; min-width: 96px; }
+.tt-stat b { display: block; font-size: 1.5rem; color: #ef4444; font-weight: 800; }
+.tt-stat span { font-size: 8.5px; letter-spacing: .18em; text-transform: uppercase; color: #52525b; }
+
+/* Roster */
+.tt-roster { display: flex; flex-direction: column; gap: 14px; }
+.tt-user { background: #070707; border: 1px solid #161616; border-left: 2px solid #27272a;
+    padding: 16px 18px; animation: tt-rise .4s ease both; }
+.tt-user:hover { border-left-color: #ef4444; }
+@keyframes tt-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.tt-user-hd { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+.tt-rank { font-size: 12px; font-weight: 800; color: #ef4444; min-width: 34px; }
+.tt-user-name { font-size: 14px; font-weight: 700; color: #e4e4e7 !important; text-decoration: none; }
+.tt-user-name:hover { color: #ef4444 !important; }
+.tt-user-count { margin-left: auto; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: #52525b; }
+
+/* Badges */
+.tt-badges { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; }
+.tt-badge { display: flex; align-items: center; gap: 10px; padding: 8px 10px;
+    background: #0a0a0a; border: 1px solid #161616; border-left-width: 2px; position: relative; }
+.tt-badge-ico { font-size: 1.1rem; flex-shrink: 0; width: 24px; text-align: center; }
+.tt-badge-body { display: flex; flex-direction: column; min-width: 0; }
+.tt-badge-label { font-size: 10px; font-weight: 700; color: #d4d4d8; letter-spacing: .06em;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tt-badge-meta { font-size: 8px; color: #52525b; letter-spacing: .08em; }
+.tt-badge-rarity { margin-left: auto; font-size: 7.5px; font-weight: 700; letter-spacing: .14em;
+    padding: 2px 6px; border-radius: 2px; flex-shrink: 0; }
+
+/* Rarity colors */
+.tt-common    { border-left-color: #52525b; }
+.tt-common    .tt-badge-rarity { background: #1c1c1f; color: #a1a1aa; }
+.tt-rare      { border-left-color: #06b6d4; }
+.tt-rare      .tt-badge-rarity { background: rgba(6,182,212,.12); color: #22d3ee; }
+.tt-rare      .tt-badge-ico { color: #22d3ee; }
+.tt-epic      { border-left-color: #a855f7; }
+.tt-epic      .tt-badge-rarity { background: rgba(168,85,247,.14); color: #c084fc; }
+.tt-epic      .tt-badge-ico { color: #c084fc; }
+.tt-legendary { border-left-color: #eab308; box-shadow: inset 0 0 24px rgba(234,179,8,.06); }
+.tt-legendary .tt-badge-rarity { background: rgba(234,179,8,.16); color: #facc15; }
+.tt-legendary .tt-badge-ico { color: #facc15; }
+.tt-legendary .tt-badge-label { color: #fde68a; }
+
+.tt-empty { text-align: center; padding: 60px 0; color: #52525b; letter-spacing: .2em; }
+
+/* Footer */
+.tt-footer { display: flex; justify-content: space-between; gap: 12px; margin-top: 40px;
+    padding-top: 20px; border-top: 1px solid #141414; flex-wrap: wrap; }
+.tt-footer a { font-size: 10px; letter-spacing: .12em; color: #71717a !important; text-decoration: none; text-transform: uppercase; }
+.tt-footer a:hover { color: #ef4444 !important; }
+
+/* ── Độ hiếm mở rộng (Mythic → Divine) ── */
+.tt-mythic    { border-left-color: #ec4899; box-shadow: inset 0 0 24px rgba(236,72,153,.07); }
+.tt-mythic    .tt-badge-rarity { background: rgba(236,72,153,.16); color: #f472b6; }
+.tt-mythic    .tt-badge-ico, .tt-mythic .tt-cat-ico { color: #f472b6; }
+.tt-ancient   { border-left-color: #14b8a6; box-shadow: inset 0 0 24px rgba(20,184,166,.07); }
+.tt-ancient   .tt-badge-rarity { background: rgba(20,184,166,.16); color: #2dd4bf; }
+.tt-ancient   .tt-badge-ico, .tt-ancient .tt-cat-ico { color: #2dd4bf; }
+.tt-artifact  { border-left-color: #f97316; box-shadow: inset 0 0 24px rgba(249,115,22,.08); }
+.tt-artifact  .tt-badge-rarity { background: rgba(249,115,22,.16); color: #fb923c; }
+.tt-artifact  .tt-badge-ico, .tt-artifact .tt-cat-ico { color: #fb923c; }
+.tt-immortal  { border-left-color: #e11d48; box-shadow: inset 0 0 26px rgba(225,29,72,.10); }
+.tt-immortal  .tt-badge-rarity { background: rgba(225,29,72,.18); color: #fb7185; }
+.tt-immortal  .tt-badge-ico, .tt-immortal .tt-cat-ico { color: #fb7185; }
+.tt-exclusive { border-left-color: #d946ef; box-shadow: inset 0 0 26px rgba(217,70,239,.10); }
+.tt-exclusive .tt-badge-rarity { background: rgba(217,70,239,.18); color: #e879f9; }
+.tt-exclusive .tt-badge-ico, .tt-exclusive .tt-cat-ico { color: #e879f9; }
+.tt-ultimate  { border-left-color: #f43f5e; box-shadow: inset 0 0 28px rgba(244,63,94,.12); }
+.tt-ultimate  .tt-badge-rarity { background: rgba(244,63,94,.18); color: #fda4af; }
+.tt-ultimate  .tt-badge-ico, .tt-ultimate .tt-cat-ico { color: #fda4af; }
+.tt-relic     { border-left-color: #0ea5e9; box-shadow: inset 0 0 28px rgba(14,165,233,.12); }
+.tt-relic     .tt-badge-rarity { background: rgba(14,165,233,.18); color: #38bdf8; }
+.tt-relic     .tt-badge-ico, .tt-relic .tt-cat-ico { color: #38bdf8; }
+.tt-divine    { border-left-color: #fde68a; box-shadow: inset 0 0 32px rgba(253,230,138,.14); }
+.tt-divine    .tt-badge-rarity { background: linear-gradient(90deg,#fde68a,#fbbf24); color: #1a1a1a; }
+.tt-divine    .tt-badge-ico, .tt-divine .tt-cat-ico { color: #fde68a; text-shadow: 0 0 10px rgba(253,230,138,.6); }
+.tt-divine    .tt-cat-label { color: #fde68a; }
+@media (prefers-reduced-motion: no-preference) {
+    .tt-immortal .tt-cat-ico, .tt-exclusive .tt-cat-ico, .tt-ultimate .tt-cat-ico,
+    .tt-relic .tt-cat-ico, .tt-divine .tt-cat-ico { animation: tt-glow 2.4s ease-in-out infinite; }
+}
+@keyframes tt-glow { 0%,100% { filter: brightness(1); } 50% { filter: brightness(1.5); } }
+
+/* ── Tier chip + RP chip (leaderboard) ── */
+.tt-tier-chip, .tt-rp-chip { font-size: 8px; font-weight: 800; letter-spacing: .1em; padding: 3px 8px;
+    border-radius: 2px; text-transform: uppercase; white-space: nowrap; }
+.tt-rp-chip { background: rgba(239,68,68,.14); color: #f87171; border: 1px solid rgba(239,68,68,.3); }
+.tt-tier-0 { background: #1c1c1f; color: #a1a1aa; }
+.tt-tier-1 { background: rgba(59,130,246,.16); color: #60a5fa; }
+.tt-tier-2 { background: rgba(6,182,212,.16); color: #22d3ee; }
+.tt-tier-3 { background: rgba(168,85,247,.16); color: #c084fc; }
+.tt-tier-4 { background: rgba(234,179,8,.18); color: #facc15; }
+
+/* ── Tabs ── */
+.tt-tabs { display: flex; gap: 6px; justify-content: center; margin: 0 0 28px; flex-wrap: wrap; }
+.tt-tab-btn { background: #080808; border: 1px solid #1c1c1c; color: #a1a1aa; font-family: inherit;
+    font-size: 11px; font-weight: 700; letter-spacing: .1em; padding: 10px 18px; cursor: pointer;
+    text-transform: uppercase; transition: all .15s; min-height: 42px; }
+.tt-tab-btn:hover { border-color: #52525b; color: #e4e4e7; }
+.tt-tab-on { background: #ef4444; border-color: #ef4444; color: #fff; }
+.tt-panel { display: none; animation: tt-rise .35s ease both; }
+.tt-panel-on { display: block; }
+
+/* ── Progress + filters ── */
+.tt-progress { font-size: 11px; color: #a1a1aa; letter-spacing: .08em; margin: 0 0 14px; text-align: center; }
+.tt-progress b { color: #ef4444; font-size: 14px; }
+.tt-progress i { color: #52525b; font-size: 9px; }
+.tt-filters { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; margin: 0 0 24px; }
+.tt-chip { background: #0a0a0a; border: 1px solid #1c1c1c; color: #71717a; font-family: inherit;
+    font-size: 8.5px; font-weight: 700; letter-spacing: .1em; padding: 6px 10px; cursor: pointer;
+    text-transform: uppercase; border-radius: 2px; transition: all .12s; }
+.tt-chip:hover { border-color: #52525b; color: #d4d4d8; }
+.tt-chip-on { background: #18181b; border-color: #ef4444; color: #f4f4f5; }
+
+/* ── Catalog groups ── */
+.tt-group { margin: 0 0 30px; }
+.tt-group-title { font-size: 13px; font-weight: 800; color: #f4f4f5; letter-spacing: .06em;
+    margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px solid #161616; display: flex;
+    align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.tt-group-sub { font-size: 8.5px; font-weight: 500; color: #52525b; letter-spacing: .08em; text-transform: uppercase; }
+.tt-group-n { margin-left: auto; font-size: 9px; color: #ef4444; font-weight: 700; }
+.tt-cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px; }
+
+/* ── Catalog card ── */
+.tt-cat-card { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px;
+    background: #0a0a0a; border: 1px solid #161616; border-left-width: 2px; position: relative; }
+.tt-cat-ico { font-size: 1.25rem; flex-shrink: 0; width: 26px; text-align: center; line-height: 1.4; }
+.tt-cat-body { display: flex; flex-direction: column; min-width: 0; flex: 1; gap: 2px; }
+.tt-cat-label { font-size: 11px; font-weight: 700; color: #e4e4e7; letter-spacing: .03em; }
+.tt-cat-how { font-size: 9px; color: #71717a; line-height: 1.45; }
+.tt-cat-flags { display: flex; gap: 5px; margin-top: 3px; flex-wrap: wrap; }
+.tt-flag { font-size: 7px; font-weight: 800; letter-spacing: .1em; padding: 2px 5px; border-radius: 2px; }
+.tt-flag-limited { background: rgba(234,179,8,.16); color: #facc15; }
+.tt-flag-have { background: rgba(34,197,94,.16); color: #4ade80; }
+.tt-badge-rarity { align-self: flex-start; }
+.tt-unearned { opacity: .58; }
+.tt-unearned:hover { opacity: 1; }
+.tt-earned { opacity: 1; background: #0c0c0c; }
+.tt-locked { opacity: .4; }
+.tt-locked .tt-cat-ico { color: #52525b; }
+.tt-locked .tt-cat-label { color: #71717a; letter-spacing: .3em; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    #tt-root { padding: 28px 14px 60px; }
+    .tt-badges { grid-template-columns: 1fr; }
+    .tt-cat-grid { grid-template-columns: 1fr; }
+    .tt-user-count { margin-left: 0; width: 100%; }
+    .tt-footer { flex-direction: column; }
+    .tt-tab-btn { flex: 1; padding: 10px 8px; font-size: 10px; }
+    .tt-group-n { margin-left: 0; }
+}

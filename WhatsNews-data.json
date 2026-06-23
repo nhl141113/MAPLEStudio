@@ -1,0 +1,113 @@
+{
+  "version": "1.6",
+  "effective": "2026-06-18",
+  "popup": {
+    "heading": "Cập nhật M.A.P.L.E v1.6",
+    "intro": "Bản cập nhật lớn mang đến hệ thống Hướng dẫn tương tác (Welcome Tour), Bảng Nhiệm vụ thực địa, Hệ sinh thái App và nâng cấp toàn diện MAPLE Censor.",
+    "highlights": [
+      "🧭 Welcome Tour hướng dẫn tương tác cho người mới",
+      "📋 MAPLE Censor UI mới & Bảng thống kê kiểm duyệt",
+      "📱 Hệ sinh thái App, Notifier & Widget The Maze",
+      "🛡️ Kiểm duyệt từ ngữ v2.0 (18+ và 13-17)",
+      "📑 Trang bài viết Kho Lưu Trữ 2 tab + Đánh giá & Bình luận",
+      "🎯 Bảng Nhiệm Vụ Thực Địa — Tự động cộng RP"
+    ]
+  },
+  "features": [
+    {
+      "navLabel": "Welcome Tour",
+      "navColor": "#3b82f6",
+      "title": "Hệ thống Welcome Tour",
+      "intro": "Làm quen với wiki dễ dàng hơn bao giờ hết. Hệ thống tự động phủ một lớp hướng dẫn tương tác lên các chức năng quan trọng của từng trang.",
+      "bullets": [
+        "Kích hoạt dễ dàng bằng cách thêm `/welcome` vào cuối URL.",
+        "Tự động hiển thị popup mời tham quan với người dùng mới.",
+        "Chế độ Auto-play (Tự động phát) với thanh tiến trình và cuộn mượt mà."
+      ],
+      "iframe": "Dự_án:All_User"
+    },
+    {
+      "navLabel": "Nhiệm Vụ",
+      "navColor": "#eab308",
+      "title": "Nhiệm Vụ Thực Địa",
+      "intro": "Biến RP từ thụ động thành chủ động. Hoàn thành công việc thực địa do M.A.P.L.E giao phó để nhận Điểm Uy Tín (RP) hoàn toàn tự động.",
+      "bullets": [
+        "Hệ thống chu kỳ Ngày, Tuần và Tháng với các mục tiêu đa dạng.",
+        "Tự động kiểm chứng tiến độ (đọc bài, duyệt bài) trực tiếp từ dữ liệu server.",
+        "Nhận ngay RP khi đạt đủ điều kiện mà không cần chờ đợi."
+      ],
+      "iframe": "Nhiệm_Vụ"
+    },
+    {
+      "navLabel": "MAPLE Censor",
+      "navColor": "#ef4444",
+      "title": "Nâng cấp MAPLE Censor",
+      "intro": "Bảng điều khiển kiểm duyệt khoác lên mình diện mạo M.A.P.L.E Đỏ/Đen chuẩn mực, đi kèm hàng loạt công cụ tự động hóa.",
+      "bullets": [
+        "Tự động phân tích nội dung để đề xuất phân loại, độ tuổi, cấp truy cập.",
+        "Tab Thống Kê mới: Xếp hạng năng suất KDV, Tỉ lệ duyệt, Top tác giả.",
+        "Hỗ trợ render chính xác 5 loại hồ sơ mới (Log, Event, Location, Personnel, Classified)."
+      ],
+      "iframe": "Admin:Censor"
+    },
+    {
+      "navLabel": "Hệ sinh thái App",
+      "navColor": "#a855f7",
+      "title": "Hệ sinh thái App & Thông báo",
+      "intro": "Trải nghiệm liền mạch hơn với Ngăn ứng dụng (App Drawer) và bộ 3 Bot thông báo hệ thống.",
+      "bullets": [
+        "Ngăn ứng dụng (App Drawer) truy cập nhanh Sự Kiện, Bảng Tin, Thành Tựu...",
+        "Widget The Maze giả lập đồng hồ hệ thống và máy tính sinh tồn an toàn.",
+        "Bot thông báo tự động (Comments, Moderation, Achievements) báo qua chuông và MAPLE Chat."
+      ],
+      "iframe": "Thông_báo"
+    },
+    {
+      "navLabel": "Kiểm Duyệt v2.0",
+      "navColor": "#22c55e",
+      "title": "Bộ lọc Từ ngữ & Độ tuổi v2.0",
+      "intro": "Bộ lọc được phân mảnh theo nhóm tuổi, bảo vệ người dùng trẻ em trong khi vẫn tôn trọng quyền tiếp cận của người lớn.",
+      "bullets": [
+        "Hệ thống kiểm duyệt GẮT HƠN cho nhóm 13-17 tuổi (chặn 18+, link nguy hiểm, doxxing).",
+        "Xác nhận độ tuổi thông minh lần đầu sử dụng tính năng giao tiếp (Chat/Bình luận).",
+        "Chặn tuyệt đối (Hard Block) mọi liên kết chứa mã độc, phishing hoặc không an toàn."
+      ],
+      "iframe": "Điều_Khoản/Kiểm_Duyệt"
+    },
+    {
+      "navLabel": "Bài Viết 2 Tab",
+      "navColor": "#06b6d4",
+      "title": "Giao diện Bài viết Mới",
+      "intro": "Hồ sơ trên Kho Lưu Trữ được thiết kế lại, chuyên nghiệp và minh bạch hơn.",
+      "bullets": [
+        "Chế độ xem 2 tab: Tab 'Tóm tắt' và 'Thông tin bài viết' (Metadata).",
+        "Tích hợp hệ thống Đánh giá (VoteNY) và Bình luận trực tiếp ở cuối mỗi bài viết.",
+        "Module tự động hỗ trợ hiển thị ngay cả với các hồ sơ cũ thông qua API Parser thông minh."
+      ],
+      "iframe": "Kho_Lưu_Trữ"
+    }
+  ],
+  "items": [
+    {
+      "date": "18/06/2026",
+      "tag": "v1.6",
+      "type": "new",
+      "title": "Đại Cập Nhật Hệ Thống v1.6",
+      "body": "Bổ sung Welcome Tour, MAPLE Censor 2.0, Hệ sinh thái App & Widget, Bộ lọc từ ngữ v2.0, Giao diện 2 Tab Kho Lưu Trữ, và Bảng Nhiệm Vụ."
+    },
+    {
+      "date": "17/06/2026",
+      "tag": "v1.5",
+      "type": "update",
+      "title": "Dossier Anim & Thành Tựu Tự Động",
+      "body": "Nâng cấp Dossier với Animation phong phú, hệ thống Tự ghi nhận thành tựu, ra mắt RP cho hành động và Notification Center."
+    },
+    {
+      "date": "16/06/2026",
+      "tag": "v1.4",
+      "type": "new",
+      "title": "Hệ thống Giấy phép & Tạo Bài Mới",
+      "body": "Ra mắt công cụ Tạo Bài Mới chuẩn Dossier, hệ thống hiển thị Giấy phép toàn cục và nâng cấp tính năng Bảng Tin."
+    }
+  ]
+}
