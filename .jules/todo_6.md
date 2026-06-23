@@ -1,10 +1,10 @@
 # Todo 6: Bảng tiến độ & Chặn lỗi khẩn cấp (Circuit Breaker) - Task 6
 
 ## 🚧 TIẾN ĐỘ THỰC THI (Task 6)
-- [ ] Bước 1: Thiết kế giao diện cảnh báo an ninh màu đỏ rực trong `MAPLE-OpenLink.js`.
-- [ ] Bước 2: Tích hợp bộ đếm ngược 5 giây trước khi kích hoạt nút chuyển tiếp.
-- [ ] Bước 3: Tạo hiệu ứng chữ chạy mô phỏng quét mã độc trong thời gian chờ.
-- [ ] Bước 4: Chạy kiểm tra lỗi cú pháp JS bằng Node.js và click thử link ngoài để xác minh.
+- [x] Bước 1: Thiết kế giao diện cảnh báo an ninh màu đỏ rực trong `MAPLE-OpenLink.js`.
+- [x] Bước 2: Tích hợp bộ đếm ngược 5 giây trước khi kích hoạt nút chuyển tiếp.
+- [x] Bước 3: Tạo hiệu ứng chữ chạy mô phỏng quét mã độc trong thời gian chờ.
+- [x] Bước 4: Chạy kiểm tra lỗi cú pháp JS bằng Node.js và click thử link ngoài để xác minh.
 
 ---
 
