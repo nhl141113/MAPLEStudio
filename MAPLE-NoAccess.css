@@ -1,0 +1,423 @@
+/* ============================================
+   M.A.P.L.E — MediaWiki:MAPLE-NoAccess.css
+   Màn hình từ chối quyền truy cập (edit & view)
+   Dùng chung cho MAPLE-NoAccess.js và MAPLE-ViewAccess.js
+   ============================================ */
+
+/* ══════════════════════════════════════════
+   KEYFRAMES
+══════════════════════════════════════════ */
+@keyframes mna-in {
+    from { opacity: 0; transform: scale(0.97) translateY(14px); }
+    to   { opacity: 1; transform: scale(1)    translateY(0); }
+}
+@keyframes mna-lock-shake {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    15%  { transform: rotate(-9deg) scale(1.04); }
+    35%  { transform: rotate(7deg)  scale(1.04); }
+    55%  { transform: rotate(-4deg) scale(1.02); }
+    75%  { transform: rotate(3deg)  scale(1.01); }
+}
+@keyframes mna-scanline {
+    0%   { top: -30%; opacity: 0.5; }
+    100% { top: 130%; opacity: 0; }
+}
+@keyframes mna-glitch {
+    0%, 89%, 100% { clip-path: inset(0 0 100% 0); transform: translateX(0); }
+    90% { clip-path: inset(12% 0 72% 0); transform: translateX(-5px); }
+    92% { clip-path: inset(38% 0 48% 0); transform: translateX(4px); }
+    94% { clip-path: inset(58% 0 25% 0); transform: translateX(-3px); }
+    96% { clip-path: inset(75% 0 8% 0);  transform: translateX(5px); }
+    98% { clip-path: inset(0 0 100% 0);  transform: translateX(0); }
+}
+@keyframes mna-pulse-ring {
+    0%   { transform: scale(0.85); opacity: 0.6; }
+    70%  { transform: scale(1.5);  opacity: 0; }
+    100% { transform: scale(0.85); opacity: 0; }
+}
+@keyframes mna-help-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
+    50%       { box-shadow: 0 0 0 8px rgba(239,68,68,0.08); }
+}
+@keyframes mna-corner-blink {
+    0%, 94%, 100% { opacity: 0.35; }
+    96% { opacity: 1; }
+}
+@keyframes mna-stripe-move {
+    from { background-position: 0 0; }
+    to   { background-position: 28px 0; }
+}
+
+/* ══════════════════════════════════════════
+   SHELL & WRAPPER
+══════════════════════════════════════════ */
+.maple-noaccess-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 48px 80px;
+    text-align: center;
+    animation: mna-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Scanline dải đỏ mờ chạy từ trên xuống */
+.maple-noaccess-body::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; height: 35%;
+    background: linear-gradient(to bottom,
+        transparent,
+        rgba(239, 68, 68, 0.018),
+        rgba(239, 68, 68, 0.008),
+        transparent);
+    animation: mna-scanline 5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Góc dưới: watermark protocol */
+.maple-noaccess-body::after {
+    content: "MAPLE SECURITY PROTOCOL // ACCESS DENIED";
+    position: absolute;
+    bottom: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5px; letter-spacing: 0.3em;
+    text-transform: uppercase; color: #111;
+    animation: mna-corner-blink 8s ease infinite;
+}
+
+/* ── Sọc cảnh báo trên cùng body ─────────────────────── */
+.maple-noaccess-body .mna-warning-stripe {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: repeating-linear-gradient(
+        90deg,
+        #ef4444 0px, #ef4444 14px,
+        transparent 14px, transparent 28px
+    );
+    background-size: 28px 100%;
+    animation: mna-stripe-move 1.2s linear infinite;
+    opacity: 0.5;
+}
+
+/* ══════════════════════════════════════════
+   LOCK ICON + PULSE RING
+══════════════════════════════════════════ */
+.maple-noaccess-icon-wrap {
+    position: relative;
+    margin-bottom: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Vòng tròn pulse phía sau icon */
+.maple-noaccess-icon-wrap::before {
+    content: "";
+    position: absolute;
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    animation: mna-pulse-ring 3s ease-out infinite;
+}
+.maple-noaccess-icon-wrap::after {
+    content: "";
+    position: absolute;
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    border: 1px solid rgba(239, 68, 68, 0.1);
+    animation: mna-pulse-ring 3s ease-out 1s infinite;
+}
+
+.maple-noaccess-icon {
+    position: relative;
+    filter: drop-shadow(0 0 16px rgba(239, 68, 68, 0.3))
+            drop-shadow(0 0 40px rgba(239, 68, 68, 0.1));
+    animation: mna-lock-shake 0.7s ease 0.9s 1;
+    transition: filter 0.3s;
+    z-index: 1;
+}
+.maple-noaccess-icon-wrap:hover .maple-noaccess-icon {
+    animation: mna-lock-shake 0.55s ease 1;
+    filter: drop-shadow(0 0 22px rgba(239, 68, 68, 0.45))
+            drop-shadow(0 0 50px rgba(239, 68, 68, 0.15));
+}
+
+/* ── Nút ? ─────────────────────────────── */
+.maple-noaccess-help-wrap {
+    position: absolute;
+    bottom: -14px; right: -20px;
+    z-index: 2;
+}
+.maple-noaccess-help-btn {
+    display: flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: #0f0f0f;
+    border: 1.5px solid #52525b;
+    color: #555;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px; font-weight: 700;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s;
+    animation: mna-help-pulse 3s ease infinite;
+    position: relative;
+    /* Vòng ngoài mờ */
+    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.04);
+}
+.maple-noaccess-help-btn:hover {
+    background: #1a1a1a;
+    border-color: #ef4444;
+    color: #ef4444;
+    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.08),
+                0 0 18px rgba(239, 68, 68, 0.3);
+}
+
+/* ── Tooltip ────────────────────────────── */
+.maple-noaccess-tooltip {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    right: 0;
+    width: 250px;
+    background: #0a0a0a;
+    border: 1px solid #1e1e1e;
+    border-top: 2px solid #ef4444;
+    padding: 12px 15px;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; line-height: 1.75; color: #555;
+    white-space: normal;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.22s, transform 0.22s;
+    z-index: 20;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
+}
+/* Label trên tooltip — NoAccess (chỉnh sửa) */
+.maple-noaccess-tooltip::before {
+    content: "TẠI SAO TÔI KHÔNG THỂ CHỈNH SỬA?";
+    display: block;
+    font-size: 7.5px; font-weight: 700;
+    color: #ef4444; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 8px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #181818;
+}
+/* ViewAccess override label */
+.mna-view .maple-noaccess-tooltip::before {
+    content: "TẠI SAO TÔI KHÔNG THỂ XEM?";
+}
+/* Mũi tên tooltip */
+.maple-noaccess-tooltip::after {
+    content: "";
+    position: absolute; top: 100%; right: 10px;
+    border: 6px solid transparent;
+    border-top-color: #1e1e1e;
+}
+.maple-noaccess-help-wrap:hover .maple-noaccess-tooltip {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* ══════════════════════════════════════════
+   STATUS BADGES (dưới icon, trước title)
+══════════════════════════════════════════ */
+.mna-status-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    justify-content: center;
+}
+.mna-status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #ef4444;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+    flex-shrink: 0;
+}
+.mna-status-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px; font-weight: 700;
+    color: #ef4444; letter-spacing: 0.35em;
+    text-transform: uppercase;
+}
+
+/* ══════════════════════════════════════════
+   ERROR CODE (glitch)
+══════════════════════════════════════════ */
+.maple-noaccess-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px; font-weight: 700;
+    color: #1e0808; letter-spacing: 0.4em;
+    text-transform: uppercase; margin-bottom: 16px;
+    position: relative;
+}
+.maple-noaccess-code::before {
+    content: attr(data-text);
+    position: absolute; inset: 0;
+    color: #ef4444; opacity: 0.07;
+    animation: mna-glitch 7s step-end infinite;
+}
+
+/* ══════════════════════════════════════════
+   TITLE + DIVIDER + DESC
+══════════════════════════════════════════ */
+.maple-noaccess-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 17px; font-weight: 700;
+    color: #ef4444; letter-spacing: 0.055em;
+    text-transform: uppercase; margin-bottom: 20px;
+    line-height: 1.55; max-width: 540px;
+    text-shadow: 0 0 30px rgba(239, 68, 68, 0.2);
+}
+
+.maple-noaccess-divider {
+    display: flex; align-items: center; gap: 12px;
+    width: 100%; max-width: 380px;
+    margin: 0 auto 20px;
+}
+.maple-noaccess-divider::before,
+.maple-noaccess-divider::after {
+    content: "";
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, #1e0808);
+}
+.maple-noaccess-divider::after {
+    background: linear-gradient(90deg, #1e0808, transparent);
+}
+/* Điểm kim cương giữa divider */
+.mna-divider-diamond {
+    width: 5px; height: 5px;
+    background: #2a0a0a;
+    transform: rotate(45deg);
+    flex-shrink: 0;
+}
+
+.maple-noaccess-desc {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #383838;
+    line-height: 2.1; max-width: 480px; margin-bottom: 40px;
+}
+.maple-noaccess-desc strong { color: #505050; font-weight: 400; }
+.maple-noaccess-desc a {
+    color: #ef4444 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 2px;
+}
+.maple-noaccess-desc a:hover { color: #f87171 !important; }
+
+/* ══════════════════════════════════════════
+   ACTION BUTTONS
+══════════════════════════════════════════ */
+.maple-noaccess-actions {
+    display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+}
+
+.maple-noaccess-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none !important;
+    transition: background 0.2s, border-color 0.2s, box-shadow 0.2s, color 0.2s;
+    cursor: pointer; border-radius: 0; border: 1px solid;
+    position: relative; overflow: hidden;
+}
+/* Shimmer khi hover */
+.maple-noaccess-btn::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.35s;
+}
+.maple-noaccess-btn:hover::after { transform: translateX(100%); }
+
+/* Về trang chủ */
+.maple-noaccess-btn--home {
+    background: #ef4444; color: #fff !important;
+    border-color: #ef4444;
+}
+.maple-noaccess-btn--home:hover {
+    background: #dc2626; border-color: #dc2626;
+    box-shadow: 0 0 22px rgba(239, 68, 68, 0.4);
+    color: #fff !important;
+}
+
+/* Đăng nhập */
+.maple-noaccess-btn--login {
+    background: transparent; color: #ef4444 !important;
+    border-color: #ef4444;
+}
+.maple-noaccess-btn--login:hover {
+    background: rgba(239, 68, 68, 0.1);
+    box-shadow: 0 0 18px rgba(239, 68, 68, 0.2);
+    color: #f87171 !important;
+}
+
+/* Tại sao? */
+.maple-noaccess-btn--help {
+    background: transparent; color: #444 !important;
+    border-color: #222;
+}
+.maple-noaccess-btn--help:hover {
+    background: #111; border-color: #333;
+    color: #666 !important;
+}
+
+/* ══════════════════════════════════════════
+   META PANEL — thông tin kỹ thuật
+══════════════════════════════════════════ */
+.mna-meta-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    width: 100%; max-width: 400px;
+    border: 1px solid #161616;
+    margin-bottom: 36px;
+    background: #111;
+}
+.mna-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: #0a0a0a;
+    font-family: 'JetBrains Mono', monospace;
+}
+.mna-meta-label {
+    font-size: 7.5px; font-weight: 700;
+    letter-spacing: 0.18em; color: #252525;
+    text-transform: uppercase; flex-shrink: 0;
+}
+.mna-meta-sep {
+    font-size: 8px; color: #1e1e1e; flex-shrink: 0;
+}
+.mna-meta-value {
+    font-size: 8px; font-weight: 700;
+    letter-spacing: 0.12em; color: #3a3a3a;
+    text-transform: uppercase;
+}
+/* Hàng cuối span full nếu tổng lẻ */
+.mna-meta-row:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 600px) {
+    .maple-noaccess-body { padding: 48px 24px 70px; }
+    .maple-noaccess-title { font-size: 13px; }
+    .maple-noaccess-btn { padding: 9px 18px; font-size: 9px; }
+    .maple-noaccess-tooltip { width: 200px; right: -30px; }
+    .mna-meta-panel { grid-template-columns: 1fr; }
+}

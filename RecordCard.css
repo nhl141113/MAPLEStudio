@@ -1,0 +1,255 @@
+/* ============================================
+   M.A.P.L.E — MediaWiki:RecordCard.css
+   Template cho 3 loại hồ sơ: Nhật Ký, Thực Thể, Vật Phẩm
+   @import vào Common.css:
+   @import url('/wiki/MediaWiki:RecordCard.css?action=raw&ctype=text/css');
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Plus+Jakarta+Sans:wght@800&display=swap');
+
+/* ── Biến màu theo loại hồ sơ ── */
+.maple-record { --accent: #ef4444; }
+.maple-record-diary  { --accent: #f43f5e; }
+.maple-record-entity { --accent: #3b82f6; }
+.maple-record-item   { --accent: #f59e0b; }
+
+/* ── Wrapper chính ── */
+.maple-record {
+overflow: hidden;
+    width: 100%; 
+    max-width: 100%;
+box-sizing: border-box;
+    margin: 0 auto 60px;
+    background: linear-gradient(145deg, #0a0a0a, #050505);
+    border: 1px solid rgba(255,255,255,0.05);
+margin: 0 0 60px
+    position: relative;
+    padding: 30px 40px 36px;
+    border-radius: 3px;
+    box-shadow: 0 30px 60px -12px rgba(0,0,0,0.9);
+    font-family: 'JetBrains Mono', monospace;
+    color: #a1a1aa;
+    /* Hiệu ứng viền ánh sáng */
+    isolation: isolate;
+}
+
+.maple-record::after {
+    content: '';
+    position: absolute; inset: 0; border-radius: 3px; padding: 1px;
+    background: linear-gradient(to bottom right,
+        rgba(255,255,255,0.08), transparent, rgba(255,255,255,0.03));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* Thanh màu bên trái */
+.maple-record-accent {
+    position: absolute;
+    left: 0; top: 20px; bottom: 20px;
+    width: 3px;
+    background: var(--accent);
+    box-shadow: 0 0 18px var(--accent);
+    border-radius: 0 2px 2px 0;
+}
+
+/* ── Header ── */
+.maple-record-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.maple-record-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    font-style: italic;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin: 0;
+    padding: 0;
+    border: none !important;
+    background: none !important;
+}
+
+.maple-record-title span { color: var(--accent); }
+
+.maple-record-security { text-align: right; line-height: 1.1; }
+.maple-record-security-code {
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+}
+.maple-record-security-label {
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #444;
+    margin-top: 5px;
+    letter-spacing: 1px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── Grid nội dung ── */
+.maple-record-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 10px;
+}
+
+.maple-record-primary {
+    background: rgba(255,255,255,0.015);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 22px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 2px;
+}
+
+.maple-record-primary-label {
+    font-size: 0.6rem;
+    color: var(--accent);
+    opacity: 0.5;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.maple-record-primary-value {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.15em;
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.1;
+}
+
+.maple-record-lock {
+    opacity: 0.12;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+.maple-record-cells {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.maple-record-cell {
+    background: rgba(255,255,255,0.01);
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: 12px 18px;
+    border-radius: 2px;
+    flex: 1;
+}
+
+.maple-record-cell-label {
+    font-size: 0.58rem;
+    color: #555;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 7px;
+    letter-spacing: 0.5px;
+}
+
+.maple-record-cell-value {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #e4e4e7;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+    word-break: break-word;
+}
+
+/* ── Nội dung mô tả ── */
+.maple-record-desc {
+    margin-top: 18px;
+    padding: 16px 20px;
+    background: rgba(255,255,255,0.01);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 2px;
+    font-size: 0.82rem;
+    color: #71717a;
+    line-height: 1.8;
+}
+
+.maple-record-desc-label {
+    font-size: 0.58rem;
+    color: #444;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* ── Danh sách ghi chú ── */
+.maple-record-notes {
+    margin-top: 10px;
+    padding: 0;
+    list-style: none;
+}
+
+.maple-record-notes li {
+    font-size: 0.8rem;
+    color: #52525b;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    display: flex;
+    gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.maple-record-notes li::before {
+    content: '//';
+    color: var(--accent);
+    opacity: 0.4;
+    flex-shrink: 0;
+}
+
+/* ── Footer trang trí ── */
+.maple-record-footer {
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.maple-record-dots { display: flex; gap: 4px; }
+.maple-record-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.15;
+}
+.maple-record-dot.active { opacity: 0.7; }
+.maple-record-line {
+    flex-grow: 1; height: 1px;
+    background: rgba(255,255,255,0.04);
+}
+.maple-record-footer-code {
+    font-size: 0.55rem;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+    .maple-record { padding: 20px 22px 26px; }
+    .maple-record-grid { grid-template-columns: 1fr; }
+    .maple-record-title { font-size: 1.4rem; }
+}

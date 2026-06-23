@@ -1,0 +1,36 @@
+[
+  {
+    "id": "MP82U4HO-AW5YCB",
+    "page_name": "Kho_Lưu_Trữ/LOG-044",
+    "page_title": "Kho Lưu Trữ/LOG-044",
+    "author": "Beestudio2026",
+    "namespace": 0,
+    "submitted_at": "2026-05-16T08:21:02.652Z",
+    "status": "ai_reviewed",
+    "risk_score": 0,
+    "reviewed_by": "Beestudio2026",
+    "approved_at": "2026-05-16T08:49:48.428Z"
+  },
+  {
+    "id": "MP25FJTSD-D3YW5T8-Q7ZG2RJZ",
+    "page_name": "Test111",
+    "page_title": "Test111",
+    "author": "Mapleofficialvn",
+    "namespace": 0,
+    "submitted_at": "2026-05-17T14:25:51.884Z",
+    "status": "rejected",
+    "risk_score": 0,
+    "reviewed_by": "Beestudio2026",
+    "rejected_at": "2026-05-17T14:29:00.252Z"
+  },
+  {
+    "id": "MP265CE63-D3H3D52-L8ER8K23",
+    "page_name": "Test",
+    "page_title": "Test",
+    "author": "Beestudio2026",
+    "namespace": 0,
+    "submitted_at": "2026-05-18T06:06:05.846Z",
+    "status": "pending",
+    "risk_score": 0
+  }
+]

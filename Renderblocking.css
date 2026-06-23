@@ -1,0 +1,31 @@
+/* ══════════════════════════════════════════
+   M.A.P.L.E — MediaWiki:Renderblocking.css
+   Chạy TRƯỚC khi trang render — ngăn FOUC
+   ══════════════════════════════════════════ */
+
+/* Nền đen ngay lập tức — không chờ Common.css */
+html, body {
+    background: #050505 !important;
+    color: #d4d4d8 !important;
+}
+
+/* Ẩn Vector chrome ngay — tránh flash trắng */
+.vector-header-container,
+header.mw-header,
+.vector-sticky-header,
+#vector-sticky-header,
+.vector-column-start,
+#mw-panel,
+.vector-main-menu-container,
+.vector-page-titlebar,
+.vector-page-toolbar,
+.vector-column-end,
+#footer,
+.mw-footer-container {
+    display: none !important;
+}
+
+/* Ẩn nội dung thô trong khi chờ JS inject — class đặt trên <html> */
+html.maple-loading #mw-content-text {
+    visibility: hidden;
+}

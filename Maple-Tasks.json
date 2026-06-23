@@ -1,0 +1,254 @@
+{
+	"tasks": [
+		{
+			"id": "daily_checkin",
+			"cycle": "daily",
+			"title": "Điểm danh hôm nay",
+			"desc": "Đăng nhập vào M.A.P.L.E hôm nay. Báo cáo rằng bạn vẫn còn sống và chưa bị Maze nuốt chửng!",
+			"icon": "📅",
+			"rp": 3,
+			"rule": { "type": "checkin_today" },
+			"active": true
+		},
+		{
+			"id": "daily_read_3",
+			"cycle": "daily",
+			"title": "Nhâm nhi sương sương",
+			"desc": "Mở và đọc 3 hồ sơ bất kỳ trong ngày (dwell ≥ 30 giây).",
+			"icon": "📖",
+			"rp": 5,
+			"rule": { "type": "reads_in_cycle", "count": 3 },
+			"active": true
+		},
+		{
+			"id": "daily_deep_read",
+			"cycle": "daily",
+			"title": "Sigma trầm tư",
+			"desc": "Nghiên cứu sâu 1 hồ sơ bất kỳ bằng cách mở liên tục trên 3 phút.",
+			"icon": "🧐",
+			"rp": 8,
+			"rule": { "type": "reads_in_cycle", "count": 1 },
+			"active": true
+		},
+		{
+			"id": "daily_morning_scan",
+			"cycle": "daily",
+			"title": "Chim sớm thực địa",
+			"desc": "Quét tài liệu lúc bình minh (5h - 8h sáng) để nhận diện các thay đổi sớm.",
+			"icon": "🌅",
+			"rp": 6,
+			"rule": { "type": "achievement_earned_today", "id": "early_bird" },
+			"active": true
+		},
+		{
+			"id": "daily_night_patrol",
+			"cycle": "daily",
+			"title": "Cú đêm tuần tra",
+			"desc": "Hoạt động hoặc báo cáo thông tin trong khung giờ ma mị (0h - 4h sáng).",
+			"icon": "🌃",
+			"rp": 6,
+			"rule": { "type": "achievement_earned_today", "id": "night_owl" },
+			"active": true
+		},
+		{
+			"id": "weekly_read_15",
+			"cycle": "weekly",
+			"title": "Kẻ săn tin Maze",
+			"desc": "Đọc tổng cộng 15 hồ sơ khác nhau trong tuần này để cập nhật kiến thức.",
+			"icon": "📚",
+			"rp": 20,
+			"rule": { "type": "reads_in_cycle", "count": 15 },
+			"active": true
+		},
+		{
+			"id": "weekly_streak_7",
+			"cycle": "weekly",
+			"title": "Cày không trượt phát nào",
+			"desc": "Duy trì chuỗi đăng nhập đạt ít nhất 7 ngày liên tục.",
+			"icon": "⚡",
+			"rp": 25,
+			"rule": { "type": "checkin_streak", "count": 7 },
+			"active": true
+		},
+		{
+			"id": "weekly_write_1",
+			"cycle": "weekly",
+			"title": "Cây viết của tuần",
+			"desc": "Có ít nhất 1 bài viết mới (hồ sơ thực thể, vật phẩm...) được duyệt tuần này.",
+			"icon": "✍️",
+			"rp": 40,
+			"rule": { "type": "approved_articles", "count": 1, "window": "week" },
+			"active": true
+		},
+		{
+			"id": "weekly_typo_hunter",
+			"cycle": "weekly",
+			"title": "Cảnh sát chính tả",
+			"desc": "Thực hiện sửa lỗi chính tả/ngữ pháp (dựa trên thành tựu typo_hunter).",
+			"icon": "🚓",
+			"rp": 20,
+			"rule": { "type": "has_achievement", "id": "typo_hunter" },
+			"active": true
+		},
+		{
+			"id": "weekly_social_butterfly",
+			"cycle": "weekly",
+			"title": "Ngoại giao đáng yêu",
+			"desc": "Kết đủ 10 bạn bè (unlocked thành tựu social) để tăng kết nối thực địa.",
+			"icon": "🤝",
+			"rp": 15,
+			"rule": { "type": "has_achievement", "id": "social" },
+			"active": true
+		},
+		{
+			"id": "monthly_write_3",
+			"cycle": "monthly",
+			"title": "Chúa tể sáng tạo",
+			"desc": "Có ít nhất 3 bài viết được ban quản trị duyệt trong tháng này.",
+			"icon": "🏆",
+			"rp": 120,
+			"rule": { "type": "approved_articles", "count": 3, "window": "month" },
+			"active": true
+		},
+		{
+			"id": "monthly_read_50",
+			"cycle": "monthly",
+			"title": "Mọt sách chính hiệu",
+			"desc": "Đọc tổng cộng 50 hồ sơ khác nhau trong tháng để tích luỹ RP cực lớn.",
+			"icon": "🗂️",
+			"rp": 60,
+			"rule": { "type": "reads_in_cycle", "count": 50 },
+			"active": true
+		},
+		{
+			"id": "monthly_marathon",
+			"cycle": "monthly",
+			"title": "Chiến thần dai sức",
+			"desc": "Đạt cấp độ hoạt động huyền thoại trong Maze bằng cách cày RP.",
+			"icon": "🏃‍♂️",
+			"rp": 150,
+			"rule": { "type": "has_achievement", "id": "tier_3" },
+			"active": true
+		},
+		{
+			"id": "hidden_maze_explorer",
+			"cycle": "daily",
+			"title": "Định vị toàn bản đồ (Ẩn)",
+			"desc": "Tham quan toàn bộ các phân khu tại Trang Chủ trong 24 giờ.",
+			"icon": "🧭",
+			"rp": 50,
+			"rule": { "type": "has_achievement", "id": "maze_navigator" },
+			"active": true
+		},
+		{
+			"id": "hidden_unboxing_easter",
+			"cycle": "daily",
+			"title": "Gõ cửa BQT (Ẩn)",
+			"desc": "Click vào logo M.A.P.L.E liên tiếp nhiều lần để tìm easter egg.",
+			"icon": "🚪",
+			"rp": 15,
+			"rule": { "type": "has_achievement", "id": "open_door" },
+			"active": true
+		},
+		{
+			"id": "hidden_silent_observer",
+			"cycle": "monthly",
+			"title": "Sigma mặt lạnh (Ẩn)",
+			"desc": "Đọc 100 bài nhưng 0 bình luận — kẻ bí ẩn.",
+			"icon": "🗿",
+			"rp": 30,
+			"rule": { "type": "has_achievement", "id": "sigma_lurker" },
+			"active": true
+		},
+		{
+			"id": "daily_comment_1",
+			"cycle": "daily",
+			"title": "Góp ý cộng đồng",
+			"desc": "Thả 1 bình luận hữu ích trên các bài viết hôm nay.",
+			"icon": "💬",
+			"rp": 4,
+			"rule": { "type": "comments_in_cycle", "count": 1 },
+			"active": true
+		},
+		{
+			"id": "daily_chat_5",
+			"cycle": "daily",
+			"title": "Trò chuyện xã giao",
+			"desc": "Gửi ít nhất 5 tin nhắn trò chuyện với các đặc vụ trong ngày.",
+			"icon": "💬",
+			"rp": 5,
+			"rule": { "type": "chat_msgs_in_cycle", "count": 5 },
+			"active": true
+		},
+		{
+			"id": "daily_friend_accept",
+			"cycle": "daily",
+			"title": "Mở rộng mạng lưới",
+			"desc": "Đạt mốc kết bạn đầu tiên (có thành tựu social) để mở rộng mạng lưới.",
+			"icon": "🤝",
+			"rp": 6,
+			"rule": { "type": "has_achievement", "id": "social" },
+			"active": true
+		},
+		{
+			"id": "daily_profile_visit",
+			"cycle": "daily",
+			"title": "Tự soi gương",
+			"desc": "Truy cập trang cá nhân của chính mình hôm nay.",
+			"icon": "☺",
+			"rp": 3,
+			"rule": { "type": "profile_visit_today" },
+			"active": true
+		},
+		{
+			"id": "weekly_comment_10",
+			"cycle": "weekly",
+			"title": "Cây bút bình luận",
+			"desc": "Gửi tổng cộng 10 bình luận hữu ích trên các bài viết trong tuần.",
+			"icon": "✎",
+			"rp": 25,
+			"rule": { "type": "comments_in_cycle", "count": 10 },
+			"active": true
+		},
+		{
+			"id": "weekly_event_1",
+			"cycle": "weekly",
+			"title": "Tham gia sự kiện",
+			"desc": "Tham gia ít nhất 1 sự kiện cộng đồng đang diễn ra.",
+			"icon": "🎫",
+			"rp": 30,
+			"rule": { "type": "events_joined_in_cycle", "count": 1 },
+			"active": true
+		},
+		{
+			"id": "weekly_donate_visit",
+			"cycle": "weekly",
+			"title": "Xem hồ sơ Donate",
+			"desc": "Bật tab Donate nhận ủng hộ lần đầu (có thành tựu generous_soul).",
+			"icon": "💖",
+			"rp": 10,
+			"rule": { "type": "has_achievement", "id": "generous_soul" },
+			"active": true
+		},
+		{
+			"id": "monthly_social_20",
+			"cycle": "monthly",
+			"title": "Nhà ngoại giao",
+			"desc": "Duy trì số lượng bạn bè đạt ít nhất 20 người.",
+			"icon": "👥",
+			"rp": 80,
+			"rule": { "type": "friends_count", "count": 20 },
+			"active": true
+		},
+		{
+			"id": "monthly_all_daily_15",
+			"cycle": "monthly",
+			"title": "Chiến binh bền bỉ",
+			"desc": "Hoàn thành tất cả nhiệm vụ hàng ngày trong ít nhất 15 ngày của tháng.",
+			"icon": "🛡️",
+			"rp": 200,
+			"rule": { "type": "daily_completed_count", "count": 15 },
+			"active": true
+		}
+	]
+}

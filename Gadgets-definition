@@ -1,0 +1,4 @@
+== Maple ==
+* MapleQueue[ResourceLoader|default|dependencies=mediawiki.api]|MapleQueue.js
+* MapleCensor[ResourceLoader|default|dependencies=mediawiki.api,ext.gadget.MapleQueue]|MapleCensor.js
+* MapleSubmit[ResourceLoader|default|dependencies=mediawiki.api]|MapleSubmit.js

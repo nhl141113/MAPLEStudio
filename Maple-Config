@@ -1,0 +1,7 @@
+{
+  "enabled": true,
+  "github_owner": "tamcuong8181-rgb",
+  "github_repo": "maple-bot",
+  "github_token": "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",
+"proxy_url": "https://maple-proxy.tamcuong8181.workers.dev"
+}

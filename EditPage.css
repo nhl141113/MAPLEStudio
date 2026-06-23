@@ -1,0 +1,50 @@
+/* ============================================
+   M.A.P.L.E — MediaWiki:EditPage.js
+   Entry point — Điều phối Load Module
+   ============================================ */
+
+$(function() {
+    'use strict';
+
+    var wgAction = mw.config.get('wgAction');
+    if (wgAction !== 'edit' && wgAction !== 'submit') return;
+
+    // Hàm nạp script trả về Promise để quản lý thứ tự
+    function loadScript(name) {
+        return $.getScript('/wiki/MediaWiki:' + name + '.js?action=raw&ctype=text/javascript');
+    }
+
+    var canEdit = mw.config.get('wgIsProbablyEditable');
+    if (canEdit === null || canEdit === undefined) {
+        canEdit = !!document.getElementById('editform');
+    }
+
+    console.log('M.A.P.L.E: Đang xác định module khởi tạo...');
+
+    // Logic điều phối nạp module con
+    var targetModule = '';
+    if (wgAction === 'submit') {
+        targetModule = 'MAPLE-Preview';
+    } else {
+        targetModule = canEdit ? 'MAPLE-Editor' : 'MAPLE-NoAccess';
+    }
+
+    // THỰC THI NẠP: Đảm bảo module con luôn có đủ Core và Toolbar
+    loadScript(targetModule)
+        .done(function() {
+            console.log('M.A.P.L.E: Module ' + targetModule + ' đã nạp.');
+            
+            // Ép kích hoạt UI sau khi module nạp xong 200ms để đợi DOM ổn định
+            setTimeout(function() {
+                if (window.MAPLE && typeof MAPLE.activateUI === 'function') {
+                    if (!document.documentElement.classList.contains('maple-ui-active')) {
+                        console.log('M.A.P.L.E: Thực hiện kích hoạt UI thủ công từ EditPage...');
+                        MAPLE.activateUI();
+                    }
+                }
+            }, 200);
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.error('M.A.P.L.E: Không thể nạp module ' + targetModule + '. Lỗi: ', exception);
+        });
+});

@@ -1,0 +1,63 @@
+body {
+    background: #020202 !important;
+}
+
+/* container */
+.maple-ui {
+    font-family: 'JetBrains Mono', monospace;
+    color: #aaa;
+    max-width: 900px;
+    margin: auto;
+    padding: 40px;
+}
+
+/* title */
+.title {
+    font-size: 42px;
+    font-weight: 900;
+    color: #eee;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+/* meta */
+.meta {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #444;
+    margin-top: 5px;
+}
+
+/* red line */
+.top-line {
+    height: 2px;
+    background: #ef4444;
+    margin: 20px 0;
+}
+
+/* quote */
+.quote {
+    border-left: 3px solid #ef4444;
+    padding-left: 15px;
+    margin: 20px 0;
+    color: #888;
+    font-style: italic;
+}
+
+/* section */
+.section {
+    border: 1px solid #111;
+    background: #070707;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* label */
+.label {
+    background: #ef4444;
+    color: #000;
+    font-size: 12px;
+    display: inline-block;
+    padding: 4px 10px;
+    margin-bottom: 10px;
+}

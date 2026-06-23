@@ -1,0 +1,217 @@
+/* ============================================
+   M.A.P.L.E — MediaWiki:SecureImage.css
+   Hệ thống ảnh mật — click để giải mã
+   @import vào Common.css:
+   @import url('/wiki/MediaWiki:SecureImage.css?action=raw&ctype=text/css');
+   ============================================ */
+
+@keyframes maple-img-scan {
+    0%   { top: -2px; opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+@keyframes maple-img-badge-pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 15px rgba(239,68,68,0.4); }
+    50%       { opacity: 0.6; box-shadow: 0 0 25px rgba(239,68,68,0.7); }
+}
+
+@keyframes maple-img-decrypt {
+    0%   { filter: blur(50px) brightness(0.15); }
+    100% { filter: blur(0)    brightness(1); }
+}
+
+/* ── Wrapper ── */
+.maple-secure-image {
+    position: relative;
+    width: 100%;
+    margin: 1.2rem 0;
+    border: 1px solid #450a0a;
+    background: #080000;
+    border-radius: 3px;
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+    transition: border-color 0.4s ease;
+}
+
+.maple-secure-image.decrypted {
+    border-color: #065f46;
+    cursor: default;
+}
+
+/* ── Header ── */
+.maple-secure-image-header {
+    background: #2d0000;
+    color: #fca5a5;
+    padding: 6px 14px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #450a0a;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    transition: background 0.4s, color 0.4s, border-color 0.4s;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.maple-secure-image.decrypted .maple-secure-image-header {
+    background: #022c22;
+    color: #6ee7b7;
+    border-bottom-color: #065f46;
+}
+
+.maple-secure-image-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #ef4444;
+    box-shadow: 0 0 6px #ef4444;
+    margin-right: 8px;
+    vertical-align: middle;
+    transition: background 0.4s, box-shadow 0.4s;
+}
+
+.maple-secure-image.decrypted .maple-secure-image-dot {
+    background: #10b981;
+    box-shadow: 0 0 6px #10b981;
+}
+
+.maple-secure-image-ref {
+    font-size: 0.58rem;
+    color: #444;
+    letter-spacing: 0.2em;
+}
+
+/* ── Vùng ảnh ── */
+.maple-secure-image-body {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.maple-secure-image.decrypted .maple-secure-image-body {
+    cursor: default;
+}
+
+/* Scanline nền */
+.maple-secure-image-scanline {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.12) 50%);
+    background-size: 100% 4px;
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0.35;
+}
+
+/* Đường quét khi decrypt */
+.maple-secure-image-sweep {
+    display: none;
+    position: absolute;
+    left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ef4444, transparent);
+    box-shadow: 0 0 12px rgba(239,68,68,0.9);
+    z-index: 20;
+    pointer-events: none;
+    animation: maple-img-scan 0.7s ease forwards;
+}
+
+.maple-secure-image.sweeping .maple-secure-image-sweep { display: block; }
+
+/* Ảnh chính */
+.maple-secure-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: blur(50px) brightness(0.15);
+    transition: filter 0.9s cubic-bezier(0.4,0,0.2,1);
+    user-select: none;
+    pointer-events: none;
+}
+
+.maple-secure-image.decrypted img {
+    filter: blur(0) brightness(1);
+}
+
+/* Rating badge */
+.maple-secure-image-rating {
+    position: absolute;
+    top: 12px; right: 12px;
+    z-index: 25;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 800;
+    background: rgba(0,0,0,0.85);
+    border: 1px solid currentColor;
+    letter-spacing: 1px;
+    pointer-events: none;
+    font-family: 'JetBrains Mono', monospace;
+    transition: opacity 0.4s;
+}
+
+.maple-secure-image.decrypted .maple-secure-image-rating { opacity: 0; }
+
+.maple-secure-image-rating.r13 { color: #eab308; }
+.maple-secure-image-rating.r16 { color: #f97316; }
+.maple-secure-image-rating.r18 { color: #dc2626; }
+
+/* Warning overlay */
+.maple-secure-image-warning {
+    position: absolute;
+    inset: 0; z-index: 15;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.maple-secure-image.decrypted .maple-secure-image-warning { opacity: 0; }
+
+.maple-secure-image-warning-box {
+    background: rgba(127,29,29,0.55);
+    color: #fff;
+    padding: 8px 24px;
+    border: 1px solid #ef4444;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    animation: maple-img-badge-pulse 2s infinite;
+}
+
+.maple-secure-image-warning-sub {
+    color: #7f1d1d;
+    font-size: 0.58rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── Caption ── */
+.maple-secure-image-caption {
+    padding: 10px 14px;
+    font-size: 0.65rem;
+    color: #52525b;
+    border-top: 1px solid #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Tôn trọng giảm chuyển động — tắt loop trang trí */
+@media (prefers-reduced-motion: reduce) {
+    .maple-secure-image-warning-box,
+    .maple-secure-image-sweep { animation: none !important; }
+}

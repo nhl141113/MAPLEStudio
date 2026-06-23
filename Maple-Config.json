@@ -1,0 +1,10 @@
+{
+	"github_token": "",
+	"github_owner": "tamcuong8181-rgb",
+	"github_repo": "maple-bot",
+	"enabled": true,
+	"settings": {
+		"threshold": 0.8,
+		"notify_discord": true
+	}
+}

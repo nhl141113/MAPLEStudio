@@ -1,0 +1,394 @@
+/* ============================================
+   M.A.P.L.E — MediaWiki:MAPLE-Editor.css
+   ============================================ */
+
+#maple-edit-root .maple-alert {
+    margin: 16px 20px 0;
+    background: rgba(239,68,68,0.03);
+    border-left: 2px solid #7f1d1d;
+    padding: 13px 16px;
+    font-size: 12px;
+    color: #555;
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.8;
+}
+#maple-edit-root .maple-alert-title {
+    color: #ef4444;
+    font-weight: 700;
+    font-size: 10px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+#maple-edit-root .maple-alert-title::before {
+    content: "▲";
+    font-size: 9px;
+    color: #7f1d1d;
+}
+#maple-edit-root .maple-alert a { color: #ef4444 !important; text-decoration: underline !important; }
+
+#maple-edit-root .maple-toolbar {
+    background: #0a0a0a !important;
+    border-bottom: 1px solid #141414 !important;
+    padding: 6px 16px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 2px 14px !important;
+    align-items: center !important;
+    user-select: none;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 10 !important;
+}
+#maple-edit-root .maple-toolbar-sep {
+    width: 1px; height: 12px;
+    background: #1e1e1e;
+    display: inline-block; flex-shrink: 0;
+    margin: 0 2px;
+}
+#maple-edit-root .maple-tool-btn {
+    cursor: pointer !important;
+    padding: 4px 6px !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 10px !important;
+    color: #444 !important;
+    border-radius: 2px !important;
+    transition: color 0.15s, background 0.15s;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+    background: transparent !important;
+    border: none !important;
+}
+#maple-edit-root .maple-tool-btn:hover { color: #ef4444 !important; background: rgba(239,68,68,0.06) !important; }
+#maple-edit-root .maple-tool-btn.toolbar-right { margin-left: auto !important; }
+
+/* ── [+] More Panel ── */
+#maple-edit-root .maple-more-panel,
+body > .maple-more-panel {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 8px 16px;
+    background: #0a0a0a;
+    border-bottom: 1px solid #141414;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    box-sizing: border-box;
+}
+
+#maple-edit-root .maple-more-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 3px !important;
+    min-width: 56px !important;
+    padding: 6px 8px !important;
+    cursor: pointer !important;
+    border: 1px solid transparent !important;
+    transition: all 0.15s !important;
+}
+
+#maple-edit-root .maple-more-item:hover {
+    border-color: #1e1e1e !important;
+    background: rgba(239,68,68,0.05) !important;
+}
+
+#maple-edit-root .maple-more-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #ef4444;
+}
+
+#maple-edit-root .maple-more-desc {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+}
+
+#maple-edit-root .maple-more-btn--active {
+    color: #ef4444 !important;
+    background: rgba(239,68,68,0.08) !important;
+}
+
+#maple-edit-root .maple-editor-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+    position: relative;
+    min-height: 0 !important;
+    /* overflow: hidden đã bị xoá — gây clip more panel */
+}
+
+#maple-edit-root #maple-editform {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+    overflow: hidden !important;
+    min-height: 0 !important;
+}
+
+#maple-edit-root #maple-textarea,
+#maple-edit-root textarea#maple-textarea {
+    width: 100% !important;
+    flex: 1 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    background: #060606 !important;
+    border: none !important;
+    border-top: 1px solid #0f0f0f !important;
+    color: #4ade80 !important;
+    padding: 22px 24px !important;
+    font-size: 13.5px !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    outline: none !important;
+    resize: none !important;
+    box-sizing: border-box !important;
+    line-height: 1.75 !important;
+    display: block !important;
+    caret-color: #ef4444;
+    tab-size: 2;
+    overflow-y: auto !important;
+}
+#maple-edit-root #maple-textarea::selection { background: rgba(239,68,68,0.18); }
+
+#maple-edit-root .maple-editor-footer {
+    padding: 16px 20px !important;
+    border-top: 1px solid #121212 !important;
+    background: #080808 !important;
+    flex-shrink: 0 !important;
+}
+#maple-edit-root .maple-summary-label {
+    font-size: 9px !important;
+    text-transform: uppercase !important;
+    color: #2f2f2f !important;
+    margin-bottom: 8px !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    letter-spacing: 0.18em !important;
+}
+#maple-edit-root #maple-summary,
+#maple-edit-root .maple-editor-footer input[type="text"] {
+    width: 100% !important;
+    background: #050505 !important;
+    border: none !important;
+    border-bottom: 1px solid #1e1e1e !important;
+    padding: 8px 0 !important;
+    color: #999 !important;
+    font-size: 12px !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    outline: none !important;
+    margin-bottom: 16px !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.2s, color 0.2s !important;
+}
+#maple-edit-root #maple-summary:focus { border-bottom-color: #ef4444 !important; color: #ccc !important; }
+#maple-edit-root #maple-summary::placeholder { color: #282828 !important; }
+
+#maple-edit-root .maple-editor-btns {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+}
+#maple-edit-root .maple-btn {
+    padding: 8px 20px !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    letter-spacing: 0.1em !important;
+    cursor: pointer !important;
+    transition: all 0.2s;
+    border-radius: 0 !important;
+    line-height: 1 !important;
+    border: 1px solid transparent !important;
+}
+#maple-edit-root .maple-btn-save {
+    background: #ef4444 !important;
+    color: #fff !important;
+    border-color: #ef4444 !important;
+}
+#maple-edit-root .maple-btn-save:hover {
+    background: #dc2626 !important;
+    border-color: #dc2626 !important;
+    box-shadow: 0 0 20px rgba(239,68,68,0.3) !important;
+}
+#maple-edit-root .maple-btn-secondary {
+    background: transparent !important;
+    color: #4a4a4a !important;
+    border-color: #1c1c1c !important;
+}
+#maple-edit-root .maple-btn-secondary:hover { border-color: #444 !important; color: #bbb !important; }
+#maple-edit-root .maple-btn-cancel {
+    background: transparent !important;
+    color: #3a1010 !important;
+    border-color: transparent !important;
+    margin-left: 2px;
+}
+#maple-edit-root .maple-btn-cancel:hover { color: #ef4444 !important; }
+
+#maple-edit-root .maple-watch-wrap { margin-left: auto !important; display: flex !important; align-items: center !important; }
+#maple-edit-root .maple-watch-label {
+    display: flex !important; align-items: center !important; gap: 7px !important;
+    font-size: 9px !important; color: #303030 !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    cursor: pointer !important; text-transform: uppercase !important;
+    letter-spacing: 0.1em !important; user-select: none;
+}
+#maple-edit-root .maple-watch-label input[type="checkbox"] {
+    accent-color: #ef4444 !important; cursor: pointer !important;
+    width: 12px !important; height: 12px !important; margin: 0 !important;
+}
+#maple-edit-root .maple-editor-meta {
+    display: flex !important; justify-content: space-between !important;
+    font-size: 9px !important; color: #1e1e1e !important;
+    padding-top: 14px !important; margin-top: 14px !important;
+    border-top: 1px solid #0f0f0f !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    text-transform: uppercase !important; letter-spacing: 0.1em !important;
+}
+#maple-edit-root #maple-wordcount { color: #52525b !important; }
+
+#maple-edit-root .maple-encoding-panel {
+    position: absolute; top: 40px; right: 0;
+    background: #0c0c0c !important;
+    border: 1px solid #1a1a1a !important;
+    border-top: 2px solid #ef4444 !important;
+    width: 280px; z-index: 100;
+    font-family: 'JetBrains Mono', monospace;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.8);
+}
+#maple-edit-root .maple-encoding-header {
+    font-size: 9px; color: #ef4444 !important; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    padding: 10px 15px 8px; border-bottom: 1px solid #141414;
+}
+#maple-edit-root .maple-encoding-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 5px 0; border-bottom: 1px solid #0d0d0d; font-size: 10px;
+}
+#maple-edit-root .maple-encoding-row span:first-child { color: #333 !important; }
+#maple-edit-root .enc-val { color: #888 !important; font-weight: 700; }
+#maple-edit-root .enc-yes { color: #4ade80 !important; }
+#maple-edit-root .enc-no  { color: #7f1d1d !important; }
+#maple-edit-root .maple-encoding-close {
+    display: block; width: 100%; padding: 8px;
+    background: #080808 !important; border: none; border-top: 1px solid #111;
+    color: #333 !important; font-size: 9px; font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase; cursor: pointer;
+}
+#maple-edit-root .maple-encoding-close:hover { color: #ef4444 !important; }
+
+#maple-edit-root .ml-tag-search-wrap input {
+    width: 100%; background: #050505 !important;
+    border: 1px solid #181818 !important;
+    padding: 8px 10px; color: #bbb !important; font-size: 12px;
+    font-family: 'JetBrains Mono', monospace; outline: none; box-sizing: border-box;
+}
+#maple-edit-root .ml-tag-search-wrap input:focus { border-color: #ef4444 !important; }
+#maple-edit-root .ml-tag-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px 12px; cursor: pointer;
+    border-bottom: 1px solid #0c0c0c;
+}
+#maple-edit-root .ml-tag-item:hover { background: rgba(239,68,68,0.06) !important; }
+#maple-edit-root .ml-tag-item code {
+    font-family: 'JetBrains Mono', monospace !important; font-size: 11px;
+    color: #ef4444 !important; white-space: nowrap; min-width: 145px;
+    background: none !important; border: none !important; padding: 0;
+}
+#maple-edit-root .ml-tag-item span { font-size: 10px; color: #3a3a3a !important; }
+#maple-edit-root .maple-editor-body {
+    overflow: visible !important;
+}
+
+/* Split Preview container */
+#maple-edit-root .maple-editor-split-container {
+    display: flex !important;
+    flex: 1 !important;
+    min-height: 0 !important;
+    width: 100% !important;
+}
+#maple-edit-root .maple-editor-split-container #maple-textarea {
+    flex: 1 !important;
+    min-width: 320px !important;
+}
+#maple-edit-root .maple-preview-pane {
+    flex: 1 !important;
+    min-width: 320px !important;
+    border-left: 1px solid #141414 !important;
+    background: #050505 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+}
+#maple-edit-root .maple-preview-header {
+    background: #0a0a0a !important;
+    border-bottom: 1px solid #141414 !important;
+    padding: 10px 16px !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 9px !important;
+    color: #ef4444 !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.15em !important;
+    user-select: none !important;
+    flex-shrink: 0 !important;
+}
+#maple-edit-root .maple-preview-content {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    padding: 22px 24px !important;
+    color: #c4c4c7 !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    line-height: 1.75 !important;
+}
+
+/* Loading/Error indicators inside preview */
+#maple-edit-root .maple-preview-loading {
+    color: #71717a !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 11px !important;
+    letter-spacing: 0.1em !important;
+    padding: 18px 0 !important;
+    text-align: center !important;
+}
+#maple-edit-root .maple-preview-error {
+    color: #ef4444 !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 11px !important;
+    letter-spacing: 0.1em !important;
+    padding: 18px 0 !important;
+    text-align: center !important;
+}
+
+/* Active split button style */
+#maple-edit-root .maple-btn-active {
+    background: rgba(239, 68, 68, 0.08) !important;
+    border-color: #ef4444 !important;
+    color: #fff !important;
+}
+
+/* Draft saved indicator */
+#maple-draft-indicator {
+    transition: opacity 0.5s ease !important;
+}
+
+@media (max-width: 900px) {
+    #maple-edit-root .maple-editor-split-container {
+        flex-direction: column !important;
+    }
+    #maple-edit-root .maple-preview-pane {
+        border-left: none !important;
+        border-top: 1px solid #141414 !important;
+        height: 50% !important;
+    }
+}

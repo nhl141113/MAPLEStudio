@@ -1,0 +1,21 @@
+{
+	"intro": "M.A.P.L.E Wiki là dự án PHI LỢI NHUẬN do cộng đồng vận hành. Mọi khoản đóng góp đều tự nguyện và được dùng để duy trì hạ tầng, tên miền và phát triển tính năng. Cảm ơn bạn đã đồng hành!",
+	"goal": {
+		"label": "Mục tiêu vận hành / tháng",
+		"current": 0,
+		"target": 0,
+		"currency": "₫",
+		"note": "Quản trị viên cập nhật số liệu thực tế tại MediaWiki:Donate-data.json."
+	},
+	"methods": [
+		{ "name": "Chuyển khoản ngân hàng", "icon": "🏦", "detail": "Số tài khoản / chủ TK", "value": "Đang cập nhật", "color": "#22c55e" },
+		{ "name": "Momo / Ví điện tử", "icon": "📱", "detail": "Số điện thoại / QR", "value": "Đang cập nhật", "color": "#a855f7" },
+		{ "name": "Ko-fi / PayPal", "icon": "☕", "detail": "Link ủng hộ quốc tế", "value": "Đang cập nhật", "color": "#3b82f6" }
+	],
+	"perks": [
+		"Huy hiệu \"Nhà tài trợ\" trên trang cá nhân (Thành Tựu).",
+		"Được vinh danh tại trang này (nếu bạn đồng ý).",
+		"Góp phần giữ Wiki online & không quảng cáo xâm phạm."
+	],
+	"thanks": []
+}

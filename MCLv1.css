@@ -1,0 +1,649 @@
+/* ============================================================
+   MediaWiki:MCLv1.css
+   M.A.P.L.E CUSTOM LICENSE v1.0 — STYLE SHEET
+   Cảm hứng: HomePage + LogoTest (terminal / containment archive)
+   ============================================================ */
+
+/* ---------- LOCAL VARIABLES ---------- */
+.mcl-page {
+    --mcl-red:        #ef4444;
+    --mcl-red-dark:   #450a0a;
+    --mcl-red-glow:   rgba(239, 68, 68, 0.4);
+    --mcl-bg:         #050505;
+    --mcl-bg-card:    #070707;
+    --mcl-bg-alt:     #0a0a0a;
+    --mcl-border:     #1a1a1a;
+    --mcl-border-sub: #111;
+    --mcl-text:       #d1d1d1;
+    --mcl-text-dim:   #71717a;
+    --mcl-text-mute:  #444;
+
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    color: var(--mcl-text);
+    line-height: 1.7;
+    position: relative;
+}
+
+/* Ẩn các thành phần MediaWiki khi trang MCLv1 đang active */
+body.mcl-active #firstHeading,
+body.mcl-active #siteSub,
+body.mcl-active #contentSub,
+body.mcl-active .mw-indicators,
+body.mcl-active #catlinks,
+body.mcl-active .mw-jump-link {
+    display: none !important;
+}
+
+body.mcl-active #mw-content-text,
+body.mcl-active #content,
+body.mcl-active #bodyContent {
+    background: #050505 !important;
+    background-image: radial-gradient(#0c0c0c 1px, transparent 1px) !important;
+    background-size: 22px 22px !important;
+    color: var(--mcl-text);
+}
+
+/* Loại bỏ padding mặc định trong content khi MCL active */
+body.mcl-active #mw-content-text > .mw-parser-output {
+    margin: 0;
+    padding: 0;
+}
+
+/* ============================================================
+   SCANLINE OVERLAY
+   ============================================================ */
+.mcl-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.18) 50%);
+    background-size: 100% 3px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.mcl-scan-line {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(239, 68, 68, 0.18);
+    box-shadow: 0 0 14px var(--mcl-red-glow);
+    animation: mcl-scan 6s linear infinite;
+    pointer-events: none;
+    z-index: 5;
+}
+
+@keyframes mcl-scan {
+    0%   { top: 0%; }
+    100% { top: 100%; }
+}
+
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+.mcl-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 60px 32px 80px;
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================================================
+   HEADER — LOGO + TITLE
+   ============================================================ */
+.mcl-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 0 50px;
+    border-bottom: 1px solid var(--mcl-border);
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.mcl-header::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 2px;
+    background: var(--mcl-red);
+    box-shadow: 0 0 12px var(--mcl-red-glow);
+}
+
+.mcl-logo {
+    width: 130px;
+    height: 130px;
+    margin-bottom: 28px;
+    filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.25));
+}
+
+.mcl-logo .mcl-eye {
+    transform-origin: 50px 40px;
+    animation: mcl-pulse-eye 3s ease-in-out infinite;
+}
+
+@keyframes mcl-pulse-eye {
+    0%, 100% { opacity: 0.5; transform: scale(0.92); }
+    50%      { opacity: 1;   transform: scale(1.15); }
+}
+
+.mcl-doc-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--mcl-red);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    padding: 4px 14px;
+    border: 1px solid var(--mcl-red-dark);
+    opacity: 0.78;
+    display: inline-block;
+}
+
+.mcl-title {
+    font-family: 'Plus Jakarta Sans', 'JetBrains Mono', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #f5f5f5;
+    letter-spacing: -1.5px;
+    line-height: 1;
+    margin: 0 0 12px;
+}
+
+.mcl-title .mcl-accent {
+    color: var(--mcl-red);
+    text-shadow: 0 0 18px var(--mcl-red-glow);
+}
+
+.mcl-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5em;
+    color: var(--mcl-text-mute);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.mcl-version-bar {
+    margin-top: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--mcl-text-dim);
+    text-transform: uppercase;
+}
+
+.mcl-version-bar .mcl-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--mcl-red);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--mcl-red-glow);
+    display: inline-block;
+}
+
+/* ============================================================
+   LEGAL NOTICE
+   ============================================================ */
+.mcl-legal-notice {
+    border: 1px solid rgba(239, 68, 68, 0.18);
+    background: rgba(239, 68, 68, 0.03);
+    padding: 22px 24px 22px 28px;
+    margin-bottom: 50px;
+    position: relative;
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--mcl-text-dim);
+}
+
+.mcl-legal-notice::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--mcl-red);
+}
+
+.mcl-legal-notice .mcl-notice-label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--mcl-red);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.mcl-legal-notice strong {
+    color: #eaeaea;
+}
+
+/* ============================================================
+   TOC
+   ============================================================ */
+.mcl-toc {
+    border: 1px solid var(--mcl-border);
+    background: var(--mcl-bg-card);
+    padding: 22px 24px;
+    margin-bottom: 50px;
+}
+
+.mcl-toc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: var(--mcl-red);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--mcl-border);
+}
+
+.mcl-toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: mcl-counter;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 24px;
+}
+
+.mcl-toc ol li {
+    counter-increment: mcl-counter;
+    font-size: 12px;
+    padding: 4px 0;
+}
+
+.mcl-toc ol li a {
+    color: var(--mcl-text-dim);
+    text-decoration: none;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    display: block;
+}
+
+.mcl-toc ol li a::before {
+    content: "0" counter(mcl-counter) " //";
+    color: var(--mcl-red);
+    margin-right: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+}
+
+.mcl-toc ol li a:hover {
+    color: #fff;
+    padding-left: 6px;
+}
+
+/* ============================================================
+   ARTICLE
+   ============================================================ */
+.mcl-article {
+    margin-bottom: 48px;
+    padding-top: 8px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mcl-article.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mcl-article-header {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--mcl-border);
+    position: relative;
+    cursor: pointer;
+}
+
+.mcl-article-header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 40px;
+    height: 1px;
+    background: var(--mcl-red);
+    transition: width 0.4s ease;
+}
+
+.mcl-article-header:hover::before {
+    width: 100%;
+    opacity: 0.35;
+}
+
+.mcl-article-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--mcl-red);
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 3px 10px;
+    border: 1px solid var(--mcl-red-dark);
+    background: rgba(239, 68, 68, 0.04);
+    flex-shrink: 0;
+}
+
+.mcl-article-title {
+    font-family: 'Plus Jakarta Sans', 'JetBrains Mono', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #eaeaea;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.mcl-article-body {
+    padding-left: 22px;
+    border-left: 1px solid var(--mcl-border);
+    font-size: 14px;
+    color: var(--mcl-text);
+    line-height: 1.85;
+}
+
+.mcl-article-body p {
+    margin: 0 0 16px;
+}
+
+.mcl-article-body strong {
+    color: #f5f5f5;
+    font-weight: 700;
+}
+
+/* Sub-headings */
+.mcl-subheading {
+    font-family: 'Plus Jakarta Sans', 'JetBrains Mono', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--mcl-red);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 28px 0 14px;
+    padding-left: 14px;
+    position: relative;
+}
+
+.mcl-subheading::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--mcl-red);
+}
+
+/* Definition term */
+.mcl-def {
+    color: var(--mcl-red);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+}
+
+/* Blockquote / note (block 'note') */
+.mcl-note {
+    border-left: 3px solid var(--mcl-red);
+    background: rgba(239, 68, 68, 0.04);
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 13px;
+    color: var(--mcl-text-dim);
+    line-height: 1.7;
+}
+.mcl-note strong { color: #eaeaea; }
+
+/* Code block (block 'code') — ascii art / sơ đồ kế thừa */
+pre.mcl-code {
+    background: var(--mcl-bg-alt);
+    border: 1px solid var(--mcl-border);
+    border-left: 2px solid var(--mcl-red);
+    padding: 16px 18px;
+    margin: 18px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--mcl-text-dim);
+    overflow-x: auto;
+    white-space: pre;
+}
+
+/* Wrapper cho bảng rộng (block 'table' trong thân điều) */
+.mcl-table-wrap { overflow-x: auto; margin: 18px 0; -webkit-overflow-scrolling: touch; }
+.mcl-table-wrap .mcl-summary-table { margin: 0; min-width: 520px; }
+.mcl-table-wrap .mcl-summary-table td.mcl-cell-first { white-space: nowrap; }
+.mcl-article-body a { color: var(--mcl-red); text-decoration: none; }
+.mcl-article-body a:hover { text-decoration: underline; }
+
+/* Lists */
+.mcl-article-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 20px;
+}
+
+.mcl-article-body ul li {
+    padding: 6px 0 6px 22px;
+    position: relative;
+    font-size: 13.5px;
+    color: var(--mcl-text);
+}
+
+.mcl-article-body ul li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    color: var(--mcl-red);
+    font-size: 12px;
+}
+
+.mcl-article-body ul.mcl-deny li::before {
+    content: "✕";
+    color: #6b1a1a;
+}
+
+/* ============================================================
+   SUMMARY TABLE
+   ============================================================ */
+.mcl-summary-wrapper {
+    margin: 60px 0 40px;
+    border: 1px solid var(--mcl-border);
+    background: var(--mcl-bg-card);
+    padding: 32px;
+    position: relative;
+}
+
+.mcl-summary-wrapper::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 24px;
+    width: 80px;
+    height: 2px;
+    background: var(--mcl-red);
+}
+
+.mcl-summary-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--mcl-red);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.mcl-summary-title {
+    font-family: 'Plus Jakarta Sans', 'JetBrains Mono', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #eee;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+    letter-spacing: 0.02em;
+}
+
+.mcl-summary-note {
+    font-size: 11px;
+    color: var(--mcl-text-dim);
+    margin-bottom: 18px;
+    font-style: italic;
+}
+
+.mcl-summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    color: var(--mcl-text);
+}
+
+.mcl-summary-table th,
+.mcl-summary-table td {
+    padding: 12px 10px;
+    text-align: center;
+    border: 1px solid var(--mcl-border);
+}
+
+.mcl-summary-table thead th {
+    background: var(--mcl-bg-alt);
+    color: var(--mcl-red);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.mcl-summary-table tbody td:first-child {
+    text-align: left;
+    color: #ddd;
+    font-weight: 500;
+    background: rgba(239, 68, 68, 0.02);
+    font-size: 12px;
+}
+
+.mcl-summary-table tbody tr:hover td {
+    background: rgba(239, 68, 68, 0.03);
+}
+
+.mcl-yes  { color: #4ade80; font-weight: 700; }
+.mcl-no   { color: #6b1a1a; font-weight: 700; }
+.mcl-cond { color: #facc15; font-size: 11px; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.mcl-footer {
+    margin-top: 70px;
+    padding-top: 28px;
+    border-top: 1px solid var(--mcl-border);
+    text-align: center;
+    position: relative;
+}
+
+.mcl-footer::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: var(--mcl-red);
+}
+
+.mcl-footer .mcl-stamp {
+    display: inline-block;
+    padding: 5px 14px;
+    border: 1px solid var(--mcl-red-dark);
+    color: var(--mcl-red);
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    opacity: 0.78;
+}
+
+.mcl-footer .mcl-meta {
+    font-size: 10px;
+    color: var(--mcl-text-mute);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+}
+
+.mcl-footer .mcl-meta span {
+    margin: 0 12px;
+}
+
+/* ============================================================
+   TOAST (terminal-style)
+   ============================================================ */
+.mcl-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    padding: 10px 18px;
+    background: #070707;
+    border: 1px solid var(--mcl-red-dark);
+    color: var(--mcl-red);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    z-index: 99999;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mcl-toast.is-show { opacity: 1; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .mcl-container        { padding: 40px 18px 60px; }
+    .mcl-logo             { width: 100px; height: 100px; }
+    .mcl-article-header   { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .mcl-article-body     { padding-left: 14px; font-size: 13px; }
+    .mcl-toc ol           { grid-template-columns: 1fr; }
+    .mcl-summary-wrapper  { padding: 22px 16px; overflow-x: auto; }
+    .mcl-summary-table    { min-width: 540px; }
+}
+
+/* ── Nút "Xem bản gốc" (trang giấy phép CC) ── */
+.mcl-source { margin: 0 0 26px; text-align: center; }
+.mcl-source-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: .08em;
+    padding: 11px 20px; border-radius: 4px; text-decoration: none;
+    color: #fde68a !important; background: rgba(234,179,8,.08); border: 1px solid rgba(234,179,8,.4);
+    transition: background .15s, box-shadow .15s, transform .15s;
+}
+.mcl-source-btn:hover { background: rgba(234,179,8,.16); box-shadow: 0 0 18px rgba(234,179,8,.25); transform: translateY(-1px); }

@@ -1,0 +1,106 @@
+{
+	"users": {
+		"Beestudio2026": {
+			"violations": 18,
+			"events": [
+				{
+					"at": "2026-05-16T10:02:51.123Z",
+					"reason": ""
+				},
+				{
+					"at": "2026-05-16T10:02:53.356Z",
+					"reason": ""
+				},
+				{
+					"at": "2026-05-16T10:02:54.558Z",
+					"reason": ""
+				},
+				{
+					"at": "2026-05-16T10:02:57.245Z",
+					"reason": ""
+				},
+				{
+					"at": "2026-05-16T10:02:58.815Z",
+					"reason": ""
+				},
+				{
+					"at": "2026-05-16T10:03:00.576Z",
+					"reason": ""
+				},
+				{
+					"at": "2026-05-16T10:03:02.286Z",
+					"reason": ""
+				},
+				{
+					"at": "2026-05-16T10:03:04.015Z",
+					"reason": ""
+				},
+				{
+					"at": "2026-05-16T10:03:05.736Z",
+					"reason": ""
+				},
+				{
+					"at": "2026-05-17T00:46:22.115Z",
+					"reason": ""
+				},
+				{
+					"at": "2026-05-17T00:58:14.879Z",
+					"reason": "Bài xàm"
+				},
+				{
+					"at": "2026-05-17T01:27:18.104Z",
+					"reason": "Khác (xem ghi chú bên dưới).\nThông tin được cung cấp không có bất kì ý nghĩa gì tới wiki",
+					"severity": "low",
+					"by": "Beestudio2026"
+				},
+				{
+					"at": "2026-05-17T01:27:34.299Z",
+					"reason": "Khác (xem ghi chú bên dưới).",
+					"severity": "low",
+					"by": "Beestudio2026"
+				},
+				{
+					"at": "2026-05-17T01:27:56.722Z",
+					"reason": "Nội dung vi phạm quy định MAPLE.",
+					"severity": "low",
+					"by": "Beestudio2026"
+				},
+				{
+					"at": "2026-05-17T01:28:09.370Z",
+					"reason": "Khác (xem ghi chú bên dưới).",
+					"severity": "low",
+					"by": "Beestudio2026"
+				},
+				{
+					"at": "2026-05-17T01:28:25.558Z",
+					"reason": "Nội dung trùng lặp với bài đã có.",
+					"severity": "low",
+					"by": "Beestudio2026"
+				},
+				{
+					"at": "2026-05-17T10:37:00.495Z",
+					"reason": "Vì bài quá xàm không liên quan gì cả",
+					"severity": "low",
+					"by": "Beestudio2026"
+				},
+				{
+					"at": "2026-05-17T10:37:22.465Z",
+					"reason": ".",
+					"severity": "low",
+					"by": "Beestudio2026"
+				}
+			]
+		},
+		"Mapleofficialvn": {
+			"violations": 1,
+			"events": [
+				{
+					"at": "2026-05-17T14:28:58.659Z",
+					"reason": "Định dạng sai hoặc thiếu thông tin bắt buộc theo quy chuẩn.",
+					"severity": "low",
+					"by": "Beestudio2026"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,204 @@
+/* ══════════════════════════════════════════
+   M.A.P.L.E — GuestGate
+   Overlay cho người chưa đăng nhập
+   ══════════════════════════════════════════ */
+
+/* ── Content host: vùng nội dung bị che ── */
+.mgg-content-host {
+    position: relative;
+    min-height: 100vh;
+}
+
+/* ── Blur nội dung phía sau ── */
+.mgg-blur {
+    filter: blur(6px);
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.2;
+    max-height: 160px;
+    overflow: hidden;
+}
+
+/* ── Overlay che toàn vùng content ── */
+.mgg-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 2.5rem;
+    background: rgba(5, 5, 5, 0.6);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    min-height: 100vh;
+}
+
+/* ── Modal box ── */
+.mgg-modal {
+    position: relative;
+    width: min(520px, 92vw);
+    background: #0d0d0d;
+    border: 1px solid #1a1a1a;
+    border-top: 3px solid var(--mgg-color, #ef4444);
+    font-family: 'JetBrains Mono', monospace;
+    overflow: hidden;
+}
+
+/* Scanline animation */
+@keyframes mgg-scan {
+    0%   { top: -2px; }
+    100% { top: 100%; }
+}
+
+.mgg-modal::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--mgg-color, #ef4444);
+    opacity: 0.12;
+    animation: mgg-scan 5s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Header modal ── */
+.mgg-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.1rem 1.4rem 0.9rem;
+    border-bottom: 1px solid #1a1a1a;
+    position: relative;
+    z-index: 1;
+}
+
+.mgg-badge {
+    font-size: 1.1rem;
+    font-weight: 800;
+    border: 1px solid var(--mgg-color, #ef4444);
+    padding: 2px 10px;
+    color: var(--mgg-color, #ef4444);
+    background: rgba(0,0,0,0.4);
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+}
+
+.mgg-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--mgg-color, #ef4444);
+}
+
+.mgg-sys {
+    margin-left: auto;
+    font-size: 0.6rem;
+    color: #52525b;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+/* ── Body modal ── */
+.mgg-body {
+    padding: 1.4rem 1.6rem;
+    position: relative;
+    z-index: 1;
+}
+
+.mgg-desc {
+    font-size: 0.82rem;
+    color: #71717a;
+    line-height: 1.8;
+    margin: 0 0 1rem;
+}
+
+.mgg-desc strong {
+    color: #a1a1aa;
+    font-weight: 600;
+}
+
+/* ── Tags ── */
+.mgg-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 1.2rem;
+}
+
+.mgg-tag {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    color: #52525b;
+    font-size: 0.67rem;
+    padding: 3px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+/* ── Actions ── */
+.mgg-actions {
+    display: flex;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    border-top: 1px solid #1a1a1a;
+    padding-top: 1rem;
+}
+
+.mgg-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 9px 20px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.15s, color 0.15s;
+}
+
+.mgg-btn-primary {
+    background: var(--mgg-color, #ef4444);
+    color: #050505;
+}
+
+.mgg-btn-primary:hover {
+    background: #fff;
+    color: #050505;
+    text-decoration: none;
+}
+
+.mgg-btn-secondary {
+    background: transparent;
+    color: #52525b;
+    border: 1px solid #27272a;
+}
+
+.mgg-btn-secondary:hover {
+    border-color: var(--mgg-color, #ef4444);
+    color: var(--mgg-color, #ef4444);
+    text-decoration: none;
+}
+
+/* ── Footer note ── */
+.mgg-footer-note {
+    font-size: 0.63rem;
+    color: #52525b;
+    padding: 0.6rem 1.6rem 0.9rem;
+    border-top: 1px solid #111;
+    letter-spacing: 0.08em;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Biến màu theo loại ── */
+.mgg-modal[data-type="16"]   { --mgg-color: #f59e0b; }
+.mgg-modal[data-type="18"]   { --mgg-color: #ef4444; }
+.mgg-modal[data-type="edit"] { --mgg-color: #3b82f6; }

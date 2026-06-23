@@ -1,0 +1,476 @@
+/* ============================================
+   M.A.P.L.E — MediaWiki:MAPLE-Base.css
+   @import vào Common.css trước tất cả MAPLE CSS khác
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+/* ══════════════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════════════ */
+@keyframes maple-fadein {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes maple-fadeout {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(-12px); }
+}
+@keyframes maple-overlay-in  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes maple-overlay-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes maple-save-pulse {
+    0%, 100% { filter: drop-shadow(0 0 20px rgba(239,68,68,0.5)); transform: scale(1); }
+    50%       { filter: drop-shadow(0 0 40px rgba(239,68,68,1));   transform: scale(1.07); }
+}
+@keyframes maple-bar-scan {
+    from { left: -100%; } to { left: 100%; }
+}
+@keyframes maple-blink {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.25; }
+}
+@keyframes maple-modal-in {
+    from { opacity: 0; transform: translateY(-14px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ══════════════════════════════════════════
+   GLOBAL HIDE — MediaWiki native UI
+══════════════════════════════════════════ */
+.maple-ui-active .vector-column-start,
+.maple-ui-active #mw-panel,
+.maple-ui-active .vector-main-menu-container,
+.maple-ui-active header.mw-header,
+.maple-ui-active .vector-header-container,
+.maple-ui-active .vector-sticky-header,
+.maple-ui-active #vector-sticky-header,
+.maple-ui-active .vector-page-titlebar,
+.maple-ui-active .vector-page-toolbar-container,
+.maple-ui-active .vector-page-toolbar,
+.maple-ui-active .vector-column-end,
+.maple-ui-active #footer,
+.maple-ui-active .mw-footer-container,
+.maple-ui-active #firstHeading,
+.maple-ui-active .mw-indicators,
+.maple-ui-active #siteSub,
+.maple-ui-active #contentSub,
+.maple-ui-active .printfooter,
+.maple-ui-active #catlinks,
+.maple-ui-active #mw-head,
+.maple-ui-active #mw-head-base,
+.maple-ui-active #mw-page-base,
+.maple-ui-active #editpage-copywarn,
+.maple-ui-active .editCheckboxes,
+.maple-ui-active .mw-editTools,
+.maple-ui-active .templatesUsed,
+.maple-ui-active .hiddencats,
+.maple-ui-active .wikiEditor-ui,
+.maple-ui-active .wikiEditor-ui-toolbar,
+.maple-ui-active .wikiEditor-ui-view,
+.maple-ui-active .wikiEditor-ui-bottom,
+.maple-ui-active .wikiEditor-ui-controls,
+.maple-ui-active #toolbar,
+.maple-ui-active .mw-editnotice,
+.maple-ui-active .ve-ui-toolbar,
+.maple-ui-active .ve-ui-surface,
+.maple-ui-active #wpSummaryLabel,
+.maple-ui-active .editOptions,
+.maple-ui-active .mw-editButtons,
+.maple-ui-active .mw-editfooter { display: none !important; }
+
+.maple-ui-active .mw-page-container,
+.maple-ui-active #mw-content-text,
+.maple-ui-active .mw-body,
+.maple-ui-active #content,
+.maple-ui-active .vector-column-content,
+.maple-ui-active .mw-page-container-inner {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    background: #050505 !important;
+    border: none !important;
+    box-shadow: none !important;
+    display: block !important;
+}
+
+html.maple-ui-active,
+html.maple-ui-active body {
+    background: #050505 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ══════════════════════════════════════════
+   ROOT SHELL
+══════════════════════════════════════════ */
+#maple-edit-root {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    overflow-y: auto;
+    z-index: 99999;
+    background: #050505;
+    font-family: 'JetBrains Mono', monospace;
+    animation: maple-fadein 0.5s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+#maple-edit-root.maple-leaving {
+    animation: maple-fadeout 0.4s cubic-bezier(0.4,0,1,1) forwards !important;
+}
+
+/* CRT scanline */
+#maple-edit-root::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px, transparent 3px,
+        rgba(0,0,0,0.07) 3px, rgba(0,0,0,0.07) 4px
+    );
+    pointer-events: none;
+    z-index: 99999;
+    opacity: 0.6;
+}
+
+.maple-shell {
+    width: 100%;
+    min-height: 100vh;
+    background: #080808;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ══════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════ */
+.maple-header {
+    padding: 14px 24px;
+    border-bottom: 1px solid #1c1c1c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #080808;
+    flex-shrink: 0;
+    position: relative;
+}
+.maple-header::after {
+    content: "";
+    position: absolute;
+    bottom: -3px; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ef4444 20%, #ef4444 80%, transparent);
+    opacity: 0.8;
+}
+
+.maple-header-logo { display: flex; align-items: center; gap: 14px; }
+.maple-logo-svg { filter: drop-shadow(0 0 10px rgba(239,68,68,0.5)); flex-shrink: 0;
+    animation: maple-logo-float 4.5s ease-in-out infinite; }
+@keyframes maple-logo-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+
+.maple-title h1 {
+    color: #fff !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    margin: 0 !important; padding: 0 !important;
+    border: none !important; background: none !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    line-height: 1.2 !important;
+}
+.maple-title-sub {
+    font-size: 9px;
+    color: rgba(239,68,68,0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    margin-top: 5px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.maple-badge {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 4px 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-family: 'JetBrains Mono', monospace;
+    border: 1px solid;
+}
+.maple-badge--ok      { color: #4ade80; border-color: #14532d; background: rgba(74,222,128,0.04); }
+.maple-badge--warn    { color: #facc15; border-color: #713f12; background: rgba(250,204,21,0.04); }
+.maple-badge--danger  { color: #ef4444; border-color: #450a0a; background: rgba(239,68,68,0.04); }
+
+/* ══════════════════════════════════════════
+   SAVE / LOADING OVERLAY
+══════════════════════════════════════════ */
+#maple-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5,5,5,0.97);
+    z-index: 9999999;
+    display: none;        /* ← THÊM DÒNG NÀY */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    opacity: 1;
+}
+
+#maple-overlay.active {
+    display: flex;
+    animation: maple-overlay-in 0.25s ease forwards;
+}
+
+#maple-overlay.out {
+    display: flex;
+    animation: maple-overlay-out 0.35s ease forwards !important;
+}
+.maple-overlay-logo { animation: maple-save-pulse 1.1s ease infinite; }
+.maple-overlay-bar-wrap {
+    width: 240px; height: 1px;
+    background: #181818;
+    position: relative; overflow: hidden;
+}
+.maple-overlay-bar {
+    position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, #ef4444 50%, transparent);
+    animation: maple-bar-scan 0.9s linear infinite;
+}
+.maple-overlay-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #3a3a3a;
+    text-transform: uppercase; letter-spacing: 0.35em;
+    animation: maple-blink 1.2s step-end infinite;
+}
+.maple-overlay-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px; color: #1e1e1e;
+    text-transform: uppercase; letter-spacing: 0.2em;
+}
+
+/* ══════════════════════════════════════════
+   MODAL
+══════════════════════════════════════════ */
+.maple-modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(5,5,5,0.88);
+    z-index: 999998;
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(3px);
+}
+.maple-modal {
+    background: #0c0c0c;
+    border: 1px solid #1e1e1e;
+    border-top: 2px solid #ef4444;
+    width: 520px; max-width: 94vw; max-height: 88vh;
+    overflow-y: auto;
+    font-family: 'JetBrains Mono', monospace;
+    animation: maple-modal-in 0.22s cubic-bezier(0.16,1,0.3,1) forwards;
+    scrollbar-width: thin; scrollbar-color: #222 #060606;
+}
+.maple-modal::-webkit-scrollbar { width: 4px; }
+.maple-modal::-webkit-scrollbar-track { background: #060606; }
+.maple-modal::-webkit-scrollbar-thumb { background: #222; }
+
+.maple-modal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 18px 10px;
+    border-bottom: 1px solid #181818;
+    position: sticky; top: 0; background: #0c0c0c; z-index: 1;
+}
+.maple-modal-title {
+    font-size: 10px; font-weight: 700; color: #ef4444;
+    text-transform: uppercase; letter-spacing: 0.2em;
+}
+.maple-modal-close {
+    background: none; border: none; color: #333; cursor: pointer;
+    font-size: 13px; padding: 0 2px; line-height: 1;
+    font-family: 'JetBrains Mono', monospace; transition: color 0.2s;
+}
+.maple-modal-close:hover { color: #ef4444; }
+.maple-modal-body { padding: 18px; }
+
+.maple-modal-field { margin-bottom: 14px; }
+.maple-modal-field label {
+    display: block; font-size: 9px; color: #3a3a3a;
+    text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px;
+}
+.maple-modal-field--row {
+    display: flex; gap: 18px; align-items: center; flex-wrap: wrap;
+}
+.maple-modal-field--row label {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 9px; color: #555; margin-bottom: 0;
+    cursor: pointer; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.maple-modal-hint { color: #52525b; text-transform: none; letter-spacing: 0; }
+
+.maple-modal-field input[type="text"],
+.maple-modal-field input[type="url"],
+.maple-modal-field input[type="number"] {
+    width: 100%; background: #050505;
+    border: 1px solid #181818; border-bottom-color: #52525b;
+    padding: 8px 10px; color: #bbb;
+    font-size: 12px; font-family: 'JetBrains Mono', monospace;
+    outline: none; box-sizing: border-box; transition: border-color 0.2s;
+}
+.maple-modal-field input:focus { border-color: #ef4444 !important; }
+.maple-modal-textarea,
+.maple-modal-field textarea {
+    width: 100%; background: #050505;
+    border: 1px solid #181818; border-bottom-color: #52525b;
+    padding: 8px 10px; color: #bbb; font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    outline: none; box-sizing: border-box;
+    resize: vertical; line-height: 1.7; transition: border-color 0.2s;
+}
+.maple-modal-textarea:focus,
+.maple-modal-field textarea:focus { border-color: #ef4444; }
+.maple-modal-field input[type="radio"],
+.maple-modal-field input[type="checkbox"] {
+    accent-color: #ef4444; cursor: pointer;
+    width: 12px !important; height: 12px !important; margin: 0 !important;
+}
+
+.maple-modal-actions {
+    display: flex; gap: 10px; padding-top: 6px; flex-wrap: wrap;
+}
+.maple-modal-btn {
+    padding: 7px 16px; font-size: 10px; font-weight: 700;
+    text-transform: uppercase; font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.08em; cursor: pointer;
+    border: 1px solid #222; background: transparent; color: #444;
+    transition: all 0.2s; border-radius: 0;
+}
+.maple-modal-btn:hover { border-color: #555; color: #bbb; }
+.maple-modal-btn--primary {
+    background: #ef4444 !important; border-color: #ef4444 !important; color: #fff !important;
+}
+.maple-modal-btn--primary:hover { background: #dc2626 !important; border-color: #dc2626 !important; }
+.maple-modal-btn--danger {
+    background: transparent !important; border-color: #7f1d1d !important; color: #ef4444 !important;
+}
+.maple-modal-btn--danger:hover { background: rgba(239,68,68,0.06) !important; }
+
+.maple-confirm-body { text-align: center; padding: 10px 0 18px; }
+.maple-confirm-icon { font-size: 28px; color: #ef4444; margin-bottom: 12px; line-height: 1; }
+.maple-confirm-text { font-size: 12px; color: #666; line-height: 1.9; font-family: 'JetBrains Mono', monospace; }
+
+/* ══════════════════════════════════════════
+   SCROLLBAR
+══════════════════════════════════════════ */
+#maple-edit-root ::-webkit-scrollbar { width: 5px; height: 5px; }
+#maple-edit-root ::-webkit-scrollbar-track { background: #050505; }
+#maple-edit-root ::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 0; }
+#maple-edit-root ::-webkit-scrollbar-thumb:hover { background: #52525b; }
+/* Force override Vector */
+#maple-edit-root .maple-toolbar {
+    background: #0a0a0a !important;
+    border-bottom: 1px solid #141414 !important;
+}
+html.maple-ui-active #maple-edit-root {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+html.maple-ui-active .maple-shell {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100vh !important;
+}
+
+html.maple-ui-active .maple-editor-body {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+}
+
+html.maple-ui-active #maple-editform {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+html.maple-ui-active #maple-textarea {
+    flex: 1 !important;
+    min-height: 380px !important;
+}
+
+#maple-edit-root #maple-textarea,
+#maple-edit-root textarea#maple-textarea {
+    background: #060606 !important;
+    color: #4ade80 !important;
+    min-height: 380px !important;
+    height: auto !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 13.5px !important;
+    border: none !important;
+    padding: 22px 24px !important;
+    resize: none !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    line-height: 1.75 !important;
+    width: 100% !important;
+    flex: 1 !important;
+    display: block !important;
+}
+/* ══════════════════════════════════════════
+   FORCE OVERRIDE VECTOR
+══════════════════════════════════════════ */
+html.maple-ui-active #maple-edit-root .maple-toolbar {
+    background: #0a0a0a !important;
+    border-bottom: 1px solid #141414 !important;
+    padding: 6px 16px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 2px 14px !important;
+    align-items: center !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 10 !important;
+}
+
+html.maple-ui-active #maple-edit-root #maple-textarea {
+    background: #060606 !important;
+    color: #4ade80 !important;
+    min-height: 380px !important;
+    height: auto !important;
+    max-height: none !important;
+    width: 100% !important;
+    flex: 1 !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 13.5px !important;
+    border: none !important;
+    border-top: 1px solid #0f0f0f !important;
+    padding: 22px 24px !important;
+    resize: none !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    line-height: 1.75 !important;
+    display: block !important;
+    caret-color: #ef4444 !important;
+}
+
+html.maple-ui-active #maple-edit-root .maple-editor-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+}
+
+html.maple-ui-active #maple-edit-root .maple-shell {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100vh !important;
+}
+html.maple-ui-active #maple-global-nav,
+html.maple-ui-active #maple-sidebar,
+html.maple-ui-active #maple-nav-overlay {
+    display: none !important;
+}
+
+html.maple-ui-active body {
+    padding-top: 0 !important;
+}

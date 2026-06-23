@@ -1,0 +1,83 @@
+[
+	{
+		"id": "cmt-mp9uysr5d9jt",
+		"request_id": "MP85E0DQ-BH91Z6",
+		"author": "Beestudio2026",
+		"role": "sysop",
+		"tag": "note",
+		"text": "s",
+		"created_at": "2026-05-17T14:16:16.145Z"
+	},
+	{
+		"id": "cmt-mp9uzmm5yetm",
+		"request_id": "MP85E0DQ-BH91Z6",
+		"author": "Beestudio2026",
+		"role": "sysop",
+		"tag": "request",
+		"text": "Ê , sai sai thế",
+		"created_at": "2026-05-17T14:16:54.845Z"
+	},
+	{
+		"id": "cmt-mp9v0alyrkff",
+		"request_id": "MP85E0DQ-BH91Z6",
+		"author": "Beestudio2026",
+		"role": "sysop",
+		"tag": "reject",
+		"text": "Bài của bạn quá ảo xin lỗi nhưng tui phải bỏ nó , bạn có 1 ngày để sửa lại",
+		"created_at": "2026-05-17T14:17:25.942Z"
+	},
+	{
+		"id": "cmt-mp9vcp16cyle",
+		"request_id": "MP25FJTSD-D3YW5T8-Q7ZG2RJZ",
+		"author": "Beestudio2026",
+		"role": "sysop",
+		"tag": "note",
+		"text": "Cũng được",
+		"created_at": "2026-05-17T14:27:04.506Z"
+	},
+	{
+		"id": "cmt-mp9vf4hnbmyy",
+		"request_id": "MP25FJTSD-D3YW5T8-Q7ZG2RJZ",
+		"author": "Beestudio2026",
+		"role": "sysop",
+		"tag": "reject",
+		"text": "❌ Bài viết bị từ chối bởi Beestudio2026.\nLý do: Định dạng sai hoặc thiếu thông tin bắt buộc theo quy chuẩn.",
+		"created_at": "2026-05-17T14:28:57.851Z"
+	},
+	{
+		"id": "cmt-mp9vodi19auf",
+		"request_id": "MP85E0DQ-BH91Z6",
+		"author": "Beestudio2026",
+		"role": "sysop",
+		"tag": "note",
+		"text": "Xong",
+		"created_at": "2026-05-17T14:36:09.433Z"
+	},
+	{
+		"id": "cmt-mp9vopob3blh",
+		"request_id": "MP25FJTSD-D3YW5T8-Q7ZG2RJZ",
+		"author": "Mapleofficialvn",
+		"role": "sysop",
+		"tag": "note",
+		"text": "Chào!",
+		"created_at": "2026-05-17T14:36:25.211Z"
+	},
+	{
+		"id": "cmt-mpar36ql2kta",
+		"request_id": "MP24SPGK8-DAZA8MQ-QDNPVUAT",
+		"author": "Beestudio2026",
+		"role": "sysop",
+		"tag": "request",
+		"text": "s",
+		"created_at": "2026-05-18T05:15:28.605Z"
+	},
+	{
+		"id": "cmt-mpasfas6opz7",
+		"request_id": "MP85E0DQ-BH91Z6",
+		"author": "Beestudio2026",
+		"role": "sysop",
+		"tag": "approve",
+		"text": "✅ Bài viết đã được duyệt bởi Beestudio2026. Cấp truy cập: classified | Độ tuổi: 18+",
+		"created_at": "2026-05-18T05:52:53.334Z"
+	}
+]

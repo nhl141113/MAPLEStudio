@@ -1,0 +1,6 @@
+; M.A.P.L.E — Renderblocking pages list
+; CSS/JS ở đây load cùng render-blocking bundle
+; Chỉ đặt những file CẦN thiết để tránh FOUC — không đặt tất cả
+
+* Renderblocking.css
+* Renderblocking.js

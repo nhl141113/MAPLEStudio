@@ -1,0 +1,175 @@
+/* ══════════════════════════════════════════
+   MAPLE — Rating Banner
+   File: MediaWiki:Common.css
+   (Append vào cuối Common.css)
+   ══════════════════════════════════════════ */
+
+/* ── Base ── */
+.mpr-card {
+ width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    background: #0d0d0d;
+    border: 1px solid #1a1a1a;
+    border-left: 4px solid var(--mpr-color, #3b82f6);
+    overflow: hidden;
+    margin: 1.5rem 0;
+    font-family: 'JetBrains Mono', monospace;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--mpr-color, #3b82f6);
+}
+
+.mpr-card:hover {
+    transform: translateX(6px);
+    box-shadow: -10px 0 28px -8px var(--mpr-color, #3b82f6);
+}
+
+/* ── Scanline ── */
+@keyframes mpr-scan {
+    0%   { top: -2px; }
+    100% { top: 100%; }
+}
+
+.mpr-scan {
+    position: absolute;
+    left: 0; width: 100%; height: 1px;
+    background: var(--mpr-color, #3b82f6);
+    opacity: 0.1;
+    animation: mpr-scan 6s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Layout ── */
+.mpr-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+@media (max-width: 700px) {
+    .mpr-inner { flex-direction: column; }
+    .mpr-right {
+        border-left: none !important;
+        padding-left: 0 !important;
+        border-top: 1px solid #1f1f1f;
+        padding-top: 1.5rem;
+    }
+}
+
+/* ── Cột trái ── */
+.mpr-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mpr-badge {
+    font-size: 1.4rem;
+    font-weight: 800;
+    border: 1px solid var(--mpr-color);
+    padding: 4px 14px;
+    display: inline-block;
+    background: rgba(0,0,0,0.4);
+    width: fit-content;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--mpr-color);
+}
+
+.mpr-desc {
+    color: #9ca3af !important;
+    font-size: 0.85rem !important;
+    line-height: 1.75 !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    margin: 0 !important;
+}
+
+/* Tags */
+.mpr-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 0.25rem;
+}
+
+.mpr-tag {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #6b7280;
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    display: inline-block;
+}
+
+/* ── Cột phải ── */
+.mpr-right {
+    width: 270px;
+    flex-shrink: 0;
+    border-left: 1px solid #1f1f1f;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.mpr-warn-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-weight: 700;
+    color: var(--mpr-color);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.mpr-warn-box {
+    background: rgba(0,0,0,0.5);
+    border: 1px dashed rgba(255,255,255,0.07);
+    padding: 0.9rem 1rem;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.mpr-warn-box ul {
+    margin: 0 !important;
+    padding-left: 1.2rem !important;
+    list-style: disc !important;
+}
+
+.mpr-warn-box li {
+    font-size: 0.8rem !important;
+    color: #6b7280 !important;
+    line-height: 1.7 !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    margin-bottom: 0.25rem !important;
+}
+
+.mpr-warn-box p {
+    font-size: 0.8rem !important;
+    color: #6b7280 !important;
+    margin: 0 !important;
+    font-family: 'JetBrains Mono', monospace !important;
+}
+
+.mpr-advice {
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--mpr-color);
+    border-top: 1px solid #1f1f1f;
+    padding-top: 0.85rem;
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.6;
+}
+
+.mpr-advice strong {
+    font-style: normal;
+}
+
+/* Tôn trọng giảm chuyển động — tắt đường quét lặp */
+@media (prefers-reduced-motion: reduce) {
+    .mpr-scan { animation: none !important; }
+}
